@@ -1,0 +1,35 @@
+Package: sunburstR
+Type: Package
+Title: htmlwidget for Kerry Rodden d3.js sequence sunburst
+Version: 0.1
+Date: 2015-07-01
+Authors@R: c(
+      person(
+        "Mike", "Bostock"
+        , role = c("aut", "cph")
+        , comment = "d3.js library in htmlwidgets/lib, http://d3js.org"
+      ),
+      person(
+        "Kerry", "Rodden"
+        , role = c("aut", "cph")
+        , comment = "sequences library in htmlwidgets/lib, https://gist.github.com/kerryrodden/7090426"
+      ),
+      person(
+        "Kent", "Russell"
+        , role = c("aut", "cre")
+        , comment = "R interface"
+        , email = "kent.russell@timelyportfolio.com"
+      )
+    )
+Maintainer: Kent Russell <kent.russell@timelyportfolio.com>
+Description: Make interactive d3.js sequence sunburst diagrams in R with the convenience and infrastructure
+              of an htmlwidget.
+License: MIT + file LICENSE
+LazyData: TRUE
+Imports:
+  htmlwidgets,
+  htmltools,
+  markdown
+Suggests:
+  knitr
+VignetteBuilder: knitr
