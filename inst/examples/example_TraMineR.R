@@ -1,4 +1,3 @@
-library(cluster)
 library(TraMineR)
 library(sunburstR)
 library(pipeR)
