@@ -25,7 +25,7 @@ HTMLWidgets.widget({
     var b = {
       w: 75, h: 30, s: 3, t: 10
     };
-
+/*
     // Mapping of step names to colors.
     var colors = {
       "home": "#5687d1",
@@ -35,7 +35,9 @@ HTMLWidgets.widget({
       "other": "#a173d1",
       "end": "#bbbbbb"
     };
+*/
 
+    var colors = d3.scale.category20();
     // Total size of all segments; we set this later, after loading the data.
     var totalSize = 0;
 
@@ -70,8 +72,6 @@ HTMLWidgets.widget({
 
       // Basic setup of page elements.
       initializeBreadcrumbTrail();
-      drawLegend();
-      d3.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
 
       // Bounding circle underneath the sunburst, to make it easier to detect
       // when the mouse leaves the parent g.
@@ -91,7 +91,7 @@ HTMLWidgets.widget({
           .attr("display", function(d) { return d.depth ? null : "none"; })
           .attr("d", arc)
           .attr("fill-rule", "evenodd")
-          .style("fill", function(d) { return colors[d.name]; })
+          .style("fill", function(d) { return colors(d.name); })
           .style("opacity", 1)
           .on("mouseover", mouseover);
 
@@ -100,6 +100,10 @@ HTMLWidgets.widget({
 
       // Get total size of the tree = value of root node from partition.
       totalSize = path.node().__data__.value;
+
+      drawLegend();
+      d3.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
+
      };
 
     // Fade all but the current sequence, and show it in the breadcrumb trail.
@@ -111,11 +115,16 @@ HTMLWidgets.widget({
         percentageString = "< 0.1%";
       }
 
-      d3.select(el).select(".sunburst-percentage")
-          .text(percentageString);
+      //d3.select(el).select(".sunburst-percentage")
+      //    .text(percentageString);
+      var svgBound = d3.select(el).select("svg").node().getBoundingClientRect();
+      var circleBound = d3.select(el).select("circle").node().getBoundingClientRect()
 
-      d3.select(el).select(".sunburst-explanation")
-          .style("visibility", "");
+      d3.select(el).selectAll(".sunburst-explanation")
+          .style("visibility", "")
+          .style("top",(circleBound.height/2 + 10) + "px")
+          .style("width",svgBound.width + "px")
+          .text(percentageString);
 
       var sequenceArray = getAncestors(d);
       updateBreadcrumbs(sequenceArray, percentageString);
@@ -151,7 +160,7 @@ HTMLWidgets.widget({
                   d3.select(this).on("mouseover", mouseover);
                 });
 
-      d3.select(el).select(".sunburst-explanation")
+      d3.select(el).selectAll(".sunburst-explanation")
           .style("visibility", "hidden");
     }
 
@@ -174,7 +183,7 @@ HTMLWidgets.widget({
           .attr("height", 50)
           .attr("id", el.id + "-trail");
       // Add the label at the end, for the percentage.
-      trail.append("stext")
+      trail.append("text")
         .attr("id", el.id + "-endlabel")
         .style("fill", "#000");
     }
@@ -206,7 +215,7 @@ HTMLWidgets.widget({
 
       entering.append("polygon")
           .attr("points", breadcrumbPoints)
-          .style("fill", function(d) { return colors[d.name]; });
+          .style("fill", function(d) { return colors(d.name); });
 
       entering.append("text")
           .attr("x", (b.w + b.t) / 2)
@@ -246,10 +255,10 @@ HTMLWidgets.widget({
 
       var legend = d3.select(el).select(".sunburst-legend").append("svg")
           .attr("width", li.w)
-          .attr("height", d3.keys(colors).length * (li.h + li.s));
+          .attr("height", colors.domain().length * (li.h + li.s));
 
       var g = legend.selectAll("g")
-          .data(d3.entries(colors))
+          .data(colors.domain())
           .enter().append("g")
           .attr("transform", function(d, i) {
                   return "translate(0," + i * (li.h + li.s) + ")";
@@ -260,14 +269,14 @@ HTMLWidgets.widget({
           .attr("ry", li.r)
           .attr("width", li.w)
           .attr("height", li.h)
-          .style("fill", function(d) { return d.value; });
+          .style("fill", function(d) { return colors(d); });
 
       g.append("text")
           .attr("x", li.w / 2)
           .attr("y", li.h / 2)
           .attr("dy", "0.35em")
           .attr("text-anchor", "middle")
-          .text(function(d) { return d.key; });
+          .text(function(d) { return d; });
     }
 
     function toggleLegend() {

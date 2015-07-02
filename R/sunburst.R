@@ -54,7 +54,7 @@ sunburst_html <- function(id, style, class, ...){
           , tags$div( class = "sunburst-sequence" )
           , tags$div( class = "sunburst-chart"
               ,tags$div( class = "sunburst-explanation", style = "visibility:hidden;"
-                ,tags$span( class = "sunburst-percentage")
+         #       ,tags$span( class = "sunburst-percentage")
               )
           )
         )

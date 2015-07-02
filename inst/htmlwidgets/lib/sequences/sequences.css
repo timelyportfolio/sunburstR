@@ -32,14 +32,8 @@
 
 .sunburst-explanation {
   position: relative;
-  top: 260px;
-  left: 305px;
-  width: 140px;
   text-align: center;
   color: #666;
   z-index: -1;
-}
-
-.sunburst-percentage {
-  font-size: 2.5em;
+  font-size: 2em;
 }
