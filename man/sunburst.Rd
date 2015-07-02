@@ -4,7 +4,7 @@
 \alias{sunburst}
 \title{htmlwidget for d3.js sequence sunburst diagrams}
 \usage{
-sunburst(data = NULL, width = NULL, height = NULL)
+sunburst(csvdata = NULL, jsondata = NULL, width = NULL, height = NULL)
 }
 \description{
 \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide

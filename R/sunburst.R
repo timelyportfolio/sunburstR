@@ -7,14 +7,19 @@
 #'
 #' @export
 sunburst <- function(
-  data = NULL
+  csvdata = NULL
+  , jsondata = NULL
   , width = NULL
   , height = NULL
 ) {
 
+  if(is.null(csvdata) && is.null(jsondata)) stop("please provide either csvdata or jsondata",call.=FALSE)
+  if(!is.null(csvdata) && !is.null(jsondata)) warning("both csv and json provided; will use csvdata",call.=FALSE)
+
   # forward options using x
   x = list(
-    data = data
+    csvdata = csvdata
+    ,jsondata = jsondata
   )
 
   # create widget

@@ -59,12 +59,17 @@ HTMLWidgets.widget({
     // x.data should be a data.frame in R so an Javascript Object of Objects
     //     but buildHierarchy expects an Array of Arrays
     //     so use d3.zip and apply to do this
-    var json = buildHierarchy(
-      d3.zip.apply(
-        null,
-        Object.keys(x.data).map(function(ky){return x.data[ky]})
-      )
-    );
+    var json = [];
+    if(x.csvdata !== null){
+      json = buildHierarchy(
+        d3.zip.apply(
+          null,
+          Object.keys(x.csvdata).map(function(ky){return x.csvdata[ky]})
+        )
+      );
+    } else {
+      json = x.jsondata
+    }
     createVisualization(json);
 
     // Main function to draw and set up the visualization, once we have the data.
