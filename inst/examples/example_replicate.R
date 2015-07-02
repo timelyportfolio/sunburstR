@@ -11,3 +11,15 @@ sequence_data <- read.csv(
 )
 
 sunburst(sequence_data)
+
+
+# test composability with another sunburst and another htmlwidget
+library(htmltools)
+library(DiagrammeR)
+browsable(
+  tagList(
+    sunburst(sequence_data)
+    ,sunburst(sequence_data)
+    ,grViz('digraph {A->B;}')
+  )
+)
