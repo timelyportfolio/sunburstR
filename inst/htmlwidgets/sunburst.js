@@ -38,6 +38,14 @@ HTMLWidgets.widget({
 */
 
     var colors = d3.scale.category20();
+
+    if(x.options.colors !== null){
+      try{
+        colors.range(x.options.colors)
+      } catch(e) {
+
+      }
+    }
     // Total size of all segments; we set this later, after loading the data.
     var totalSize = 0;
 
@@ -133,6 +141,11 @@ HTMLWidgets.widget({
         explanationString = percentageString;
       } else if(x.options.count){
         explanationString = countString;
+      }
+
+      //if explanation defined in R then use this instead
+      if(x.options.explanation !== null){
+        explanationString = x.options.explanation(d);
       }
 
       //d3.select(el).select(".sunburst-percentage")

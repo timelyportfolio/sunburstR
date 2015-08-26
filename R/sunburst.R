@@ -8,8 +8,12 @@
 #' @param legendOrder string vector if you would like to manually order the legend.
 #'          If legendOrder is not provided, then the legend will be in the descending
 #'          order of the top level hierarchy.
+#' @param colors \code{vector} of strings representing colors as hexadecimal for
+#'          manual colors.
 #' @param percent \code{logical} to include percentage of total in the explanation.
 #' @param count \code{logical} to include count and total in the explanation.
+#' @param explanation \code JavaScript function to define a custom explanation for the center
+#'          of the sunburst.  Note, this will override \code{percent} and \code{count}.
 #'
 #' @import htmlwidgets
 #'
@@ -18,8 +22,10 @@ sunburst <- function(
   csvdata = NULL
   , jsondata = NULL
   , legendOrder = NULL
+  , colors = NULL
   , percent = TRUE
   , count =  FALSE
+  , explanation = NULL
   , width = NULL
   , height = NULL
 ) {
@@ -27,14 +33,20 @@ sunburst <- function(
   if(is.null(csvdata) && is.null(jsondata)) stop("please provide either csvdata or jsondata",call.=FALSE)
   if(!is.null(csvdata) && !is.null(jsondata)) warning("both csv and json provided; will use csvdata",call.=FALSE)
 
+  if(!is.null(explanation) && !inherits(explanation,"JS_EVAL")){
+    explanation = htmlwidgets::JS(explanation)
+  }
+
   # forward options using x
   x = list(
     csvdata = csvdata
     ,jsondata = jsondata
     ,options = list(
       legendOrder = legendOrder
+      ,colors = colors
       ,percent = percent
       ,count = count
+      ,explanation = explanation
     )
   )
 
