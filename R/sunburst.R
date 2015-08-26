@@ -3,12 +3,21 @@
 #' \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide
 #'    an interactive method of exploring sequence data, such as website navigation paths.
 #'
+#' @param csvdata data in csv source,target form
+#' @param jsondata data in nested d3 JSON hierarchy with `{name:...,  children:[];}`
+#' @param legendOrder string vector if you would like to manually order the legend.
+#'          If legendOrder is not provided, then the legend will be in the descending
+#'          order of the top level hierarchy.
+#'
 #' @import htmlwidgets
 #'
 #' @export
 sunburst <- function(
   csvdata = NULL
   , jsondata = NULL
+  , legendOrder = NULL
+  , percent = TRUE
+  , count =  TRUE
   , width = NULL
   , height = NULL
 ) {
@@ -20,6 +29,11 @@ sunburst <- function(
   x = list(
     csvdata = csvdata
     ,jsondata = jsondata
+    ,options = list(
+      legendOrder = legendOrder
+      ,percent = percent
+      ,count = count
+    )
   )
 
   # create widget

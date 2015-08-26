@@ -4,7 +4,17 @@
 \alias{sunburst}
 \title{htmlwidget for d3.js sequence sunburst diagrams}
 \usage{
-sunburst(csvdata = NULL, jsondata = NULL, width = NULL, height = NULL)
+sunburst(csvdata = NULL, jsondata = NULL, legendOrder = NULL,
+  percent = TRUE, count = TRUE, width = NULL, height = NULL)
+}
+\arguments{
+\item{csvdata}{data in csv source,target form}
+
+\item{jsondata}{data in nested d3 JSON hierarchy with `{name:...,  children:[];}`}
+
+\item{legendOrder}{string vector if you would like to manually order the legend.
+         If legendOrder is not provided, then the legend will be in the descending
+         order of the top level hierarchy.}
 }
 \description{
 \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide

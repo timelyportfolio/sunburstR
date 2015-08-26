@@ -263,7 +263,23 @@ HTMLWidgets.widget({
           .attr("height", colors.domain().length * (li.h + li.s));
 
       var g = legend.selectAll("g")
-          .data(colors.domain())
+          .data( function(){
+            if(x.options.legendOrder !== null){
+              return x.options.legendOrder;
+            } else {
+              // get sorted by top level
+              sortedname = d3.set(Object.keys(d3.nest().key(function(d){return d.name}).rollup(function(d){return d[0].value}).map(json.children) ))
+              // add any other missing
+              colors.domain()
+                .filter(function(d){
+                  return d !== json.name;
+                })
+                .forEach(function(d){
+                  sortedname.add(d)
+                })
+              return sortedname.values();
+            }
+          })
           .enter().append("g")
           .attr("transform", function(d, i) {
                   return "translate(0," + i * (li.h + li.s) + ")";
