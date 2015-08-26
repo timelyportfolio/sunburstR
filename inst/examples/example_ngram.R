@@ -33,7 +33,7 @@ library(htmltools)
 ngrams2 %>>%
   (
     lapply(
-      seq.int(3:ncol(.))
+      seq.int(3,ncol(.))
       ,function(letpos){
         (.[,c(1,letpos)]) %>>%
           #  split the ngrams into a sequence by splitting each letter and adding -
@@ -46,7 +46,7 @@ ngrams2 %>>%
               ,stringsAsFactors = FALSE
             )
           ) %>>%
-          sunburst
+          ( tags$div(style="float:left;",sunburst( ., height = 300, width = 300 )) )
       }
     )
   ) %>>%

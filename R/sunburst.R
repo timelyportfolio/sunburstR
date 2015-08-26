@@ -16,6 +16,7 @@
 #'          of the sunburst.  Note, this will override \code{percent} and \code{count}.
 #'
 #' @example inst/examples/example_replicate.R
+#' @example inst/examples/example_ngram.R
 #'
 #' @import htmlwidgets
 #'
