@@ -17,8 +17,8 @@ HTMLWidgets.widget({
   renderValue: function(el, x, instance) {
 
     // Dimensions of sunburst.
-    var width = el.offsetWidth;
-    var height = el.offsetHeight;
+    var width = el.getBoundingClientRect().width;
+    var height = el.getBoundingClientRect().height - 70;
     var radius = Math.min(width, height) / 2;
 
     // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
