@@ -4,37 +4,33 @@ library(sunburstR)
 
 # read in sample visit-sequences.csv data provided in source
 #   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv
-sequence_data <- read.csv(
-  "./inst/examples/visit-sequences.csv"
+sequences <- read.csv(
+  system.file("examples/visit-sequences.csv",package="sunburstR")
   ,header=F
   ,stringsAsFactors = FALSE
 )
 
 sunburst(sequence_data)
 
-
-# test composability with another sunburst and another htmlwidget
-library(htmltools)
-library(DiagrammeR)
-browsable(
-  tagList(
-    sunburst(sequence_data)
-    ,sunburst(sequence_data)
-    ,grViz('digraph {A->B;}')
-  )
+# explore some of the arguments
+sunburst(
+  sequence_data
+  ,count = TRUE
 )
+
+sunburst(
+  sequence_data
+  # apply sort order to the legendS
+  ,legendOrder = unique(unlist(strsplit(sequence_data[,1],"-")))
+  # just provide the name in the explanation in the center
+  ,explanation = "function(d){return d.name}"
+)
+
 
 # try with json data
 sequence_json <- rjson::fromJSON(file="./inst/examples/visit-sequences.json")
 sunburst(jsondata = sequence_json)
 
-
-
-# try with sire json data from
-#   https://twitter.com/UTVilla/status/616600742967816193
-# but does not work
-# guessing JS needs to be changed
-sunburst( jsondata = rjson::fromJSON( file = "https://rawgit.com/durtal/durtal.github.io/master/data/prominent_sires.json") )
 
 
 # try with csv data from this fork

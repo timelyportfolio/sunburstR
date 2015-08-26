@@ -15,6 +15,8 @@
 #' @param explanation JavaScript function to define a custom explanation for the center
 #'          of the sunburst.  Note, this will override \code{percent} and \code{count}.
 #'
+#' @example inst/examples/example_replicate.R
+#'
 #' @import htmlwidgets
 #'
 #' @export
