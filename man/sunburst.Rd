@@ -24,7 +24,7 @@ manual colors.}
 
 \item{count}{\code{logical} to include count and total in the explanation.}
 
-\item{explanation}{\code JavaScript function to define a custom explanation for the center
+\item{explanation}{JavaScript function to define a custom explanation for the center
          of the sunburst.  Note, this will override \code{percent} and \code{count}.}
 }
 \description{

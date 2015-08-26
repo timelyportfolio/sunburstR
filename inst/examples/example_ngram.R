@@ -5,7 +5,13 @@ library(sunburstR)
 library(pipeR)
 
 #  read the csv data downloaded from the Google Fusion Table linked in the article
-ngrams2 <- read.csv("./inst/examples/ngrams2.csv", stringsAsFactors = FALSE)
+ngrams2 <- read.csv(
+  system.file(
+    "examples/ngrams2.csv"
+    ,package="sunburstR"
+  )
+  , stringsAsFactors = FALSE
+)
 
 ngrams2 %>>%
   #  let's look at ngrams at the start of a word, so columns 1 and 3

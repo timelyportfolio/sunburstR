@@ -12,7 +12,7 @@
 #'          manual colors.
 #' @param percent \code{logical} to include percentage of total in the explanation.
 #' @param count \code{logical} to include count and total in the explanation.
-#' @param explanation \code JavaScript function to define a custom explanation for the center
+#' @param explanation JavaScript function to define a custom explanation for the center
 #'          of the sunburst.  Note, this will override \code{percent} and \code{count}.
 #'
 #' @import htmlwidgets
@@ -81,7 +81,7 @@ renderSunburst <- function(expr, env = parent.frame(), quoted = FALSE) {
 #' @import htmltools
 sunburst_html <- function(id, style, class, ...){
   tagList(
-    tags$div( id = id, class = class, style = style
+    tags$div( id = id, class = class, style = style, style="position:relative;"
       ,tags$div(
         tags$div(class = "sunburst-main"
           , tags$div( class = "sunburst-sequence" )
