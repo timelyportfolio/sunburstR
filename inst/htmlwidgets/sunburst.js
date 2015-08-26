@@ -16,6 +16,9 @@ HTMLWidgets.widget({
 
   renderValue: function(el, x, instance) {
 
+    // remove previous in case of Shiny/dynamic
+    el.innerHTML = "";
+
     // Dimensions of sunburst.
     var width = el.getBoundingClientRect().width;
     var height = el.getBoundingClientRect().height - 70;
