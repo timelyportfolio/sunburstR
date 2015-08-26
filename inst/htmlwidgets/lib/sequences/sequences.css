@@ -1,17 +1,18 @@
 .sunburst-main {
-  float: left;
   width: 90%;
 }
 
 .sunburst-sidebar {
-  display: inline;
+  position: absolute;
   width: 10%;
-  float: left;
+  right: 10%;
 }
 
 .sunburst-sequence {
   width: 100%;
   height: 70px;
+  position: absolute;
+  top: 0;
 }
 
 .sunburst-legend {
@@ -24,7 +25,8 @@
 }
 
 .sunburst-chart {
-  position: relative;
+  position: absolute;
+  top: 70px;
 }
 
 .sunburst-chart path {

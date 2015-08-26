@@ -120,6 +120,21 @@ HTMLWidgets.widget({
         percentageString = "< 0.1%";
       }
 
+      var countString = [
+          '<span style = "font-size:.7em">',
+          d3.format("1.2s")(d.value) + ' of ' + d3.format("1.2s")(totalSize),
+          '</span>'
+        ].join('')
+
+      var explanationString = "";
+      if(x.options.percent && x.options.count){
+        explanationString = percentageString + '<br/>' + countString;
+      } else if(x.options.percent){
+        explanationString = percentageString;
+      } else if(x.options.count){
+        explanationString = countString;
+      }
+
       //d3.select(el).select(".sunburst-percentage")
       //    .text(percentageString);
       var svgBound = d3.select(el).select("svg").node().getBoundingClientRect();
@@ -129,7 +144,7 @@ HTMLWidgets.widget({
           .style("visibility", "")
           .style("top",(circleBound.height/2 + 10) + "px")
           .style("width",svgBound.width + "px")
-          .text(percentageString);
+          .html(explanationString);
 
       var sequenceArray = getAncestors(d);
       updateBreadcrumbs(sequenceArray, percentageString);

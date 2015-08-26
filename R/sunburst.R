@@ -8,6 +8,8 @@
 #' @param legendOrder string vector if you would like to manually order the legend.
 #'          If legendOrder is not provided, then the legend will be in the descending
 #'          order of the top level hierarchy.
+#' @param percent \code{logical} to include percentage of total in the explanation.
+#' @param count \code{logical} to include count and total in the explanation.
 #'
 #' @import htmlwidgets
 #'
@@ -17,7 +19,7 @@ sunburst <- function(
   , jsondata = NULL
   , legendOrder = NULL
   , percent = TRUE
-  , count =  TRUE
+  , count =  FALSE
   , width = NULL
   , height = NULL
 ) {
