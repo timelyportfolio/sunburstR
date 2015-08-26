@@ -6,10 +6,6 @@ HTMLWidgets.widget({
 
   initialize: function(el, width, height) {
 
-    d3.select(el).select(".sunburst-chart").append("svg")
-      .attr("width", width)
-      .attr("height", height);
-
     return {};
 
   },
@@ -17,12 +13,17 @@ HTMLWidgets.widget({
   renderValue: function(el, x, instance) {
 
     // remove previous in case of Shiny/dynamic
-    el.innerHTML = "";
+    d3.select(el).select(".sunburst-chart svg").remove();
 
     // Dimensions of sunburst.
     var width = el.getBoundingClientRect().width;
     var height = el.getBoundingClientRect().height - 70;
     var radius = Math.min(width, height) / 2;
+
+    d3.select(el).select(".sunburst-chart").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
 
     // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
     var b = {
@@ -158,7 +159,7 @@ HTMLWidgets.widget({
 
       d3.select(el).selectAll(".sunburst-explanation")
           .style("visibility", "")
-          .style("top",(circleBound.height/2 + 10) + "px")
+          .style("top",((+circleBound.height - 70)/2 - 5) + "px")
           .style("width",svgBound.width + "px")
           .html(explanationString);
 
@@ -288,6 +289,9 @@ HTMLWidgets.widget({
       var li = {
         w: 75, h: 30, s: 3, r: 3
       };
+
+      // remove if already drawn
+      d3.select(el).select(".sunburst-legend svg").remove();
 
       var legend = d3.select(el).select(".sunburst-legend").append("svg")
           .attr("width", li.w)
