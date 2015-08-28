@@ -21,7 +21,7 @@ sunburst(
 sunburst(
   sequences
   # apply sort order to the legendS
-  ,legendOrder = unique(unlist(strsplit(sequence_data[,1],"-")))
+  ,legendOrder = unique(unlist(strsplit(sequences[,1],"-")))
   # just provide the name in the explanation in the center
   ,explanation = "function(d){return d.name}"
 )
