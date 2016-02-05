@@ -26,9 +26,15 @@ HTMLWidgets.widget({
 
 
     // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
+    //  these will be the defaults
     var b = {
       w: 75, h: 30, s: 3, t: 10
     };
+    //  if breadcrumb is provided in the option, we will overwrite
+    //   with what is provided
+    Object.keys(x.options.breadcrumb).map(function(ky){
+      b[ky] = x.options.breadcrumb[ky];
+    });
 /*
     // Mapping of step names to colors.
     var colors = {
