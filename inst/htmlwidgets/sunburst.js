@@ -149,7 +149,7 @@ HTMLWidgets.widget({
 
       //if explanation defined in R then use this instead
       if(x.options.explanation !== null){
-        explanationString = x.options.explanation(d);
+        explanationString = x.options.explanation.bind(totalSize)(d);
       }
 
       //d3.select(el).select(".sunburst-percentage")
