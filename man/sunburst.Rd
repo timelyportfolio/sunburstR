@@ -6,7 +6,8 @@
 \usage{
 sunburst(csvdata = NULL, jsondata = NULL, legendOrder = NULL,
   colors = NULL, percent = TRUE, count = FALSE, explanation = NULL,
-  breadcrumb = list(), legend = list(), width = NULL, height = NULL)
+  breadcrumb = list(), legend = list(), sortFunction = NULL,
+  width = NULL, height = NULL)
 }
 \arguments{
 \item{csvdata}{data in csv source,target form}
@@ -31,6 +32,9 @@ of the sunburst.  Note, this will override \code{percent} and \code{count}.}
 should be in the form \code{list(w =, h =, s =, t = )} where
 \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
 and \code{t} is the tail all in \code{px}.}
+
+\item{sortFunction}{\code{\link[htmlwidgets]{JS}} function to sort the slices.
+The default sort is by size.}
 }
 \description{
 \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide

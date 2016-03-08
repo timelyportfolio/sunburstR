@@ -68,6 +68,11 @@ HTMLWidgets.widget({
         .size([2 * Math.PI, radius * radius])
         .value(function(d) { return d.size; });
 
+    // check for sort function
+    if(x.options.sortFunction){
+      partition.sort(x.options.sortFunction);
+    }
+
     var arc = d3.svg.arc()
         .startAngle(function(d) { return d.x; })
         .endAngle(function(d) { return d.x + d.dx; })

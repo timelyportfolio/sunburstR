@@ -18,6 +18,8 @@
 #'          should be in the form \code{list(w =, h =, s =, t = )} where
 #'          \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
 #'          and \code{t} is the tail all in \code{px}.
+#' @param sortFunction \code{\link[htmlwidgets]{JS}} function to sort the slices.
+#'          The default sort is by size.
 #'
 #' @example inst/examples/example_replicate.R
 #' @example inst/examples/example_ngram.R
@@ -35,6 +37,7 @@ sunburst <- function(
   , explanation = NULL
   , breadcrumb = list()
   , legend = list()
+  , sortFunction = NULL
   , width = NULL
   , height = NULL
 ) {
@@ -58,6 +61,7 @@ sunburst <- function(
       ,explanation = explanation
       ,breadcrumb = breadcrumb
       ,legend = legend
+      ,sortFunction = sortFunction
     )
   )
 
