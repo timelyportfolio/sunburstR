@@ -14,7 +14,7 @@
 #' @param count \code{logical} to include count and total in the explanation.
 #' @param explanation JavaScript function to define a custom explanation for the center
 #'          of the sunburst.  Note, this will override \code{percent} and \code{count}.
-#' @param breadcrumb \code{list} to customize the breadcrumb trail.  This argument
+#' @param breadcrumb,legend \code{list} to customize the breadcrumb trail or legend.  This argument
 #'          should be in the form \code{list(w =, h =, s =, t = )} where
 #'          \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
 #'          and \code{t} is the tail all in \code{px}.
@@ -34,6 +34,7 @@ sunburst <- function(
   , count =  FALSE
   , explanation = NULL
   , breadcrumb = list()
+  , legend = list()
   , width = NULL
   , height = NULL
 ) {
@@ -56,6 +57,7 @@ sunburst <- function(
       ,count = count
       ,explanation = explanation
       ,breadcrumb = breadcrumb
+      ,legend = legend
     )
   )
 

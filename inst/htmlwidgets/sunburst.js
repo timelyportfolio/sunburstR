@@ -16,7 +16,7 @@ HTMLWidgets.widget({
     d3.select(el).select(".sunburst-chart svg").remove();
 
     // Dimensions of sunburst.
-    var width = el.getBoundingClientRect().width;
+    var width = el.getBoundingClientRect().width - (x.options.legend.w ? x.options.legend.w : 75);
     var height = el.getBoundingClientRect().height - 70;
     var radius = Math.min(width, height) / 2;
 
@@ -312,6 +312,12 @@ HTMLWidgets.widget({
       var li = {
         w: 75, h: 30, s: 3, r: 3
       };
+
+      //  if legend is provided in the option, we will overwrite
+      //   with what is provided
+      Object.keys(x.options.legend).map(function(ky){
+        li[ky] = x.options.legend[ky];
+      });
 
       // remove if already drawn
       d3.select(el).select(".sunburst-legend svg").remove();

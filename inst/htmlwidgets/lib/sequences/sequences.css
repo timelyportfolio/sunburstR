@@ -5,8 +5,7 @@
 
 .sunburst-sidebar {
   position: absolute;
-  width: 10%;
-  left: 90%;
+  right: 10px;
   top: 10px;
 }
 

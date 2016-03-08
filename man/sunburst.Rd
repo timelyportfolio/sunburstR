@@ -6,7 +6,7 @@
 \usage{
 sunburst(csvdata = NULL, jsondata = NULL, legendOrder = NULL,
   colors = NULL, percent = TRUE, count = FALSE, explanation = NULL,
-  breadcrumb = list(), width = NULL, height = NULL)
+  breadcrumb = list(), legend = list(), width = NULL, height = NULL)
 }
 \arguments{
 \item{csvdata}{data in csv source,target form}
@@ -27,7 +27,7 @@ manual colors.}
 \item{explanation}{JavaScript function to define a custom explanation for the center
 of the sunburst.  Note, this will override \code{percent} and \code{count}.}
 
-\item{breadcrumb}{\code{list} to customize the breadcrumb trail.  This argument
+\item{breadcrumb, legend}{\code{list} to customize the breadcrumb trail or legend.  This argument
 should be in the form \code{list(w =, h =, s =, t = )} where
 \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
 and \code{t} is the tail all in \code{px}.}
