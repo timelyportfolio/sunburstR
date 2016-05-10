@@ -24,6 +24,10 @@ HTMLWidgets.widget({
       .attr("width", width)
       .attr("height", height);
 
+    // function string_length for breadcrumbs
+    function string_length(s) {
+      return(s.length*7.5+12)
+    }
 
     // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
     //  these will be the defaults
@@ -257,10 +261,18 @@ HTMLWidgets.widget({
     function breadcrumbPoints(d, i) {
       var points = [];
       points.push("0,0");
-      points.push(b.w + ",0");
-      points.push(b.w + b.t + "," + (b.h / 2));
-      points.push(b.w + "," + b.h);
+      if (b.w <= 0) {
+        // calculate breadcrumb width based on string length
+        points.push(d.string_length + ",0");
+        points.push(d.string_length + b.t + "," + (b.h / 2));
+        points.push(d.string_length + "," + b.h);
+      } else {
+        points.push(b.w + ",0");
+        points.push(b.w + b.t + "," + (b.h / 2));
+        points.push(b.w + "," + b.h);
+      }
       points.push("0," + b.h);
+
       if (i > 0) { // Leftmost breadcrumb; don't include 6th vertex.
         points.push(b.t + "," + (b.h / 2));
       }
@@ -278,32 +290,87 @@ HTMLWidgets.widget({
       // Add breadcrumb and label for entering nodes.
       var entering = g.enter().append("g");
 
-      entering.append("polygon")
-          .attr("points", breadcrumbPoints)
-          .style("fill", function(d) { return colors(d.name); });
 
-      entering.append("text")
-          .attr("x", (b.w + b.t) / 2)
-          .attr("y", b.h / 2)
-          .attr("dy", "0.35em")
-          .attr("text-anchor", "middle")
-          .text(function(d) { return d.name; });
+      if (b.w <= 0) {
+        // Create a node array that contains all the breadcrumb widths
+        // Calculate positions of breadcrumbs based on string lengths
+        var curr_breadcrumb_x = 0;
+        nodeArray[0].breadcrumb_x = 0;
+        nodeArray[0].string_length = string_length(nodeArray[0].name);
+        nodeArray[0].breadcrumb_h = 0;
 
-      // Set position for entering and updating nodes.
-      g.attr("transform", function(d, i) {
-        return "translate(" + i * (b.w + b.s) + ", 0)";
-      });
+        for (var k=1; k<nodeArray.length; k++) {
+          var my_string_length = string_length(nodeArray[k].name);
+          curr_breadcrumb_x += nodeArray[k-1].string_length;
+          nodeArray[k].breadcrumb_h = nodeArray[k-1].breadcrumb_h;
 
-      // Remove exiting nodes.
-      g.exit().remove();
+          if (curr_breadcrumb_x + my_string_length > $("svg").width()*0.99) {
+            nodeArray[k].breadcrumb_h += b.h;  // got to next line
+            curr_breadcrumb_x = b.t + b.s;     // restart counter
+          }
+          nodeArray[k].breadcrumb_x = curr_breadcrumb_x;
+          nodeArray[k].string_length = my_string_length;
+        }
 
-      // Now move and update the percentage at the end.
-      d3.select(el).select("#" + el.id + "-trail").select("#" + el.id + "-endlabel")
-          .attr("x", (nodeArray.length + 0.5) * (b.w + b.s))
-          .attr("y", b.h / 2)
-          .attr("dy", "0.35em")
-          .attr("text-anchor", "middle")
-          .text(percentageString);
+        entering.append("polygon")
+            .attr("points", breadcrumbPoints)
+            .style("z-index",function(d,i) { return(999-i); })
+            .style("fill", function(d) { return colors(d.name); });
+
+        entering.append("text")
+            .attr("x", b.t + 2)
+            .attr("y", b.h / 2)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "left")
+            .text(function(d) { return d.name; });
+
+        // Set position for entering and updating nodes.
+        g.attr("transform", function(d, i) {
+          return "translate(" + d.breadcrumb_x + ", "+d.breadcrumb_h+")";
+        });
+
+        // Remove exiting nodes.
+        g.exit().remove();
+
+        // Now move and update the percentage at the end.
+        d3.select(el).select("#" + el.id + "-trail").select("#" + el.id + "-endlabel")
+            .attr("x", (nodeArray[nodeArray.length-1].breadcrumb_x +  nodeArray[nodeArray.length-1].string_length + b.s + 30 ))
+            .attr("y", nodeArray[nodeArray.length-1].breadcrumb_h + b.h / 2)
+            .attr("dy", "0.35em")
+            .style("font-size","small")
+            .attr("text-anchor", "middle")
+            .text(percentageString);
+
+
+      } else {
+        entering.append("polygon")
+            .attr("points", breadcrumbPoints)
+            .style("fill", function(d) { return colors(d.name); });
+
+        entering.append("text")
+            .attr("x", (b.w + b.t) / 2)
+            .attr("y", b.h / 2)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "middle")
+            .text(function(d) { return d.name; });
+
+        // Set position for entering and updating nodes.
+        g.attr("transform", function(d, i) {
+          return "translate(" + i * (b.w + b.s) + ", 0)";
+        });
+
+        // Remove exiting nodes.
+        g.exit().remove();
+
+        // Now move and update the percentage at the end.
+        d3.select(el).select("#" + el.id + "-trail").select("#" + el.id + "-endlabel")
+            .attr("x", (nodeArray.length + 0.5) * (b.w + b.s))
+            .attr("y", b.h / 2)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "middle")
+            .text(percentageString);
+
+      }
 
       // Make the breadcrumb trail visible, if it's hidden.
       d3.select(el).select("#" + el.id + "-trail")

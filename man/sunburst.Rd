@@ -31,7 +31,8 @@ of the sunburst.  Note, this will override \code{percent} and \code{count}.}
 \item{breadcrumb, legend}{\code{list} to customize the breadcrumb trail or legend.  This argument
 should be in the form \code{list(w =, h =, s =, t = )} where
 \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
-and \code{t} is the tail all in \code{px}.}
+and \code{t} is the tail all in \code{px}. Set \code{w} to \code{0} for
+breadcrumbs widths based on text length.}
 
 \item{sortFunction}{\code{\link[htmlwidgets]{JS}} function to sort the slices.
 The default sort is by size.}
@@ -59,6 +60,8 @@ sunburst(sequences)
 sunburst(
   sequences
   ,count = TRUE
+  , breadcrumb=list(w=0, h=10,s=2,t=2)
+  , legend=list(w=200, h=20, s=3, r=3)
 )
 
 sunburst(
@@ -147,5 +150,6 @@ ngrams2 \%>>\%
   ) \%>>\%
   tagList \%>>\%
   browsable
+
 }
 
