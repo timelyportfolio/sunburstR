@@ -304,7 +304,7 @@ HTMLWidgets.widget({
           curr_breadcrumb_x += nodeArray[k-1].string_length;
           nodeArray[k].breadcrumb_h = nodeArray[k-1].breadcrumb_h;
 
-          if (curr_breadcrumb_x + my_string_length > $("svg").width()*0.99) {
+          if (curr_breadcrumb_x + my_string_length > width*0.99) {
             nodeArray[k].breadcrumb_h += b.h;  // got to next line
             curr_breadcrumb_x = b.t + b.s;     // restart counter
           }
