@@ -17,7 +17,8 @@
 #' @param breadcrumb,legend \code{list} to customize the breadcrumb trail or legend.  This argument
 #'          should be in the form \code{list(w =, h =, s =, t = )} where
 #'          \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
-#'          and \code{t} is the tail all in \code{px}.
+#'          and \code{t} is the tail all in \code{px}. Set \code{w} to \code{0} for
+#'          breadcrumbs widths based on text length.
 #' @param sortFunction \code{\link[htmlwidgets]{JS}} function to sort the slices.
 #'          The default sort is by size.
 #'
