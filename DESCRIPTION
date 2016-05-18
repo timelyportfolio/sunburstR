@@ -1,8 +1,8 @@
 Package: sunburstR
 Type: Package
 Title: htmlwidget for Kerry Rodden d3.js sequence sunburst
-Version: 0.2.3
-Date: 2016-03-08
+Version: 0.2.4
+Date: 2016-05-18
 Authors@R: c(
       person(
         "Mike", "Bostock"
@@ -19,6 +19,11 @@ Authors@R: c(
         , role = c("aut", "cre")
         , comment = "R interface"
         , email = "kent.russell@timelyportfolio.com"
+      ),
+      person(
+        "Florian", "Breitwieser"
+        , role = c("aut")
+        , comment = "R interface"
       )
     )
 Maintainer: Kent Russell <kent.russell@timelyportfolio.com>
