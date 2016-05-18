@@ -31,7 +31,7 @@ of the sunburst.  Note, this will override \code{percent} and \code{count}.}
 \item{breadcrumb, legend}{\code{list} to customize the breadcrumb trail or legend.  This argument
 should be in the form \code{list(w =, h =, s =, t = )} where
 \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
-and \code{t} is the tail all in \code{px}. Set \code{w} to \code{0} for
+and \code{t} is the tail all in \code{px}. \code{w} is \code{0} by default for
 breadcrumbs widths based on text length.}
 
 \item{sortFunction}{\code{\link[htmlwidgets]{JS}} function to sort the slices.
@@ -60,8 +60,6 @@ sunburst(sequences)
 sunburst(
   sequences
   ,count = TRUE
-  , breadcrumb=list(w=0, h=10,s=2,t=2)
-  , legend=list(w=200, h=20, s=3, r=3)
 )
 
 sunburst(
@@ -81,12 +79,14 @@ sunburst(jsondata = sequence_json)
 
 # try with csv data from this fork
 #  https://gist.github.com/mkajava/7515402
-# works technically but not cosmetically
-sunburst( csvdata = read.csv(
-  file = "https://gist.githubusercontent.com/mkajava/7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/comment-sequences.csv"
-  ,header = FALSE
-  ,stringsAsFactors = FALSE
-))
+# great use for new breadbrumb wrapping
+sunburst(
+  csvdata = read.csv(
+    file = "https://gist.githubusercontent.com/mkajava/7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/comment-sequences.csv"
+    ,header = FALSE
+    ,stringsAsFactors = FALSE
+  )
+)
 
 
 # try with csv data from this fork
@@ -150,6 +150,5 @@ ngrams2 \%>>\%
   ) \%>>\%
   tagList \%>>\%
   browsable
-
 }
 

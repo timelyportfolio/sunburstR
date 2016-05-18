@@ -35,12 +35,14 @@ sunburst(jsondata = sequence_json)
 
 # try with csv data from this fork
 #  https://gist.github.com/mkajava/7515402
-# works technically but not cosmetically
-sunburst( csvdata = read.csv(
-  file = "https://gist.githubusercontent.com/mkajava/7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/comment-sequences.csv"
-  ,header = FALSE
-  ,stringsAsFactors = FALSE
-))
+# great use for new breadbrumb wrapping
+sunburst(
+  csvdata = read.csv(
+    file = "https://gist.githubusercontent.com/mkajava/7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/comment-sequences.csv"
+    ,header = FALSE
+    ,stringsAsFactors = FALSE
+  )
+)
 
 
 # try with csv data from this fork

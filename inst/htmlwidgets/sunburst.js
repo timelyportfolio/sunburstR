@@ -15,7 +15,7 @@ HTMLWidgets.widget({
     // remove previous in case of Shiny/dynamic
     d3.select(el).select(".sunburst-chart svg").remove();
 
-    // Dimensions of sunburst.
+    // Dimensions of sunburst
     var width = el.getBoundingClientRect().width - (x.options.legend.w ? x.options.legend.w : 75);
     var height = el.getBoundingClientRect().height - 70;
     var radius = Math.min(width, height) / 2;
@@ -24,15 +24,10 @@ HTMLWidgets.widget({
       .attr("width", width)
       .attr("height", height);
 
-    // function string_length for breadcrumbs
-    function string_length(s) {
-      return(s.length*7.5+12)
-    }
-
     // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
     //  these will be the defaults
     var b = {
-      w: 75, h: 30, s: 3, t: 10
+      w: 0, h: 30, s: 3, t: 10
     };
     //  if breadcrumb is provided in the option, we will overwrite
     //   with what is provided
@@ -249,7 +244,7 @@ HTMLWidgets.widget({
       // Add the svg area.
       var trail = d3.select(el).select(".sunburst-sequence").append("svg")
           .attr("width", width)
-          .attr("height", 50)
+          //.attr("height", 50)
           .attr("id", el.id + "-trail");
       // Add the label at the end, for the percentage.
       trail.append("text")
@@ -296,24 +291,9 @@ HTMLWidgets.widget({
         // Calculate positions of breadcrumbs based on string lengths
         var curr_breadcrumb_x = 0;
         nodeArray[0].breadcrumb_x = 0;
-        nodeArray[0].string_length = string_length(nodeArray[0].name);
         nodeArray[0].breadcrumb_h = 0;
 
-        for (var k=1; k<nodeArray.length; k++) {
-          var my_string_length = string_length(nodeArray[k].name);
-          curr_breadcrumb_x += nodeArray[k-1].string_length;
-          nodeArray[k].breadcrumb_h = nodeArray[k-1].breadcrumb_h;
-
-          if (curr_breadcrumb_x + my_string_length > width*0.99) {
-            nodeArray[k].breadcrumb_h += b.h;  // got to next line
-            curr_breadcrumb_x = b.t + b.s;     // restart counter
-          }
-          nodeArray[k].breadcrumb_x = curr_breadcrumb_x;
-          nodeArray[k].string_length = my_string_length;
-        }
-
         entering.append("polygon")
-            .attr("points", breadcrumbPoints)
             .style("z-index",function(d,i) { return(999-i); })
             .style("fill", function(d) { return colors(d.name); });
 
@@ -324,21 +304,59 @@ HTMLWidgets.widget({
             .attr("text-anchor", "left")
             .text(function(d) { return d.name; });
 
+        // Remove exiting nodes.
+        g.exit().remove();
+
+        // loop through each g element
+        //  calculate string length
+        //  draw the breadcrumb polygon
+        //  and determine if breadcrumb should be wrapped to next row
+        g.each(function(d,k){
+          var crumbg = d3.select(this);
+          var my_string_length = crumbg.select("text").node().getBoundingClientRect().width;
+          nodeArray[k].string_length = my_string_length + 12;
+          crumbg.select("polygon").attr("points", function(d){
+            return breadcrumbPoints(d, k);
+          });
+          var my_g_length = crumbg.node().getBoundingClientRect().width;
+          curr_breadcrumb_x += k===0 ? 0 : nodeArray[k-1].string_length + b.s;
+          nodeArray[k].breadcrumb_h = k===0 ? 0 : nodeArray[k-1].breadcrumb_h;
+
+          if (curr_breadcrumb_x + my_g_length > width*0.99) {
+            nodeArray[k].breadcrumb_h += b.h;  // got to next line
+            curr_breadcrumb_x = b.t + b.s;     // restart counter
+          }
+          nodeArray[k].breadcrumb_x = curr_breadcrumb_x;
+        });
+
+
         // Set position for entering and updating nodes.
         g.attr("transform", function(d, i) {
           return "translate(" + d.breadcrumb_x + ", "+d.breadcrumb_h+")";
         });
 
-        // Remove exiting nodes.
-        g.exit().remove();
 
         // Now move and update the percentage at the end.
         d3.select(el).select("#" + el.id + "-trail").select("#" + el.id + "-endlabel")
-            .attr("x", (nodeArray[nodeArray.length-1].breadcrumb_x +  nodeArray[nodeArray.length-1].string_length + b.s + 30 ))
-            .attr("y", nodeArray[nodeArray.length-1].breadcrumb_h + b.h / 2)
+            .attr("x", function(d){
+              var bend = d3.select(this);
+              var curr_breadcrumb_x = nodeArray[nodeArray.length-1].breadcrumb_x +  nodeArray[nodeArray.length-1].string_length + b.t + b.s;
+              var my_g_length = bend.node().getBoundingClientRect().width;
+
+              var curr_breadcrumb_h = nodeArray[nodeArray.length-1].breadcrumb_h + b.h/2;
+              if (curr_breadcrumb_x + my_g_length > width*0.99) {
+                curr_breadcrumb_h += b.h + b.h/2;
+                curr_breadcrumb_x = b.t + b.s;     // restart counter
+              }
+              bend.datum({
+                "breadcrumb_x": curr_breadcrumb_x,
+                "breadcrumb_h": curr_breadcrumb_h
+              });
+              return curr_breadcrumb_x;
+            })
+            .attr("y", function(d){return d.breadcrumb_h})
             .attr("dy", "0.35em")
-            .style("font-size","small")
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "start")
             .text(percentageString);
 
 
