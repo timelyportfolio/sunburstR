@@ -15,7 +15,7 @@ HTMLWidgets.widget({
     // remove previous in case of Shiny/dynamic
     d3.select(el).select(".sunburst-chart svg").remove();
 
-    // Dimensions of sunburst.
+    // Dimensions of sunburst
     var width = el.getBoundingClientRect().width - (x.options.legend.w ? x.options.legend.w : 75);
     var height = el.getBoundingClientRect().height - 70;
     var radius = Math.min(width, height) / 2;
@@ -23,11 +23,6 @@ HTMLWidgets.widget({
     d3.select(el).select(".sunburst-chart").append("svg")
       .attr("width", width)
       .attr("height", height);
-
-    // function string_length for breadcrumbs
-    function string_length(s) {
-      return(s.length*7.5+12)
-    }
 
     // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
     //  these will be the defaults
@@ -249,7 +244,7 @@ HTMLWidgets.widget({
       // Add the svg area.
       var trail = d3.select(el).select(".sunburst-sequence").append("svg")
           .attr("width", width)
-          .attr("height", 50)
+          //.attr("height", 50)
           .attr("id", el.id + "-trail");
       // Add the label at the end, for the percentage.
       trail.append("text")
@@ -296,7 +291,6 @@ HTMLWidgets.widget({
         // Calculate positions of breadcrumbs based on string lengths
         var curr_breadcrumb_x = 0;
         nodeArray[0].breadcrumb_x = 0;
-        nodeArray[0].string_length = string_length(nodeArray[0].name);
         nodeArray[0].breadcrumb_h = 0;
 
         entering.append("polygon")
@@ -313,23 +307,28 @@ HTMLWidgets.widget({
         // Remove exiting nodes.
         g.exit().remove();
 
+        // loop through each g element
+        //  calculate string length
+        //  draw the breadcrumb polygon
+        //  and determine if breadcrumb should be wrapped to next row
         g.each(function(d,k){
-          debugger;
           var crumbg = d3.select(this);
-          var my_string_length = crumbg.node().getBoundingClientRect().width;
-          curr_breadcrumb_x += k===0 ? 0 : nodeArray[k-1].string_length;
+          var my_string_length = crumbg.select("text").node().getBoundingClientRect().width;
+          nodeArray[k].string_length = my_string_length + 12;
+          crumbg.select("polygon").attr("points", function(d){
+            return breadcrumbPoints(d, k);
+          });
+          var my_g_length = crumbg.node().getBoundingClientRect().width;
+          curr_breadcrumb_x += k===0 ? 0 : nodeArray[k-1].string_length + b.t + b.s;
           nodeArray[k].breadcrumb_h = k===0 ? 0 : nodeArray[k-1].breadcrumb_h;
 
-          if (curr_breadcrumb_x + my_string_length > width*0.99) {
+          if (curr_breadcrumb_x + my_g_length > width*0.99) {
             nodeArray[k].breadcrumb_h += b.h;  // got to next line
             curr_breadcrumb_x = b.t + b.s;     // restart counter
           }
           nodeArray[k].breadcrumb_x = curr_breadcrumb_x;
-          nodeArray[k].string_length = my_string_length;
         });
 
-        g.selectAll('polygon')
-          .attr("points", breadcrumbPoints);
 
         // Set position for entering and updating nodes.
         g.attr("transform", function(d, i) {
