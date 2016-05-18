@@ -60,8 +60,6 @@ sunburst(sequences)
 sunburst(
   sequences
   ,count = TRUE
-  , breadcrumb=list(w=0, h=10,s=2,t=2)
-  , legend=list(w=200, h=20, s=3, r=3)
 )
 
 sunburst(
@@ -150,6 +148,5 @@ ngrams2 \%>>\%
   ) \%>>\%
   tagList \%>>\%
   browsable
-
 }
 

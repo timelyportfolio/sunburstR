@@ -299,21 +299,7 @@ HTMLWidgets.widget({
         nodeArray[0].string_length = string_length(nodeArray[0].name);
         nodeArray[0].breadcrumb_h = 0;
 
-        for (var k=1; k<nodeArray.length; k++) {
-          var my_string_length = string_length(nodeArray[k].name);
-          curr_breadcrumb_x += nodeArray[k-1].string_length;
-          nodeArray[k].breadcrumb_h = nodeArray[k-1].breadcrumb_h;
-
-          if (curr_breadcrumb_x + my_string_length > width*0.99) {
-            nodeArray[k].breadcrumb_h += b.h;  // got to next line
-            curr_breadcrumb_x = b.t + b.s;     // restart counter
-          }
-          nodeArray[k].breadcrumb_x = curr_breadcrumb_x;
-          nodeArray[k].string_length = my_string_length;
-        }
-
         entering.append("polygon")
-            .attr("points", breadcrumbPoints)
             .style("z-index",function(d,i) { return(999-i); })
             .style("fill", function(d) { return colors(d.name); });
 
@@ -324,13 +310,32 @@ HTMLWidgets.widget({
             .attr("text-anchor", "left")
             .text(function(d) { return d.name; });
 
+        // Remove exiting nodes.
+        g.exit().remove();
+
+        g.each(function(d,k){
+          debugger;
+          var crumbg = d3.select(this);
+          var my_string_length = crumbg.node().getBoundingClientRect().width;
+          curr_breadcrumb_x += k===0 ? 0 : nodeArray[k-1].string_length;
+          nodeArray[k].breadcrumb_h = k===0 ? 0 : nodeArray[k-1].breadcrumb_h;
+
+          if (curr_breadcrumb_x + my_string_length > width*0.99) {
+            nodeArray[k].breadcrumb_h += b.h;  // got to next line
+            curr_breadcrumb_x = b.t + b.s;     // restart counter
+          }
+          nodeArray[k].breadcrumb_x = curr_breadcrumb_x;
+          nodeArray[k].string_length = my_string_length;
+        });
+
+        g.selectAll('polygon')
+          .attr("points", breadcrumbPoints);
+
         // Set position for entering and updating nodes.
         g.attr("transform", function(d, i) {
           return "translate(" + d.breadcrumb_x + ", "+d.breadcrumb_h+")";
         });
 
-        // Remove exiting nodes.
-        g.exit().remove();
 
         // Now move and update the percentage at the end.
         d3.select(el).select("#" + el.id + "-trail").select("#" + el.id + "-endlabel")
