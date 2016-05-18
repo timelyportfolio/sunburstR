@@ -27,7 +27,7 @@ HTMLWidgets.widget({
     // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
     //  these will be the defaults
     var b = {
-      w: 75, h: 30, s: 3, t: 10
+      w: 0, h: 30, s: 3, t: 10
     };
     //  if breadcrumb is provided in the option, we will overwrite
     //   with what is provided
@@ -319,7 +319,7 @@ HTMLWidgets.widget({
             return breadcrumbPoints(d, k);
           });
           var my_g_length = crumbg.node().getBoundingClientRect().width;
-          curr_breadcrumb_x += k===0 ? 0 : nodeArray[k-1].string_length + b.t + b.s;
+          curr_breadcrumb_x += k===0 ? 0 : nodeArray[k-1].string_length + b.s;
           nodeArray[k].breadcrumb_h = k===0 ? 0 : nodeArray[k-1].breadcrumb_h;
 
           if (curr_breadcrumb_x + my_g_length > width*0.99) {
@@ -338,11 +338,25 @@ HTMLWidgets.widget({
 
         // Now move and update the percentage at the end.
         d3.select(el).select("#" + el.id + "-trail").select("#" + el.id + "-endlabel")
-            .attr("x", (nodeArray[nodeArray.length-1].breadcrumb_x +  nodeArray[nodeArray.length-1].string_length + b.s + 30 ))
-            .attr("y", nodeArray[nodeArray.length-1].breadcrumb_h + b.h / 2)
+            .attr("x", function(d){
+              var bend = d3.select(this);
+              var curr_breadcrumb_x = nodeArray[nodeArray.length-1].breadcrumb_x +  nodeArray[nodeArray.length-1].string_length + b.t + b.s;
+              var my_g_length = bend.node().getBoundingClientRect().width;
+
+              var curr_breadcrumb_h = nodeArray[nodeArray.length-1].breadcrumb_h + b.h/2;
+              if (curr_breadcrumb_x + my_g_length > width*0.99) {
+                curr_breadcrumb_h += b.h + b.h/2;
+                curr_breadcrumb_x = b.t + b.s;     // restart counter
+              }
+              bend.datum({
+                "breadcrumb_x": curr_breadcrumb_x,
+                "breadcrumb_h": curr_breadcrumb_h
+              });
+              return curr_breadcrumb_x;
+            })
+            .attr("y", function(d){return d.breadcrumb_h})
             .attr("dy", "0.35em")
-            .style("font-size","small")
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "start")
             .text(percentageString);
 
 

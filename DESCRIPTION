@@ -22,7 +22,7 @@ Authors@R: c(
       ),
       person(
         "Florian", "Breitwieser"
-        , role = c("aut")
+        , role = c("ctb")
         , comment = "R interface"
       )
     )
