@@ -1,7 +1,7 @@
 Package: sunburstR
 Type: Package
 Title: htmlwidget for Kerry Rodden d3.js sequence sunburst
-Version: 0.3.0
+Version: 0.3.1
 Date: 2016-05-24
 Authors@R: c(
       person(

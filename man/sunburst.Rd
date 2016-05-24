@@ -2,12 +2,12 @@
 % Please edit documentation in R/sunburst.R
 \name{sunburst}
 \alias{sunburst}
-\title{htmlwidget for d3.js sequence sunburst diagrams}
+\title{`d3.js` Sequence Sunburst Diagrams}
 \usage{
 sunburst(csvdata = NULL, jsondata = NULL, legendOrder = NULL,
   colors = NULL, percent = TRUE, count = FALSE, explanation = NULL,
   breadcrumb = list(), legend = list(), sortFunction = NULL,
-  width = NULL, height = NULL)
+  width = NULL, height = NULL, elementId = NULL, sizingPolicy = NULL)
 }
 \arguments{
 \item{csvdata}{data in csv source,target form}
@@ -36,6 +36,13 @@ breadcrumbs widths based on text length.}
 
 \item{sortFunction}{\code{\link[htmlwidgets]{JS}} function to sort the slices.
 The default sort is by size.}
+
+\item{height, width}{height and width of sunburst htmlwidget containing div
+specified in any valid \code{CSS} size unit.}
+
+\item{elementId}{string id as a valid \code{CSS} element id.}
+
+\item{sizingPolicy}{see \code{\link[htmlwidgets]{sizingPolicy}}.}
 }
 \description{
 \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide

@@ -1,4 +1,4 @@
-#' htmlwidget for d3.js sequence sunburst diagrams
+#' `d3.js` Sequence Sunburst Diagrams
 #'
 #' \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide
 #'    an interactive method of exploring sequence data, such as website navigation paths.
@@ -21,6 +21,10 @@
 #'          breadcrumbs widths based on text length.
 #' @param sortFunction \code{\link[htmlwidgets]{JS}} function to sort the slices.
 #'          The default sort is by size.
+#' @param height,width  height and width of sunburst htmlwidget containing div
+#'          specified in any valid \code{CSS} size unit.
+#' @param elementId string id as a valid \code{CSS} element id.
+#' @param sizingPolicy see \code{\link[htmlwidgets]{sizingPolicy}}.
 #'
 #' @example inst/examples/example_replicate.R
 #' @example inst/examples/example_ngram.R
@@ -41,6 +45,8 @@ sunburst <- function(
   , sortFunction = NULL
   , width = NULL
   , height = NULL
+  , elementId = NULL
+  , sizingPolicy = NULL
 ) {
 
   if(is.null(csvdata) && is.null(jsondata)) stop("please provide either csvdata or jsondata",call.=FALSE)
@@ -66,13 +72,19 @@ sunburst <- function(
     )
   )
 
+  if(is.null(sizingPolicy)){
+    sizingPolicy <- htmlwidgets::sizingPolicy(browser.fill=TRUE)
+  }
+
   # create widget
   htmlwidgets::createWidget(
     name = 'sunburst',
     x,
     width = width,
     height = height,
-    package = 'sunburstR'
+    package = 'sunburstR',
+    elementId = elementId,
+    sizingPolicy
   )
 }
 
