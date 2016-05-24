@@ -1,0 +1,60 @@
+---
+title: "Tabset Column Example"
+output: flexdashboard::flex_dashboard
+---
+
+```{r warning=FALSE, message=FALSE, echo=FALSE}
+knitr:::opts_knit$set(warning=FALSE,message=FALSE)
+library(sunburstR)
+```
+
+Column
+-------------------------------------
+
+### Sunburst 1
+
+```{r}
+# read in sample visit-sequences.csv data provided in source
+#   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv
+sequences <- read.csv(
+  system.file("examples/visit-sequences.csv",package="sunburstR")
+  ,header=F
+  ,stringsAsFactors = FALSE
+)
+
+# explore some of the arguments
+sunburst(
+  sequences
+  ,count = TRUE
+)
+```
+
+Column {.tabset}
+-------------------------------------
+
+### Sunburst 2
+
+```{r}
+# try with csv data from this fork
+#  https://gist.github.com/mkajava/7515402
+# great use for new breadbrumb wrapping
+sunburst(
+  csvdata = read.csv(
+    file = "https://gist.githubusercontent.com/mkajava/7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/comment-sequences.csv"
+    ,header = FALSE
+    ,stringsAsFactors = FALSE
+  )
+)
+```
+
+### Sunburst 3
+
+```{r}
+# try with csv data from this fork
+#  https://gist.github.com/rileycrane/92a2c36eb932b4f99e51/
+sunburst( csvdata = read.csv(
+  file = "https://gist.githubusercontent.com/rileycrane/92a2c36eb932b4f99e51/raw/a0212b4ca8043af47ec82369aa5f023530279aa3/visit-sequences.csv"
+  ,header=FALSE
+  ,stringsAsFactors = FALSE
+))
+```
