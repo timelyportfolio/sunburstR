@@ -522,7 +522,9 @@ HTMLWidgets.widget({
 
         draw();
 
-      }
+      },
+
+      instance: instance
 
     };
   }
