@@ -19,7 +19,8 @@ If legendOrder is not provided, then the legend will be in the descending
 order of the top level hierarchy.}
 
 \item{colors}{\code{vector} of strings representing colors as hexadecimal for
-manual colors.}
+manual colors.  If you want precise control of colors, supply a \code{list}
+with \code{range} and/or \code{domain}.}
 
 \item{percent}{\code{logical} to include percentage of total in the explanation.}
 
