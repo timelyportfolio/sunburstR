@@ -8,7 +8,7 @@ HTMLWidgets.widget({
 
     var instance = {};
 
-    var draw = function() {
+    var draw = function(el, instance) {
 
       // would be much nicer to implement transitions/animation
       // remove previous in case of Shiny/dynamic
@@ -135,7 +135,7 @@ HTMLWidgets.widget({
         drawLegend();
         d3.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
 
-       };
+       }
 
       // Fade all but the current sequence, and show it in the breadcrumb trail.
       function mouseover(d) {
@@ -514,13 +514,13 @@ HTMLWidgets.widget({
         }
         instance.json = json;
 
-        draw();
+        draw(el, instance);
 
       },
 
       resize: function(width, height) {
 
-        draw();
+        draw(el, instance);
 
       },
 
