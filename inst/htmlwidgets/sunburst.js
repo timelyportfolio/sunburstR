@@ -65,7 +65,7 @@ HTMLWidgets.widget({
         //  that this is an array of colors to be used as range
         if(x.options.colors.range){
           try{
-            colors.domain(x.options.colors.domain)
+            colors.range(x.options.colors.range)
           } catch(e) {
 
           }
