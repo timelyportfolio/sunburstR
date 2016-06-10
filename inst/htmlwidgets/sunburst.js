@@ -8,7 +8,7 @@ HTMLWidgets.widget({
 
     var instance = {};
 
-    var draw = function() {
+    var draw = function(el, instance) {
 
       // would be much nicer to implement transitions/animation
       // remove previous in case of Shiny/dynamic
@@ -51,10 +51,35 @@ HTMLWidgets.widget({
       var colors = d3.scale.category20();
 
       if(x.options.colors !== null){
-        try{
-          colors.range(x.options.colors)
-        } catch(e) {
+        // if an array then we assume the colors
+        //  represent an array of hexadecimal colors to be used
+        if(Array.isArray(x.options.colors)) {
+          try{
+            colors.range(x.options.colors)
+          } catch(e) {
 
+          }
+        }
+
+        // if an object with range then we assume
+        //  that this is an array of colors to be used as range
+        if(x.options.colors.range){
+          try{
+            colors.domain(x.options.colors.domain)
+          } catch(e) {
+
+          }
+        }
+
+        // if an object with domain then we assume
+        //  that this is an array of colors to be used as domain
+        //  for more precise control of the colors assigned
+        if(x.options.colors.domain){
+          try{
+            colors.domain(x.options.colors.domain);
+          } catch(e) {
+
+          }
         }
       }
       // Total size of all segments; we set this later, after loading the data.
@@ -135,7 +160,7 @@ HTMLWidgets.widget({
         drawLegend();
         d3.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
 
-       };
+       }
 
       // Fade all but the current sequence, and show it in the breadcrumb trail.
       function mouseover(d) {
@@ -514,13 +539,13 @@ HTMLWidgets.widget({
         }
         instance.json = json;
 
-        draw();
+        draw(el, instance);
 
       },
 
       resize: function(width, height) {
 
-        draw();
+        draw(el, instance);
 
       },
 
