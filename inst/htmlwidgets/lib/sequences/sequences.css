@@ -21,11 +21,6 @@
   padding: 10px 0 0 3px;
 }
 
-.sunbrust-sequence text, .sunburst-legend text {
-  font-weight: 600;
-  fill: #fff;
-}
-
 .sunburst-chart {
   width: 100%;
   height: 100%;
