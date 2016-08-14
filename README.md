@@ -1,4 +1,4 @@
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sunburstR)](https://cran.r-project.org/package=sunburstR)
+[![Travis-CI Build Status](https://travis-ci.org/timelyportfolio/sunburstR.svg?branch=master)](https://travis-ci.org/timelyportfolio/sunburstR) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sunburstR)](https://cran.r-project.org/package=sunburstR)
 
 ### Help Me/Pay Me to Use, Improve, and Extend
 
