@@ -23,8 +23,8 @@ HTMLWidgets.widget({
       var radius = Math.min(width, height) / 2;
 
       d3.select(el).select(".sunburst-chart").append("svg")
-        .style("width", width)
-        .style("height", height);
+        .style("width", width + "px") // shouldnt have to do this
+        .style("height", height + "px"); // shouldnt have to do this
 
       // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
       //  these will be the defaults
