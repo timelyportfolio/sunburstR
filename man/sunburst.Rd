@@ -195,7 +195,6 @@ sunburst(
   sortFunction = htmlwidgets::JS(
 "
 function(a,b){
-debugger;
   abb = {
     2014:-7,
     2015:-6,
