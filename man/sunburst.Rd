@@ -58,7 +58,7 @@ library(sunburstR)
 #   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv
 sequences <- read.csv(
   system.file("examples/visit-sequences.csv",package="sunburstR")
-  ,header=F
+  ,header = FALSE
   ,stringsAsFactors = FALSE
 )
 
@@ -80,7 +80,10 @@ sunburst(
 
 
 # try with json data
-sequence_json <- rjson::fromJSON(file="./inst/examples/visit-sequences.json")
+sequence_json <- jsonlite::fromJSON(
+  system.file("examples/visit-sequences.json",package="sunburstR"),
+  simplifyDataFrame = FALSE
+)
 sunburst(jsondata = sequence_json)
 
 
@@ -90,7 +93,11 @@ sunburst(jsondata = sequence_json)
 # great use for new breadbrumb wrapping
 sunburst(
   csvdata = read.csv(
-    file = "https://gist.githubusercontent.com/mkajava/7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/comment-sequences.csv"
+    file = paste0(
+      "https://gist.githubusercontent.com/mkajava/",
+      "7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/",
+      "comment-sequences.csv"
+    )
     ,header = FALSE
     ,stringsAsFactors = FALSE
   )
@@ -100,7 +107,11 @@ sunburst(
 # try with csv data from this fork
 #  https://gist.github.com/rileycrane/92a2c36eb932b4f99e51/
 sunburst( csvdata = read.csv(
-  file = "https://gist.githubusercontent.com/rileycrane/92a2c36eb932b4f99e51/raw/a0212b4ca8043af47ec82369aa5f023530279aa3/visit-sequences.csv"
+  file = paste0(
+    "https://gist.githubusercontent.com/rileycrane/",
+    "92a2c36eb932b4f99e51/raw/",
+    "a0212b4ca8043af47ec82369aa5f023530279aa3/visit-sequences.csv"
+  )
   ,header=FALSE
   ,stringsAsFactors = FALSE
 ))
@@ -158,5 +169,58 @@ ngrams2 \%>>\%
   ) \%>>\%
   tagList \%>>\%
   browsable
+# calendar sunburst example
+
+library(sunburstR)
+
+df <- data.frame(
+  date = seq.Date(
+    as.Date('2014-01-01'),
+    as.Date('2016-12-31'),
+    by = "days"
+  ),
+  stringsAsFactors = FALSE
+)
+
+df$year = format(df$date, "\%Y")
+df$quarter = paste0("Q", ceiling(as.numeric(format(df$date,"\%m"))/3))
+df$month = format(df$date, "\%b")
+df$path = paste(df$year, df$quarter, df$month, sep="-")
+df$count = rep(1, nrow(df))
+
+sunburst(
+  data.frame(xtabs(count~path,df)),
+  # added a degree of difficulty by providing
+  #  not easily sortable names
+  sortFunction = htmlwidgets::JS(
+"
+function(a,b){
+debugger;
+  abb = {
+    2014:-7,
+    2015:-6,
+    2016:-5,
+    Q1:-4,
+    Q2:-3,
+    Q3:-2,
+    Q4:-1,
+    Jan:1,
+    Feb:2,
+    Mar:3,
+    Apr:4,
+    May:5,
+    Jun:6,
+    Jul:7,
+    Aug:8,
+    Sep:9,
+    Oct:10,
+    Nov:11,
+    Dec:12
+  }
+  return abb[a.name] - abb[b.name];
+}
+"
+  )
+)
 }
 

@@ -28,7 +28,10 @@ sunburst(
 
 
 # try with json data
-sequence_json <- rjson::fromJSON(file="./inst/examples/visit-sequences.json")
+sequence_json <- jsonlite::fromJSON(
+  system.file("examples/visit-sequences.json",package="sunburstR"),
+  simplifyDataFrame = FALSE
+)
 sunburst(jsondata = sequence_json)
 
 
