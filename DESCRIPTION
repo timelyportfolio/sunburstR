@@ -39,5 +39,4 @@ Imports:
 Suggests:
     knitr,
     pipeR
-VignetteBuilder: knitr
 RoxygenNote: 5.0.1

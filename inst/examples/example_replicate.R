@@ -26,7 +26,7 @@ sunburst(
   ,explanation = "function(d){return d.name}"
 )
 
-
+\dontrun{
 # try with json data
 sequence_json <- jsonlite::fromJSON(
   system.file("examples/visit-sequences.json",package="sunburstR"),
@@ -63,3 +63,4 @@ sunburst( csvdata = read.csv(
   ,header=FALSE
   ,stringsAsFactors = FALSE
 ))
+}

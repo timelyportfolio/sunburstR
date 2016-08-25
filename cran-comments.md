@@ -1,3 +1,7 @@
+changed LICENSE to two-line template
+reduced example run time
+removed VignetteBuilder since currently no vignettes
+
 ## Test environments
 * local Windows 10 install, R 3.3.1
 * ubuntu 12.04 (on travis-ci), R 3.3.1
