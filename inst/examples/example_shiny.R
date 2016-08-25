@@ -11,12 +11,19 @@ sequences <- read.csv(
 server <- function(input,output,session){
 
   output$sunburst <- renderSunburst({
-    invalidateLater(1000, session)
+    #invalidateLater(1000, session)
 
     sequences <- sequences[sample(nrow(sequences),1000),]
 
-    sunburst(sequences)
+    add_shiny(sunburst(sequences))
   })
+
+
+  selection <- reactive({
+    input$sunburst_mouseover
+  })
+
+  output$selection <- renderText(selection())
 }
 
 
@@ -28,7 +35,8 @@ ui<-fluidPage(
 
     # plot sunburst
     mainPanel(
-      sunburstOutput("sunburst")
+      sunburstOutput("sunburst"),
+      textOutput("selection")
     )
   )
 )

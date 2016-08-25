@@ -8,6 +8,12 @@ HTMLWidgets.widget({
 
     var instance = {};
 
+    instance.chart = {};
+
+    var dispatch = d3.dispatch("mouseover","mouseleave");
+
+    d3.rebind(instance.chart, dispatch, 'on');
+
     var draw = function(el, instance) {
 
       // would be much nicer to implement transitions/animation
@@ -16,6 +22,7 @@ HTMLWidgets.widget({
 
       var x = instance.x;
       var json = instance.json;
+      var chart = instance.chart;
 
       // Dimensions of sunburst
       var width = el.getBoundingClientRect().width - (x.options.legend.w ? x.options.legend.w : 75);
@@ -119,7 +126,7 @@ HTMLWidgets.widget({
         }
         x.tasks.map(function(t){
           // for each tasks call the task with el supplied as `this`
-          t.call({el:el,x:x});
+          t.call({el:el,x:x,instance:instance});
         });
       }
 
@@ -199,6 +206,12 @@ HTMLWidgets.widget({
             .html(explanationString);
 
         var sequenceArray = getAncestors(d);
+
+        chart._selection = sequenceArray.map(
+          function(d){return d.name}
+        );
+        dispatch.mouseover(chart._selection);
+
         updateBreadcrumbs(sequenceArray, percentageString);
 
         // Fade all the segments.
@@ -216,6 +229,9 @@ HTMLWidgets.widget({
       // Restore everything to full opacity when moving off the visualization.
       function mouseleave(d) {
 
+        dispatch.mouseleave(chart._selection);
+        chart._selection = [];
+
         // Hide the breadcrumb trail
         d3.select(el).select("#" + el.id + "-trail")
             .style("visibility", "hidden");
@@ -229,8 +245,8 @@ HTMLWidgets.widget({
             .duration(1000)
             .style("opacity", 1)
             .each("end", function() {
-                    d3.select(this).on("mouseover", mouseover);
-                  });
+              d3.select(this).on("mouseover", mouseover);
+            });
 
         d3.select(el).selectAll(".sunburst-explanation")
             .style("visibility", "hidden");
