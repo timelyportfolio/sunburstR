@@ -14,7 +14,7 @@ add_shiny <- function(sunburst = NULL){
 function(){
   var chart = this.instance.chart;
   var el = this.el;
-  if(Shiny){
+  if(!(typeof(Shiny)==="undefined")){
     chart.on("mouseover.shiny", function(d){
       Shiny.onInputChange(el.id + "_mouseover",d)
     });
