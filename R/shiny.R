@@ -21,6 +21,9 @@ function(){
     chart.on("mouseleave.shiny", function(d){
       Shiny.onInputChange(el.id + "_mouseleave",d)
     });
+    chart.on("click.shiny", function(d){
+      Shiny.onInputChange(el.id + "_click",d)
+    });
   }
 }
 '
