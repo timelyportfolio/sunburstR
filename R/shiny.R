@@ -5,6 +5,7 @@
 #'
 #' @return \code{sunburst} htmlwidget
 #' @export
+#' @example ./inst/examples/example_shiny.R
 add_shiny <- function(sunburst = NULL){
   stopifnot(!is.null(sunburst),inherits(sunburst,"sunburst"))
 
