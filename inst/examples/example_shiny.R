@@ -1,3 +1,5 @@
+\dontrun{
+
 library(shiny)
 library(sunburstR)
 
@@ -42,3 +44,4 @@ ui<-fluidPage(
 )
 
 shinyApp(ui = ui, server = server)
+}

@@ -5,6 +5,7 @@
 #'
 #' @return \code{sunburst} htmlwidget
 #' @export
+#' @example ./inst/examples/example_shiny.R
 add_shiny <- function(sunburst = NULL){
   stopifnot(!is.null(sunburst),inherits(sunburst,"sunburst"))
 
@@ -20,6 +21,9 @@ function(){
     });
     chart.on("mouseleave.shiny", function(d){
       Shiny.onInputChange(el.id + "_mouseleave",d)
+    });
+    chart.on("click.shiny", function(d){
+      Shiny.onInputChange(el.id + "_click",d)
     });
   }
 }

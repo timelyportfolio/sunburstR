@@ -10,7 +10,7 @@ HTMLWidgets.widget({
 
     instance.chart = {};
 
-    var dispatch = d3.dispatch("mouseover","mouseleave");
+    var dispatch = d3.dispatch("mouseover","mouseleave","click");
 
     d3.rebind(instance.chart, dispatch, 'on');
 
@@ -156,7 +156,8 @@ HTMLWidgets.widget({
             .attr("fill-rule", "evenodd")
             .style("fill", function(d) { return colors(d.name); })
             .style("opacity", 1)
-            .on("mouseover", mouseover);
+            .on("mouseover", mouseover)
+            .on("click", click);
 
         // Add the mouseleave handler to the bounding circle.
         d3.select(el).select("#"+ el.id + "-container").on("mouseleave", mouseleave);
@@ -250,6 +251,14 @@ HTMLWidgets.widget({
 
         d3.select(el).selectAll(".sunburst-explanation")
             .style("visibility", "hidden");
+      }
+
+      function click(d,i) {
+        var sequenceArray = getAncestors(d);
+
+        dispatch.click(sequenceArray.map(
+          function(d){return d.name}
+        ));
       }
 
       // Given a node in a partition layout, return an array of all of its ancestor
