@@ -28,6 +28,8 @@ ngrams2 %>>%
   ) %>>%
   sunburst
 
+\dontrun{
+
 library(htmltools)
 
 ngrams2 %>>%
@@ -52,3 +54,4 @@ ngrams2 %>>%
   ) %>>%
   tagList %>>%
   browsable
+}

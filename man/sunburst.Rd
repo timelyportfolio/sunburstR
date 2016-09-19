@@ -70,6 +70,8 @@ sunburst(
   ,count = TRUE
 )
 
+\dontrun{
+
 sunburst(
   sequences
   # apply sort order to the legendS
@@ -78,7 +80,7 @@ sunburst(
   ,explanation = "function(d){return d.name}"
 )
 
-\dontrun{
+
 # try with json data
 sequence_json <- jsonlite::fromJSON(
   system.file("examples/visit-sequences.json",package="sunburstR"),
@@ -146,6 +148,8 @@ ngrams2 \%>>\%
   ) \%>>\%
   sunburst
 
+\dontrun{
+
 library(htmltools)
 
 ngrams2 \%>>\%
@@ -170,6 +174,7 @@ ngrams2 \%>>\%
   ) \%>>\%
   tagList \%>>\%
   browsable
+}
 # calendar sunburst example
 
 library(sunburstR)
