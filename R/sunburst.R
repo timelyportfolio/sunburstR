@@ -119,25 +119,28 @@ renderSunburst <- function(expr, env = parent.frame(), quoted = FALSE) {
 }
 
 
-
 #' @import htmltools
+#' @keywords internal
 sunburst_html <- function(id, style, class, ...){
-  tagList(
-    tags$div( id = id, class = class, style = style, style="position:relative;"
-      ,tags$div(
-        tags$div(class = "sunburst-main"
-          , tags$div( class = "sunburst-sequence" )
-          , tags$div( class = "sunburst-chart"
-              ,tags$div( class = "sunburst-explanation", style = "visibility:hidden;"
-         #       ,tags$span( class = "sunburst-percentage")
-              )
+  attachDependencies(
+    tagList(
+      tags$div( id = id, class = class, style = style, style="position:relative;"
+        ,tags$div(
+          tags$div(class = "sunburst-main"
+            , tags$div( class = "sunburst-sequence" )
+            , tags$div( class = "sunburst-chart"
+                ,tags$div( class = "sunburst-explanation", style = "visibility:hidden;"
+           #       ,tags$span( class = "sunburst-percentage")
+                )
+            )
+          )
+          ,tags$div(class = "sunburst-sidebar"
+            , tags$input( type = "checkbox", class = "sunburst-togglelegend", "Legend" )
+            , tags$div( class = "sunburst-legend", style = "visibility:hidden;" )
           )
         )
-        ,tags$div(class = "sunburst-sidebar"
-          , tags$input( type = "checkbox", class = "sunburst-togglelegend", "Legend" )
-          , tags$div( class = "sunburst-legend", style = "visibility:hidden;" )
-        )
       )
-    )
+    ),
+    d3r::d3_dep_v3()
   )
 }

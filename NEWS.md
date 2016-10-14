@@ -1,3 +1,9 @@
+# sunburstR 0.6.3
+
+### Updates
+
+* use the new CRAN package `d3r` for `d3.js` dependencies
+
 # sunburstR 0.6.2
 
 ### Updates
