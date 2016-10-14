@@ -36,10 +36,10 @@ LazyData: TRUE
 Imports:
     d3r,
     htmlwidgets,
-    htmltools,
-    jsonlite,
-    markdown
+    htmltools
 Suggests:
+    jsonlite,
     knitr,
+    markdown,
     pipeR
 RoxygenNote: 5.0.1
