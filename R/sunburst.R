@@ -30,6 +30,7 @@
 #' @example inst/examples/example_replicate.R
 #' @example inst/examples/example_ngram.R
 #' @example inst/examples/example_calendar.R
+#' @example inst/examples/example_sort.R
 #'
 #' @import htmlwidgets
 #'
