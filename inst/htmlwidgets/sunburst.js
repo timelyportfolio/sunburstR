@@ -88,6 +88,11 @@ HTMLWidgets.widget({
 
           }
         }
+
+        // if a function then set to the function
+        if(typeof(x.options.colors) === "function") {
+          colors = x.options.colors;
+        }
       }
       // Total size of all segments; we set this later, after loading the data.
       var totalSize = 0;
@@ -154,7 +159,7 @@ HTMLWidgets.widget({
             .attr("display", function(d) { return d.depth ? null : "none"; })
             .attr("d", arc)
             .attr("fill-rule", "evenodd")
-            .style("fill", function(d) { return colors(d.name); })
+            .style("fill", function(d) { return colors.call(this, d.name); })
             .style("opacity", 1)
             .on("mouseover", mouseover)
             .on("click", click);
@@ -165,7 +170,7 @@ HTMLWidgets.widget({
         // Get total size of the tree = value of root node from partition.
         totalSize = path.node().__data__.value;
 
-        drawLegend();
+        drawLegend(nodes);
         d3.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
 
        }
@@ -328,7 +333,7 @@ HTMLWidgets.widget({
 
           entering.append("polygon")
               .style("z-index",function(d,i) { return(999-i); })
-              .style("fill", function(d) { return colors(d.name); });
+              .style("fill", function(d) { return colors.call(this, d.name); });
 
           entering.append("text")
               .attr("x", b.t + 2)
@@ -396,7 +401,7 @@ HTMLWidgets.widget({
         } else {
           entering.append("polygon")
               .attr("points", breadcrumbPoints)
-              .style("fill", function(d) { return colors(d.name); });
+              .style("fill", function(d) { return colors.call(this, d.name); });
 
           entering.append("text")
               .attr("x", (b.w + b.t) / 2)
@@ -429,7 +434,7 @@ HTMLWidgets.widget({
 
       }
 
-      function drawLegend() {
+      function drawLegend(nodes) {
 
         // Dimensions of legend item: width, height, spacing, radius of rounded rect.
         var li = {
@@ -445,9 +450,24 @@ HTMLWidgets.widget({
         // remove if already drawn
         d3.select(el).select(".sunburst-legend svg").remove();
 
+        // get labels from node names
+        var labels = d3.nest()
+          .key(function(d) {return d.name})
+          .entries(
+            nodes.sort(
+              function(a,b) {return d3.ascending(a.depth,b.depth)}
+            )
+          )
+          .map(function(d) {
+            return d.values[0];
+          })
+          .filter(function(d) {
+            return d.name !== "root";
+          });
+
         var legend = d3.select(el).select(".sunburst-legend").append("svg")
             .attr("width", li.w)
-            .attr("height", colors.domain().length * (li.h + li.s));
+            .attr("height", labels.length * (li.h + li.s));
 
         var g = legend.selectAll("g")
             .data( function(){
@@ -455,16 +475,7 @@ HTMLWidgets.widget({
                 return x.options.legendOrder;
               } else {
                 // get sorted by top level
-                sortedname = d3.set(Object.keys(d3.nest().key(function(d){return d.name}).rollup(function(d){return d[0].value}).map(json.children) ))
-                // add any other missing
-                colors.domain()
-                  .filter(function(d){
-                    return d !== json.name;
-                  })
-                  .forEach(function(d){
-                    sortedname.add(d)
-                  })
-                return sortedname.values();
+                return labels;
               }
             })
             .enter().append("g")
@@ -477,14 +488,14 @@ HTMLWidgets.widget({
             .attr("ry", li.r)
             .attr("width", li.w)
             .attr("height", li.h)
-            .style("fill", function(d) { return colors(d); });
+            .style("fill", function(d) { return colors.call(this, d.name); });
 
         g.append("text")
             .attr("x", li.w / 2)
             .attr("y", li.h / 2)
             .attr("dy", "0.35em")
             .attr("text-anchor", "middle")
-            .text(function(d) { return d; });
+            .text(function(d) { return d.name; });
       }
 
       function toggleLegend() {
