@@ -42,4 +42,6 @@ Suggests:
     knitr,
     markdown,
     pipeR
+Enhances:
+    treemap
 RoxygenNote: 6.0.1

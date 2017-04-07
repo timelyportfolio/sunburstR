@@ -32,6 +32,7 @@
 #'
 #' @example inst/examples/example_replicate.R
 #' @example inst/examples/example_ngram.R
+#' @example inst/examples/example_treemap.R
 #' @example inst/examples/example_calendar.R
 #'
 #' @import htmlwidgets
