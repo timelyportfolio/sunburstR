@@ -1,3 +1,11 @@
+# sunburstR 0.6.4
+
+* add `valueField` argument to `sunburst()` to allow fields in json
+    to be something other than `"size"` [commit](https://github.com/timelyportfolio/sunburstR/commit/52bfc78cbfb1a8083584370aace863b674b53e32)
+* add ability to supply a JavaScript `function` to `colors` for
+    advanced color customization or to use a color field from data
+    as the color fill [commit](https://github.com/timelyportfolio/sunburstR/commit/4499a7c2bd5e57b729fbe2c562f1ef9932143f10)
+
 # sunburstR 0.6.3
 
 ### Updates
