@@ -104,7 +104,7 @@ HTMLWidgets.widget({
 
       var partition = d3.layout.partition()
           .size([2 * Math.PI, radius * radius])
-          .value(function(d) { return d.size; });
+          .value(function(d) { return d[x.options.valueField || "size"]; });
 
       // check for sort function
       if(x.options.sortFunction){

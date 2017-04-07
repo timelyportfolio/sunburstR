@@ -5,9 +5,10 @@
 \title{`d3.js` Sequence Sunburst Diagrams}
 \usage{
 sunburst(csvdata = NULL, jsondata = NULL, legendOrder = NULL,
-  colors = NULL, percent = TRUE, count = FALSE, explanation = NULL,
-  breadcrumb = list(), legend = list(), sortFunction = NULL,
-  width = NULL, height = NULL, elementId = NULL, sizingPolicy = NULL)
+  colors = NULL, valueField = "size", percent = TRUE, count = FALSE,
+  explanation = NULL, breadcrumb = list(), legend = list(),
+  sortFunction = NULL, width = NULL, height = NULL, elementId = NULL,
+  sizingPolicy = NULL)
 }
 \arguments{
 \item{csvdata}{data in csv source,target form}
@@ -20,7 +21,11 @@ order of the top level hierarchy.}
 
 \item{colors}{\code{vector} of strings representing colors as hexadecimal for
 manual colors.  If you want precise control of colors, supply a \code{list}
-with \code{range} and/or \code{domain}.}
+with \code{range} and/or \code{domain}. For advanced customization, supply
+a JavaScript \code{function}.}
+
+\item{valueField}{\code{character} for the field to use to calculate size.  The default
+value is \code{"size"}.}
 
 \item{percent}{\code{logical} to include percentage of total in the explanation.}
 
@@ -228,4 +233,3 @@ function(a,b){
   )
 )
 }
-

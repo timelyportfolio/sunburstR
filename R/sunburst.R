@@ -10,7 +10,10 @@
 #'          order of the top level hierarchy.
 #' @param colors \code{vector} of strings representing colors as hexadecimal for
 #'          manual colors.  If you want precise control of colors, supply a \code{list}
-#'          with \code{range} and/or \code{domain}.
+#'          with \code{range} and/or \code{domain}. For advanced customization, supply
+#'          a JavaScript \code{function}.
+#' @param valueField \code{character} for the field to use to calculate size.  The default
+#'          value is \code{"size"}.
 #' @param percent \code{logical} to include percentage of total in the explanation.
 #' @param count \code{logical} to include count and total in the explanation.
 #' @param explanation JavaScript function to define a custom explanation for the center
@@ -39,6 +42,7 @@ sunburst <- function(
   , jsondata = NULL
   , legendOrder = NULL
   , colors = NULL
+  , valueField = "size"
   , percent = TRUE
   , count =  FALSE
   , explanation = NULL
@@ -65,6 +69,7 @@ sunburst <- function(
     ,options = list(
       legendOrder = legendOrder
       ,colors = colors
+      ,valueField = valueField
       ,percent = percent
       ,count = count
       ,explanation = explanation
