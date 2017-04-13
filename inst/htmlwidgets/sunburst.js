@@ -472,7 +472,9 @@ HTMLWidgets.widget({
         var g = legend.selectAll("g")
             .data( function(){
               if(x.options.legendOrder !== null){
-                return x.options.legendOrder;
+                return x.options.legendOrder.map(function(d) {
+                  return labels.filter(function(dd) {return dd.name === d })[0];
+                });
               } else {
                 // get sorted by top level
                 return labels;
