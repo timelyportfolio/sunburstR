@@ -1,3 +1,9 @@
+# sunburstR 0.6.5
+
+### Bug Fix
+
+fix legend bug introduced with new color functionality; see [issue](https://github.com/timelyportfolio/sunburstR/issues/34) and [commit](https://github.com/timelyportfolio/sunburstR/commit/635ec7cd755d8d3ae417a402be65833725551cdf)
+
 # sunburstR 0.6.4
 
 see [treemap example](https://github.com/timelyportfolio/sunburstR/blob/master/inst/examples/example_treemap.R)

@@ -1,0 +1,169 @@
+#devtools::install_github("cpsievert/XML2R")
+#devtools::install_github("cpsievert/pitchRx")
+#devtools::install_github("timelyportfolio/sunburstR")
+#install.packages("dplyr")
+#install.packages("tidyr")
+#install.packages("stringr")
+#install.packages("rvest")
+
+library(sunburstR)
+library(pitchRx)
+library(dplyr)
+
+# get all data from 2016-08-25
+dat <- scrape(start = "2016-08-25", end = "2016-08-25")
+
+### Make the Data sunburst-able 
+
+```{r}
+# use runner data to get idea of action with a runner on base
+#  please note this will not be all action from a game
+#  but I think it is an easier dataset to understand
+action <- dat$runner %>%
+  group_by(event_num) %>%
+  filter(row_number() == 1) %>%
+  ungroup() %>%
+  group_by(gameday_link, inning, inning_side) %>%
+  summarize(event = paste(c(event),collapse="-"))
+
+sequences <- action %>%
+  ungroup() %>%
+  group_by(event) %>%
+  summarize(count = n())
+
+# sorry this is messy, but get data in a form
+#  so sunburst can build hierarchy
+#  which means we will sort in descending order of depth
+# note: this will eventually improve
+sequences$depth <- unlist(lapply(strsplit(sequences$event,"-"),length))
+```
+
+### Create a Sunburst
+
+```{r}
+sb <- sequences %>%
+  arrange(desc(depth), event) %>%
+  sunburst()
+sb
+```
+
+### Use Sunburst Events
+
+In this [commit](https://github.com/timelyportfolio/sunburstR/commit/7f6879f779d0062699f758795231ecdcd9465777), we added some basic event dispatch to `sunburstR` that can be used in Shiny and non-Shiny contexts.  We will use it to display a link to the games that fit the hovered paths.
+
+```{r}
+# use sunburst event handling to provide games for hovered sequence
+library(htmltools)
+
+sb$x$tasks <- list(htmlwidgets::JS(
+'
+function(){
+  var chart = this.instance.chart;
+  chart.on("mouseover",mouseovered);
+}
+'
+))
+
+sb$height = 400
+sb$width = 600
+
+tagList(
+  sb,
+  tags$div(id="games", style="margin-top:100px"),
+  tags$script(HTML(
+    sprintf(
+'
+var action = %s;
+
+function mouseovered(d){
+var games = action.filter(function(evt){
+  return evt.event === d.join("-");
+});
+
+var div = document.getElementById("games");
+div.innerHTML = games.map(function(game){
+  return [
+    "<a href=\'http://gd2.mlb.com/components/game/mlb/year_2016/month_08/day_25/",
+    game.gameday_link,
+    "\'>",
+    game.gameday_link,
+    "</a><br/>"
+  ].join("");
+}).join("\\n");
+}
+',
+      jsonlite::toJSON(action, auto_unbox=TRUE, dataframe="row")
+    )
+  ))
+)
+```
+
+
+## Sequence of Pitches
+
+[Dan Malter](http://danmalter.github.io/) wrote a fantastic post [Using Markov Chains to Predict Pitches](http://danmalter.github.io/r/2016/03/28/Markov-chains.html).  Let's visualize his pitch data for Jake Arrieta.
+
+### Scrape the Data
+
+```{r}
+# pitch sequence data from Markov Chain
+#   http://danmalter.github.io/r/2016/03/28/Markov-chains.html
+library(sunburstR)
+library(rvest)
+library(stringr)
+library(tidyr)
+library(dplyr)
+
+# get table from post to avoid having to run all the code
+ht <- read_html("http://danmalter.github.io/r/2016/03/28/Markov-chains.html")
+# get pitch type as proportion of total pitches
+ht_pitch_arrieta <- html_table(
+  xml_find_first(ht,'//*[@id="jake-arrieta---overall-pitch-proportions"]/table')
+)
+# get markov table for pitch and following pitch
+ht_tbl_arrieta <- html_text(
+  xml_find_all(ht,'//*[@id="jake-arrieta---multi-class-markov-chain"]/pre/code')[2]
+)
+ht_tbl_arrieta <- str_replace_all(
+  ht_tbl_arrieta,
+  c("4-seam FB"="4seamFB", "Int. Ball"="IntBall")
+)
+tbl <- read.table(
+  textConnection(ht_tbl_arrieta),
+  skip=2,
+  header=FALSE,
+  stringsAsFactors=FALSE
+)
+colnames(tbl) <- c("pitch",tbl[,1])
+
+# multiple by pct of total
+tbl[,-1] <- tbl[,-1] * t(ht_pitch_arrieta)
+
+tbl_long <- gather(tbl, key=pitch2, value=value, -pitch)
+```
+
+
+### Draw the Sunburst
+
+```{r}
+tbl_long %>%
+  mutate(path = paste(pitch,pitch2,sep="-")) %>%
+  select(path, value) %>%
+  sunburst()
+```
+
+## Thanks
+
+Thanks so much to [Kerry Rodden](https://twitter.com/kerryrodden) who provided the original [sunburst](http://bl.ocks.org/kerryrodden/7090426) on which this is based.
+
+Thanks [Mike Bostock](https://bost.ocks.org/mike/) for [d3.js](https://d3js.org) (*please give us a way to pay you*).
+
+Thanks [Tim Holman](http://tholman.com/) for the great [github-corners](http://tholman.com/github-corners/).
+
+Thanks [skeleton](http://getskeleton.com/).
+
+Thanks Carson Sievert for `pitchRx` and all your work on [`plotly`](https://github.com/ropensci/plotly).
+
+Thanks Dan Malter for the great markov pitch post.
+
+</div>
