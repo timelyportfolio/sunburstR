@@ -45,7 +45,7 @@ function(a,b){
     Nov:11,
     Dec:12
   }
-  return abb[a.name] - abb[b.name];
+  return abb[a.data.name] - abb[b.data.name];
 }
 "
   )

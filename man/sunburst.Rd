@@ -202,7 +202,7 @@ ngrams2 \%>>\%
     jsondata = tm_nest,
     valueField = "vSize",
     count = TRUE,
-    colors = htmlwidgets::JS("function(d){return d3.select(this).datum().color;}")
+    colors = htmlwidgets::JS("function(d){return d3.select(this).datum().data.color;}")
   )
 }
 # calendar sunburst example

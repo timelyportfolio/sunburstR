@@ -16,14 +16,14 @@ function(){
   var chart = this.instance.chart;
   var el = this.el;
   if(!(typeof(Shiny)==="undefined")){
-    chart.on("mouseover.shiny", function(d){
-      Shiny.onInputChange(el.id + "_mouseover",d)
+    chart.on("mouseover.shiny", function(){
+      Shiny.onInputChange(el.id + "_mouseover",this)
     });
-    chart.on("mouseleave.shiny", function(d){
-      Shiny.onInputChange(el.id + "_mouseleave",d)
+    chart.on("mouseleave.shiny", function(){
+      Shiny.onInputChange(el.id + "_mouseleave",this)
     });
-    chart.on("click.shiny", function(d){
-      Shiny.onInputChange(el.id + "_click",d)
+    chart.on("click.shiny", function(){
+      Shiny.onInputChange(el.id + "_click",this)
     });
   }
 }
