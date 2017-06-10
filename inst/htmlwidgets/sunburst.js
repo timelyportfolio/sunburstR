@@ -272,7 +272,7 @@ HTMLWidgets.widget({
             .transition()
             .duration(1000)
             .style("opacity", 1)
-            .each(function() {
+            .on("end", function() {
               d3.select(this).on("mouseover", mouseover);
             });
 
