@@ -122,11 +122,6 @@ HTMLWidgets.widget({
       var partition = d3.partition()
           .size([2 * Math.PI, radius * radius]);
 
-      // check for sort function
-      if(x.options.sortFunction){
-        partition.sort(x.options.sortFunction);
-      }
-
       var arc = d3.arc()
           .startAngle(function(d) { return d.x0; })
           .endAngle(function(d) { return d.x1; })
@@ -165,8 +160,12 @@ HTMLWidgets.widget({
 
         // Turn the data into a d3 hierarchy and calculate the sums.
         var root = d3.hierarchy(json)
-            .sum(function(d) { return d[x.options.valueField || "size"]; })
-            .sort(function(a, b) { return b.value - a.value; });
+            .sum(function(d) { return d[x.options.valueField || "size"]; });
+
+        // check for sort function
+        if(x.options.sortFunction){
+          root.sort(x.options.sortFunction);
+        }
 
         // For efficiency, filter nodes to keep only those large enough to see.
         var nodes = partition(root).descendants()
