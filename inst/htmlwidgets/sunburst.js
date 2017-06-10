@@ -166,7 +166,7 @@ HTMLWidgets.widget({
         // Turn the data into a d3 hierarchy and calculate the sums.
         var root = d3.hierarchy(json)
             .sum(function(d) { return d[x.options.valueField || "size"]; })
-            //.sort(function(a, b) { return b.value - a.value; });
+            .sort(function(a, b) { return b.value - a.value; });
 
         // For efficiency, filter nodes to keep only those large enough to see.
         var nodes = partition(root).descendants()
@@ -189,7 +189,7 @@ HTMLWidgets.widget({
         d3.select(el).select("#"+ el.id + "-container").on("mouseleave", mouseleave);
 
         // Get total size of the tree = value of root node from partition.
-        totalSize = path.node().__data__.value;
+        totalSize = path.datum().value;
 
         drawLegend(nodes);
         d3.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
