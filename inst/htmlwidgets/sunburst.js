@@ -12,6 +12,23 @@ HTMLWidgets.widget({
 
     var dispatch = d3.dispatch("mouseover","mouseleave","click");
 
+    // Copies a variable number of methods from source to target.
+    d3.rebind = function(target, source) {
+      var i = 1, n = arguments.length, method;
+      while (++i < n) target[method = arguments[i]] = d3_rebind(target, source, source[method]);
+      return target;
+    };
+
+    // Method is assumed to be a standard D3 getter-setter:
+    // If passed with no arguments, gets the value.
+    // If passed with arguments, sets the value and returns the target.
+    function d3_rebind(target, source, method) {
+      return function() {
+        var value = method.apply(source, arguments);
+        return value === source ? target : value;
+      };
+    }
+
     d3.rebind(instance.chart, dispatch, 'on');
 
     var draw = function(el, instance) {
@@ -55,7 +72,7 @@ HTMLWidgets.widget({
       };
   */
 
-      var colors = d3.scale.category20();
+      var colors = d3.scaleOrdinal(d3.schemeCategory20);
 
       if(x.options.colors !== null){
         // if an array then we assume the colors
@@ -102,20 +119,14 @@ HTMLWidgets.widget({
           .attr("id", el.id + "-container")
           .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-      var partition = d3.layout.partition()
-          .size([2 * Math.PI, radius * radius])
-          .value(function(d) { return d[x.options.valueField || "size"]; });
+      var partition = d3.partition()
+          .size([2 * Math.PI, radius * radius]);
 
-      // check for sort function
-      if(x.options.sortFunction){
-        partition.sort(x.options.sortFunction);
-      }
-
-      var arc = d3.svg.arc()
-          .startAngle(function(d) { return d.x; })
-          .endAngle(function(d) { return d.x + d.dx; })
-          .innerRadius(function(d) { return Math.sqrt(d.y); })
-          .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
+      var arc = d3.arc()
+          .startAngle(function(d) { return d.x0; })
+          .endAngle(function(d) { return d.x1; })
+          .innerRadius(function(d) { return Math.sqrt(d.y0); })
+          .outerRadius(function(d) { return Math.sqrt(d.y1); });
 
       createVisualization(json);
 
@@ -147,10 +158,19 @@ HTMLWidgets.widget({
             .attr("r", radius)
             .style("opacity", 0);
 
+        // Turn the data into a d3 hierarchy and calculate the sums.
+        var root = d3.hierarchy(json)
+            .sum(function(d) { return d[x.options.valueField || "size"]; });
+
+        // check for sort function
+        if(x.options.sortFunction){
+          root.sort(x.options.sortFunction);
+        }
+
         // For efficiency, filter nodes to keep only those large enough to see.
-        var nodes = partition.nodes(json)
+        var nodes = partition(root).descendants()
             .filter(function(d) {
-            return (d.dx > 0.005); // 0.005 radians = 0.29 degrees
+                return (d.x1 - d.x0 > 0.005); // 0.005 radians = 0.29 degrees
             });
 
         var path = vis.data([json]).selectAll("path")
@@ -159,7 +179,7 @@ HTMLWidgets.widget({
             .attr("display", function(d) { return d.depth ? null : "none"; })
             .attr("d", arc)
             .attr("fill-rule", "evenodd")
-            .style("fill", function(d) { return colors.call(this, d.name); })
+            .style("fill", function(d) { return colors.call(this, d.data.name); })
             .style("opacity", 1)
             .on("mouseover", mouseover)
             .on("click", click);
@@ -168,7 +188,7 @@ HTMLWidgets.widget({
         d3.select(el).select("#"+ el.id + "-container").on("mouseleave", mouseleave);
 
         // Get total size of the tree = value of root node from partition.
-        totalSize = path.node().__data__.value;
+        totalSize = path.datum().value;
 
         drawLegend(nodes);
         d3.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
@@ -211,12 +231,13 @@ HTMLWidgets.widget({
             .style("width",width + "px")
             .html(explanationString);
 
-        var sequenceArray = getAncestors(d);
+        var sequenceArray = d.ancestors().reverse();
+        sequenceArray.shift(); // remove root node from the array
 
         chart._selection = sequenceArray.map(
-          function(d){return d.name}
+          function(d){return d.data.name}
         );
-        dispatch.mouseover(chart._selection);
+        dispatch.call("mouseover", chart._selection);
 
         updateBreadcrumbs(sequenceArray, percentageString);
 
@@ -235,7 +256,7 @@ HTMLWidgets.widget({
       // Restore everything to full opacity when moving off the visualization.
       function mouseleave(d) {
 
-        dispatch.mouseleave(chart._selection);
+        dispatch.call("mouseleave", chart._selection);
         chart._selection = [];
 
         // Hide the breadcrumb trail
@@ -250,7 +271,7 @@ HTMLWidgets.widget({
             .transition()
             .duration(1000)
             .style("opacity", 1)
-            .each("end", function() {
+            .on("end", function() {
               d3.select(this).on("mouseover", mouseover);
             });
 
@@ -259,23 +280,12 @@ HTMLWidgets.widget({
       }
 
       function click(d,i) {
-        var sequenceArray = getAncestors(d);
+        var sequenceArray = d.ancestors().reverse();
+        sequenceArray.shift(); // remove root node from the array
 
-        dispatch.click(sequenceArray.map(
-          function(d){return d.name}
+        dispatch.call("click", sequenceArray.map(
+          function(d){return d.data.name}
         ));
-      }
-
-      // Given a node in a partition layout, return an array of all of its ancestor
-      // nodes, highest first, but excluding the root.
-      function getAncestors(node) {
-        var path = [];
-        var current = node;
-        while (current.parent) {
-          path.unshift(current);
-          current = current.parent;
-        }
-        return path;
       }
 
       function initializeBreadcrumbTrail() {
@@ -318,7 +328,7 @@ HTMLWidgets.widget({
         // Data join; key function combines name and depth (= position in sequence).
         var g = d3.select(el).select("#" + el.id + "-trail")
             .selectAll("g")
-            .data(nodeArray, function(d) { return d.name + d.depth; });
+            .data(nodeArray, function(d) { return d.data.name + d.depth; });
 
         // Add breadcrumb and label for entering nodes.
         var entering = g.enter().append("g");
@@ -333,14 +343,14 @@ HTMLWidgets.widget({
 
           entering.append("polygon")
               .style("z-index",function(d,i) { return(999-i); })
-              .style("fill", function(d) { return colors.call(this, d.name); });
+              .style("fill", function(d) { return colors.call(this, d.data.name); });
 
           entering.append("text")
               .attr("x", b.t + 2)
               .attr("y", b.h / 2)
               .attr("dy", "0.35em")
               .attr("text-anchor", "left")
-              .text(function(d) { return d.name; });
+              .text(function(d) { return d.data.name; });
 
           // Remove exiting nodes.
           g.exit().remove();
@@ -349,7 +359,7 @@ HTMLWidgets.widget({
           //  calculate string length
           //  draw the breadcrumb polygon
           //  and determine if breadcrumb should be wrapped to next row
-          g.each(function(d,k){
+          entering.merge(g).each(function(d,k){
             var crumbg = d3.select(this);
             var my_string_length = crumbg.select("text").node().getBoundingClientRect().width;
             nodeArray[k].string_length = my_string_length + 12;
@@ -369,7 +379,7 @@ HTMLWidgets.widget({
 
 
           // Set position for entering and updating nodes.
-          g.attr("transform", function(d, i) {
+          entering.merge(g).attr("transform", function(d, i) {
             return "translate(" + d.breadcrumb_x + ", "+d.breadcrumb_h+")";
           });
 
@@ -401,17 +411,17 @@ HTMLWidgets.widget({
         } else {
           entering.append("polygon")
               .attr("points", breadcrumbPoints)
-              .style("fill", function(d) { return colors.call(this, d.name); });
+              .style("fill", function(d) { return colors.call(this, d.data.name); });
 
           entering.append("text")
               .attr("x", (b.w + b.t) / 2)
               .attr("y", b.h / 2)
               .attr("dy", "0.35em")
               .attr("text-anchor", "middle")
-              .text(function(d) { return d.name; });
+              .text(function(d) { return d.data.name; });
 
           // Set position for entering and updating nodes.
-          g.attr("transform", function(d, i) {
+          entering.merge(g).attr("transform", function(d, i) {
             return "translate(" + i * (b.w + b.s) + ", 0)";
           });
 
@@ -452,7 +462,7 @@ HTMLWidgets.widget({
 
         // get labels from node names
         var labels = d3.nest()
-          .key(function(d) {return d.name})
+          .key(function(d) {return d.data.name})
           .entries(
             nodes.sort(
               function(a,b) {return d3.ascending(a.depth,b.depth)}
@@ -462,7 +472,7 @@ HTMLWidgets.widget({
             return d.values[0];
           })
           .filter(function(d) {
-            return d.name !== "root";
+            return d.data.name !== "root";
           });
 
         var legend = d3.select(el).select(".sunburst-legend").append("svg")
@@ -473,7 +483,7 @@ HTMLWidgets.widget({
             .data( function(){
               if(x.options.legendOrder !== null){
                 return x.options.legendOrder.map(function(d) {
-                  return labels.filter(function(dd) {return dd.name === d })[0];
+                  return labels.filter(function(dd) {return dd.data.name === d })[0];
                 });
               } else {
                 // get sorted by top level
@@ -490,14 +500,14 @@ HTMLWidgets.widget({
             .attr("ry", li.r)
             .attr("width", li.w)
             .attr("height", li.h)
-            .style("fill", function(d) { return colors.call(this, d.name); });
+            .style("fill", function(d) { return colors.call(this, d.data.name); });
 
         g.append("text")
             .attr("x", li.w / 2)
             .attr("y", li.h / 2)
             .attr("dy", "0.35em")
             .attr("text-anchor", "middle")
-            .text(function(d) { return d.name; });
+            .text(function(d) { return d.data.name; });
       }
 
       function toggleLegend() {

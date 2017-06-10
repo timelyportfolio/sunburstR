@@ -147,6 +147,6 @@ sunburst_html <- function(id, style, class, ...){
         )
       )
     ),
-    d3r::d3_dep_v3()
+    d3r::d3_dep_v4()
   )
 }
