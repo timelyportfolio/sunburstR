@@ -370,7 +370,7 @@ HTMLWidgets.widget({
           //  calculate string length
           //  draw the breadcrumb polygon
           //  and determine if breadcrumb should be wrapped to next row
-          g.each(function(d,k){
+          entering.merge(g).each(function(d,k){
             var crumbg = d3.select(this);
             var my_string_length = crumbg.select("text").node().getBoundingClientRect().width;
             nodeArray[k].string_length = my_string_length + 12;
@@ -390,7 +390,7 @@ HTMLWidgets.widget({
 
 
           // Set position for entering and updating nodes.
-          g.attr("transform", function(d, i) {
+          entering.merge(g).attr("transform", function(d, i) {
             return "translate(" + d.breadcrumb_x + ", "+d.breadcrumb_h+")";
           });
 
@@ -432,7 +432,7 @@ HTMLWidgets.widget({
               .text(function(d) { return d.data.name; });
 
           // Set position for entering and updating nodes.
-          g.attr("transform", function(d, i) {
+          entering.merge(g).attr("transform", function(d, i) {
             return "translate(" + i * (b.w + b.s) + ", 0)";
           });
 
