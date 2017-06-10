@@ -232,7 +232,8 @@ HTMLWidgets.widget({
             .style("width",width + "px")
             .html(explanationString);
 
-        var sequenceArray = getAncestors(d);
+        var sequenceArray = d.ancestors().reverse();
+        sequenceArray.shift(); // remove root node from the array
 
         chart._selection = sequenceArray.map(
           function(d){return d.data.name}
@@ -280,23 +281,12 @@ HTMLWidgets.widget({
       }
 
       function click(d,i) {
-        var sequenceArray = getAncestors(d);
+        var sequenceArray = d.ancestors().reverse();
+        sequenceArray.shift(); // remove root node from the array
 
         dispatch.call("click", sequenceArray.map(
           function(d){return d.data.name}
         ));
-      }
-
-      // Given a node in a partition layout, return an array of all of its ancestor
-      // nodes, highest first, but excluding the root.
-      function getAncestors(node) {
-        var path = [];
-        var current = node;
-        while (current.parent) {
-          path.unshift(current);
-          current = current.parent;
-        }
-        return path;
       }
 
       function initializeBreadcrumbTrail() {
