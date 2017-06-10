@@ -41,7 +41,8 @@ Suggests:
     jsonlite,
     knitr,
     markdown,
-    pipeR
+    pipeR,
+    testthat
 Enhances:
     treemap
 RoxygenNote: 6.0.1
