@@ -34,7 +34,7 @@ sequence_json <- jsonlite::fromJSON(
   system.file("examples/visit-sequences.json",package="sunburstR"),
   simplifyDataFrame = FALSE
 )
-sunburst(jsondata = sequence_json)
+sunburst(sequence_json)
 
 
 
@@ -48,7 +48,7 @@ sunburst(
       "7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/",
       "comment-sequences.csv"
     )
-    ,header = FALSE
+    ,header = TRUE
     ,stringsAsFactors = FALSE
   )
 )

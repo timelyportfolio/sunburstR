@@ -7,8 +7,9 @@
 sunburst(data = NULL, legendOrder = NULL, colors = NULL,
   valueField = "size", percent = TRUE, count = FALSE,
   explanation = NULL, breadcrumb = list(), legend = list(),
-  sortFunction = NULL, width = NULL, height = NULL, elementId = NULL,
-  sizingPolicy = NULL, csvdata = NULL, jsondata = NULL)
+  sortFunction = NULL, withD3 = FALSE, width = NULL, height = NULL,
+  elementId = NULL, sizingPolicy = NULL, csvdata = NULL,
+  jsondata = NULL)
 }
 \arguments{
 \item{data}{data in csv source,target form or in
@@ -46,6 +47,11 @@ breadcrumbs widths based on text length.}
 
 \item{sortFunction}{\code{\link[htmlwidgets]{JS}} function to sort the slices.
 The default sort is by size.}
+
+\item{withD3}{\code{logical} to include d3 dependency from \code{d3r}.  As of
+version 1.0, sunburst uses a standalone JavaScript build and will
+not include the entire d3 in the global/window namespace.  To include
+d3.js in this way, use \code{withD3=TRUE}.}
 
 \item{height, width}{height and width of sunburst htmlwidget containing div
 specified in any valid \code{CSS} size unit.}
@@ -99,7 +105,7 @@ sequence_json <- jsonlite::fromJSON(
   system.file("examples/visit-sequences.json",package="sunburstR"),
   simplifyDataFrame = FALSE
 )
-sunburst(jsondata = sequence_json)
+sunburst(sequence_json)
 
 
 
@@ -113,7 +119,7 @@ sunburst(
       "7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/",
       "comment-sequences.csv"
     )
-    ,header = FALSE
+    ,header = TRUE
     ,stringsAsFactors = FALSE
   )
 )
@@ -207,10 +213,11 @@ ngrams2 \%>>\%
   )
 
   sunburst(
-    jsondata = tm_nest,
+    data = tm_nest,
     valueField = "vSize",
     count = TRUE,
-    colors = htmlwidgets::JS("function(d){return d3.select(this).datum().data.color;}")
+    colors = htmlwidgets::JS("function(d){return d3.select(this).datum().data.color;}"),
+    withD3 = TRUE
   )
 }
 # calendar sunburst example
