@@ -30,6 +30,10 @@
 #'          breadcrumbs widths based on text length.
 #' @param sortFunction \code{\link[htmlwidgets]{JS}} function to sort the slices.
 #'          The default sort is by size.
+#' @param withD3 \code{logical} to include d3 dependency from \code{d3r}.  As of
+#'          version 1.0, sunburst uses a standalone JavaScript build and will
+#'          not include the entire d3 in the global/window namespace.  To include
+#'          d3.js in this way, use \code{withD3=TRUE}.
 #' @param height,width  height and width of sunburst htmlwidget containing div
 #'          specified in any valid \code{CSS} size unit.
 #' @param elementId string id as a valid \code{CSS} element id.
@@ -56,6 +60,7 @@ sunburst <- function(
   , breadcrumb = list()
   , legend = list()
   , sortFunction = NULL
+  , withD3 = FALSE
   , width = NULL
   , height = NULL
   , elementId = NULL
@@ -119,6 +124,12 @@ sunburst <- function(
     sizingPolicy <- htmlwidgets::sizingPolicy(browser.fill=TRUE)
   }
 
+  # include d3 if withD3 is TRUE
+  dep <- NULL
+  if(withD3 == TRUE) {
+    dep <- d3r::d3_dep_v4()
+  }
+
   # create widget
   htmlwidgets::createWidget(
     name = 'sunburst',
@@ -127,7 +138,8 @@ sunburst <- function(
     height = height,
     package = 'sunburstR',
     elementId = elementId,
-    sizingPolicy
+    sizingPolicy = sizingPolicy,
+    dependencies = dep
   )
 }
 
