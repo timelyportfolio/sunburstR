@@ -3,14 +3,17 @@
 library(sunburstR)
 
 # read in sample visit-sequences.csv data provided in source
+# only use first 200 rows to speed package build and check
 #   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv
 sequences <- read.csv(
   system.file("examples/visit-sequences.csv",package="sunburstR")
   ,header = FALSE
   ,stringsAsFactors = FALSE
-)
+)[1:100,]
 
 sunburst(sequences)
+
+\dontrun{
 
 # explore some of the arguments
 sunburst(
@@ -18,11 +21,9 @@ sunburst(
   ,count = TRUE
 )
 
-\dontrun{
-
 sunburst(
   sequences
-  # apply sort order to the legendS
+  # apply sort order to the legends
   ,legendOrder = unique(unlist(strsplit(sequences[,1],"-")))
   # just provide the name in the explanation in the center
   ,explanation = "function(d){return d.data.name}"
