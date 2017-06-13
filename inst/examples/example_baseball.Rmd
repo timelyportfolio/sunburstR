@@ -109,8 +109,9 @@ tagList(
 var action = %s;
 
 function mouseovered(d){
+var thiz = this;
 var games = action.filter(function(evt){
-  return evt.event === d.join("-");
+  return evt.event === thiz.join("-");
 });
 
 var div = document.getElementById("games");

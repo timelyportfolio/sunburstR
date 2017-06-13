@@ -1,0 +1,45 @@
+{
+  "name": "d3-sunburst-chart",
+  "version": "0.0.1",
+  "description": "D3 Plugin that draws sunburst charts.",
+  "keywords": [
+    "d3",
+    "d3-module",
+    "sunburst chart",
+    "data visualization"
+  ],
+  "author": {
+    "name": "Kenton Russell",
+    "url": "https://buildingwidgets.com"
+  },
+  "license": "MIT",
+  "main": "build/sunburst.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/timelyportfolio/sunburstR",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timelyportfolio/sunburstR.git"
+  },
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup -g d3-array:d3,d3-collection:d3,d3-dispatch:d3,d3-format:d3,d3-hierarchy:d3,d3-scale:d3,d3-selection:d3,d3-shape:d3,d3-transition:d3 -f umd -n d3 -o build/sunburst.js -- index.js",
+    "test": "tape 'test/**/*-test.js' && eslint index.js src",
+    "prepublish": "browserify build/sunburst.js > build/sunburst-bundle.js && uglifyjs build/sunburst-bundle.js -c -m -o build/sunburst.min.js && cp build/sunburst-bundle.js ../inst/htmlwidgets/sunburst.js"
+  },
+  "dependencies": {
+    "d3-array": "^1.2.0",
+    "d3-collection": "^1.0.3",
+    "d3-dispatch": "^1.0.3",
+    "d3-format": "^1.2.0",
+    "d3-hierarchy": "^1.1.5",
+    "d3-scale": "^1.0.6",
+    "d3-selection": "^1.1.0",
+    "d3-shape": "^1.2.0",
+    "d3-transition": "^1.1.0"
+  },
+  "devDependencies": {
+    "browserify": "^14.3.0",
+    "rollup": "^0.34.13",
+    "tape": "^4.6.0",
+    "uglify-js": "^2.7.3"
+  }
+}

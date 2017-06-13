@@ -4,16 +4,21 @@
 \alias{sunburst}
 \title{`d3.js` Sequence Sunburst Diagrams}
 \usage{
-sunburst(csvdata = NULL, jsondata = NULL, legendOrder = NULL,
-  colors = NULL, valueField = "size", percent = TRUE, count = FALSE,
+sunburst(data = NULL, legendOrder = NULL, colors = NULL,
+  valueField = "size", percent = TRUE, count = FALSE,
   explanation = NULL, breadcrumb = list(), legend = list(),
-  sortFunction = NULL, width = NULL, height = NULL, elementId = NULL,
-  sizingPolicy = NULL)
+  sortFunction = NULL, withD3 = FALSE, width = NULL, height = NULL,
+  elementId = NULL, sizingPolicy = NULL, csvdata = NULL,
+  jsondata = NULL)
 }
 \arguments{
-\item{csvdata}{data in csv source,target form}
-
-\item{jsondata}{data in nested d3 JSON hierarchy with `{name:...,  children:[];}`}
+\item{data}{data in csv source,target form or in
+nested d3 JSON hierarchy with `{name:...,  children:[];}`.  \code{csvdata}
+and \code{jsondata} arguments are now deprecated in favor of this single
+\code{data} argument.  \code{list}, \code{character},
+or \code{connection} data will be assumed to be \code{JSON}.
+\code{data.frame} data will be assumed to be \code{csvdata} and converted
+to \code{JSON} by \code{sunburstR:::csv_to_hier()}.}
 
 \item{legendOrder}{string vector if you would like to manually order the legend.
 If legendOrder is not provided, then the legend will be in the descending
@@ -43,12 +48,21 @@ breadcrumbs widths based on text length.}
 \item{sortFunction}{\code{\link[htmlwidgets]{JS}} function to sort the slices.
 The default sort is by size.}
 
+\item{withD3}{\code{logical} to include d3 dependency from \code{d3r}.  As of
+version 1.0, sunburst uses a standalone JavaScript build and will
+not include the entire d3 in the global/window namespace.  To include
+d3.js in this way, use \code{withD3=TRUE}.}
+
 \item{height, width}{height and width of sunburst htmlwidget containing div
 specified in any valid \code{CSS} size unit.}
 
 \item{elementId}{string id as a valid \code{CSS} element id.}
 
 \item{sizingPolicy}{see \code{\link[htmlwidgets]{sizingPolicy}}.}
+
+\item{csvdata}{\code{deprecated} use data argument instead; data in csv source,target form}
+
+\item{jsondata}{\code{deprecated} use data argument instead; data in nested d3 JSON hierarchy with `{name:...,  children:[];}`}
 }
 \description{
 \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide
@@ -60,14 +74,17 @@ specified in any valid \code{CSS} size unit.}
 library(sunburstR)
 
 # read in sample visit-sequences.csv data provided in source
+# only use first 200 rows to speed package build and check
 #   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv
 sequences <- read.csv(
   system.file("examples/visit-sequences.csv",package="sunburstR")
   ,header = FALSE
   ,stringsAsFactors = FALSE
-)
+)[1:100,]
 
 sunburst(sequences)
+
+\dontrun{
 
 # explore some of the arguments
 sunburst(
@@ -75,14 +92,12 @@ sunburst(
   ,count = TRUE
 )
 
-\dontrun{
-
 sunburst(
   sequences
-  # apply sort order to the legendS
+  # apply sort order to the legends
   ,legendOrder = unique(unlist(strsplit(sequences[,1],"-")))
   # just provide the name in the explanation in the center
-  ,explanation = "function(d){return d.name}"
+  ,explanation = "function(d){return d.data.name}"
 )
 
 
@@ -91,7 +106,7 @@ sequence_json <- jsonlite::fromJSON(
   system.file("examples/visit-sequences.json",package="sunburstR"),
   simplifyDataFrame = FALSE
 )
-sunburst(jsondata = sequence_json)
+sunburst(sequence_json)
 
 
 
@@ -105,7 +120,7 @@ sunburst(
       "7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/",
       "comment-sequences.csv"
     )
-    ,header = FALSE
+    ,header = TRUE
     ,stringsAsFactors = FALSE
   )
 )
@@ -123,6 +138,7 @@ sunburst( csvdata = read.csv(
   ,stringsAsFactors = FALSE
 ))
 }
+\dontrun{
 #  use sunburst to analyze ngram data from Peter Norvig
 #    http://norvig.com/mayzner.html
 
@@ -153,7 +169,6 @@ ngrams2 \%>>\%
   ) \%>>\%
   sunburst
 
-\dontrun{
 
 library(htmltools)
 
@@ -199,10 +214,11 @@ ngrams2 \%>>\%
   )
 
   sunburst(
-    jsondata = tm_nest,
+    data = tm_nest,
     valueField = "vSize",
     count = TRUE,
-    colors = htmlwidgets::JS("function(d){return d3.select(this).datum().color;}")
+    colors = htmlwidgets::JS("function(d){return d3.select(this).datum().data.color;}"),
+    withD3 = TRUE
   )
 }
 # calendar sunburst example
@@ -252,7 +268,7 @@ function(a,b){
     Nov:11,
     Dec:12
   }
-  return abb[a.name] - abb[b.name];
+  return abb[a.data.name] - abb[b.data.name];
 }
 "
   )

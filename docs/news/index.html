@@ -23,9 +23,10 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -81,6 +82,42 @@
     </div>
 
     <div class="contents">
+    <div id="sunburstr-1-0-0" class="section level1">
+<h1 class="hasAnchor">
+<a href="#sunburstr-1-0-0" class="anchor"></a>sunburstR 1.0.0</h1>
+<p>see <a href="https://github.com/timelyportfolio/sunburstR/projects/1">sunburstR v1 Github Project</a></p>
+<div id="updates" class="section level3">
+<h3 class="hasAnchor">
+<a href="#updates" class="anchor"></a>Updates</h3>
+<ul>
+<li>update to <code>d3v4</code>; thanks @cjyetman (see <a href="https://github.com/timelyportfolio/sunburstR/issues/36">issue 36</a>)</li>
+<li>convert JS to standalone build to prevent conflicts with other non-d3v4 htmlwidgets (see <a href="https://github.com/timelyportfolio/sunburstR/issues/40">issue 40</a>)</li>
+<li>begin to modularize JavaScript (see <a href="https://github.com/timelyportfolio/sunburstR/issues/37">issue 37</a>)</li>
+</ul>
+</div>
+<div id="api-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#api-changes" class="anchor"></a>API Changes</h3>
+<ul>
+<li>
+<strong>BREAKING</strong> <code>csvdata</code> and <code>jsondata</code> deprecated in favor of single data argument (see <a href="https://github.com/timelyportfolio/sunburstR/issues/43">issue 43</a>)</li>
+<li>add <code>dplyr</code> to IMPORTS</li>
+<li>convert csv hierarchy on the R side instead of JS side; slightly slower but will work to improve</li>
+</ul>
+</div>
+</div>
+    <div id="sunburstr-0-6-5" class="section level1">
+<h1 class="hasAnchor">
+<a href="#sunburstr-0-6-5" class="anchor"></a>sunburstR 0.6.5</h1>
+<div id="bug-fix" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bug-fix" class="anchor"></a>Bug Fix</h3>
+<ul>
+<li>fix legend bug introduced with new color functionality; see <a href="https://github.com/timelyportfolio/sunburstR/issues/34">issue</a> and <a href="https://github.com/timelyportfolio/sunburstR/commit/635ec7cd755d8d3ae417a402be65833725551cdf">commit</a>
+</li>
+</ul>
+</div>
+</div>
     <div id="sunburstr-0-6-4" class="section level1">
 <h1 class="hasAnchor">
 <a href="#sunburstr-0-6-4" class="anchor"></a>sunburstR 0.6.4</h1>
@@ -95,9 +132,9 @@
     <div id="sunburstr-0-6-3" class="section level1">
 <h1 class="hasAnchor">
 <a href="#sunburstr-0-6-3" class="anchor"></a>sunburstR 0.6.3</h1>
-<div id="updates" class="section level3">
+<div id="updates-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#updates" class="anchor"></a>Updates</h3>
+<a href="#updates-1" class="anchor"></a>Updates</h3>
 <ul>
 <li>use the new CRAN package <code>d3r</code> for <code>d3.js</code> dependencies</li>
 </ul>
@@ -106,9 +143,9 @@
     <div id="sunburstr-0-6-2" class="section level1">
 <h1 class="hasAnchor">
 <a href="#sunburstr-0-6-2" class="anchor"></a>sunburstR 0.6.2</h1>
-<div id="updates-1" class="section level3">
+<div id="updates-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#updates-1" class="anchor"></a>Updates</h3>
+<a href="#updates-2" class="anchor"></a>Updates</h3>
 <ul>
 <li>update d3.js to most recent tagged v3 release <a href="https://github.com/timelyportfolio/sunburstR/commit/5af0b29f08fad5e9ea8e28fb2c4e6eb9f09d1887">commit</a>
 </li>
@@ -128,9 +165,9 @@
 </li>
 </ul>
 </div>
-<div id="bug-fix" class="section level3">
+<div id="bug-fix-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fix" class="anchor"></a>Bug Fix</h3>
+<a href="#bug-fix-1" class="anchor"></a>Bug Fix</h3>
 <ul>
 <li>try to fix breadcrumb sizing bug for Firefox, Safari <a href="https://github.com/timelyportfolio/sunburstR/pull/24/commits/d3239b42f7dc29dcbe9456523bccd601e25f0a20">commit</a>
 </li>
@@ -151,6 +188,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#sunburstr-1-0-0">1.0.0</a></li>
+        <li><a href="#sunburstr-0-6-5">0.6.5</a></li>
         <li><a href="#sunburstr-0-6-4">0.6.4</a></li>
         <li><a href="#sunburstr-0-6-3">0.6.3</a></li>
         <li><a href="#sunburstr-0-6-2">0.6.2</a></li>
