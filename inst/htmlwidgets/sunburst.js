@@ -5,6 +5,23 @@
 	(factory(global.d3,global.d3,global.d3,global.d3,global.d3,global.d3,global.d3,global.d3,global.d3));
 }(this, (function (d3Dispatch,d3Array,d3Format,d3Selection,d3Scale,d3Shape,d3Hierarchy,d3Collection,d3Transition) { 'use strict';
 
+// Copies a variable number of methods from source to target.
+var rebind = function (target, source) {
+  var i = 1, n = arguments.length, method;
+  while (++i < n) target[method = arguments[i]] = d3_rebind(target, source, source[method]);
+  return target;
+};
+
+// Method is assumed to be a standard D3 getter-setter:
+  // If passed with no arguments, gets the value.
+// If passed with arguments, sets the value and returns the target.
+function d3_rebind(target, source, method) {
+  return function() {
+    var value = method.apply(source, arguments);
+    return value === source ? target : value;
+  };
+}
+
 var draw = function (el, instance, dispatch_) {
   // would be much nicer to implement transitions/animation
   // remove previous in case of Shiny/dynamic
@@ -508,7 +525,7 @@ HTMLWidgets.widget({
     instance.chart = {};
 
     var dispatch_ = d3Dispatch.dispatch("mouseover","mouseleave","click");
-    instance.chart.on = dispatch_.on;
+    rebind(instance.chart, dispatch_, 'on');
 
     // Take a 2-column CSV and transform it into a hierarchical structure suitable
     // for a partition layout. The first column is a sequence of step names, from

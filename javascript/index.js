@@ -1,5 +1,6 @@
 import {dispatch} from 'd3-dispatch';
 import {zip} from 'd3-array';
+import {default as rebind} from './src/rebind.js';
 import {default as draw} from './src/sunburst-chart.js';
 import HTMLWidgets from './global/htmlwidgets';
 
@@ -16,7 +17,7 @@ HTMLWidgets.widget({
     instance.chart = {};
 
     var dispatch_ = dispatch("mouseover","mouseleave","click");
-    instance.chart.on = dispatch_.on;
+    rebind(instance.chart, dispatch_, 'on');
 
     // Take a 2-column CSV and transform it into a hierarchical structure suitable
     // for a partition layout. The first column is a sequence of step names, from
