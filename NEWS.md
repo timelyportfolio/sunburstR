@@ -1,8 +1,25 @@
+# sunburstR 1.0.0
+
+see [sunburstR v1 Github Project](https://github.com/timelyportfolio/sunburstR/projects/1)
+
+### Updates
+
+* update to `d3v4`; thanks @cjyetman (see [issue 36](https://github.com/timelyportfolio/sunburstR/issues/36))
+* convert JS to standalone build to prevent conflicts with other non-d3v4 htmlwidgets (see [issue 40](https://github.com/timelyportfolio/sunburstR/issues/40))
+* begin to modularize JavaScript (see [issue 37](https://github.com/timelyportfolio/sunburstR/issues/37))
+
+
+### API Changes
+
+* **BREAKING** `csvdata` and `jsondata` deprecated in favor of single data argument (see [issue 43](https://github.com/timelyportfolio/sunburstR/issues/43))
+* add `dplyr` to IMPORTS
+* convert csv hierarchy on the R side instead of JS side;  slightly slower but will work to improve
+
 # sunburstR 0.6.5
 
 ### Bug Fix
 
-fix legend bug introduced with new color functionality; see [issue](https://github.com/timelyportfolio/sunburstR/issues/34) and [commit](https://github.com/timelyportfolio/sunburstR/commit/635ec7cd755d8d3ae417a402be65833725551cdf)
+* fix legend bug introduced with new color functionality; see [issue](https://github.com/timelyportfolio/sunburstR/issues/34) and [commit](https://github.com/timelyportfolio/sunburstR/commit/635ec7cd755d8d3ae417a402be65833725551cdf)
 
 # sunburstR 0.6.4
 
