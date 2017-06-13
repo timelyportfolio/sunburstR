@@ -38,8 +38,6 @@
   },
   "devDependencies": {
     "browserify": "^14.3.0",
-    "json2module": "0.0.3",
-    "package-preamble": "0.0.2",
     "rollup": "^0.34.13",
     "tape": "^4.6.0",
     "uglify-js": "^2.7.3"
