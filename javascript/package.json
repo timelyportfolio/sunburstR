@@ -23,7 +23,7 @@
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup -g d3-array:d3,d3-collection:d3,d3-dispatch:d3,d3-format:d3,d3-hierarchy:d3,d3-scale:d3,d3-selection:d3,d3-shape:d3,d3-transition:d3 -f umd -n d3 -o build/sunburst.js -- index.js",
     "test": "tape 'test/**/*-test.js' && eslint index.js src",
-    "prepublish": "browserify build/sunburst.js > build/sunburst-bundle.js && uglifyjs build/sunburst-bundle.js -c -m -o build/sunburst.min.js && cp build/sunburst.min.js ../inst/htmlwidgets/sunburst.js"
+    "prepublish": "browserify build/sunburst.js > build/sunburst-bundle.js && uglifyjs build/sunburst-bundle.js -c -m -o build/sunburst.min.js && cp build/sunburst-bundle.js ../inst/htmlwidgets/sunburst.js"
   },
   "dependencies": {
     "d3-array": "^1.2.0",

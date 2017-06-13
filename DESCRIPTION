@@ -35,6 +35,7 @@ License: MIT + file LICENSE
 LazyData: TRUE
 Imports:
     d3r,
+    dplyr,
     htmlwidgets,
     htmltools
 Suggests:

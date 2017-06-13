@@ -4,16 +4,20 @@
 \alias{sunburst}
 \title{`d3.js` Sequence Sunburst Diagrams}
 \usage{
-sunburst(csvdata = NULL, jsondata = NULL, legendOrder = NULL,
-  colors = NULL, valueField = "size", percent = TRUE, count = FALSE,
+sunburst(data = NULL, legendOrder = NULL, colors = NULL,
+  valueField = "size", percent = TRUE, count = FALSE,
   explanation = NULL, breadcrumb = list(), legend = list(),
   sortFunction = NULL, width = NULL, height = NULL, elementId = NULL,
-  sizingPolicy = NULL)
+  sizingPolicy = NULL, csvdata = NULL, jsondata = NULL)
 }
 \arguments{
-\item{csvdata}{data in csv source,target form}
-
-\item{jsondata}{data in nested d3 JSON hierarchy with `{name:...,  children:[];}`}
+\item{data}{data in csv source,target form or in
+nested d3 JSON hierarchy with `{name:...,  children:[];}`.  \code{csvdata}
+and \code{jsondata} arguments are now deprecated in favor of this single
+\code{data} argument.  \code{list}, \code{character},
+or \code{connection} data will be assumed to be \code{JSON}.
+\code{data.frame} data will be assumed to be \code{csvdata} and converted
+to \code{JSON} by \code{sunburstR:::csv_to_hier()}.}
 
 \item{legendOrder}{string vector if you would like to manually order the legend.
 If legendOrder is not provided, then the legend will be in the descending
@@ -49,6 +53,10 @@ specified in any valid \code{CSS} size unit.}
 \item{elementId}{string id as a valid \code{CSS} element id.}
 
 \item{sizingPolicy}{see \code{\link[htmlwidgets]{sizingPolicy}}.}
+
+\item{csvdata}{\code{deprecated} use data argument instead; data in csv source,target form}
+
+\item{jsondata}{\code{deprecated} use data argument instead; data in nested d3 JSON hierarchy with `{name:...,  children:[];}`}
 }
 \description{
 \href{https://gist.github.com/kerryrodden/7090426}{Sequences sunburst} diagrams provide

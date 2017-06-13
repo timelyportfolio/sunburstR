@@ -73,7 +73,7 @@ HTMLWidgets.widget({
         //     but buildHierarchy expects an Array of Arrays
         //     so use d3.zip and apply to do this
         var json = [];
-        if(x.csvdata !== null){
+        if(typeof(x.csvdata) !== "undefined"){
           json = buildHierarchy(
             zip.apply(
               null,
@@ -81,7 +81,7 @@ HTMLWidgets.widget({
             )
           );
         } else {
-          json = x.jsondata
+          json = x.data
         }
         instance.json = json;
 
