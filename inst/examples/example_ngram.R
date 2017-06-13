@@ -1,3 +1,4 @@
+\dontrun{
 #  use sunburst to analyze ngram data from Peter Norvig
 #    http://norvig.com/mayzner.html
 
@@ -28,7 +29,6 @@ ngrams2 %>>%
   ) %>>%
   sunburst
 
-\dontrun{
 
 library(htmltools)
 
