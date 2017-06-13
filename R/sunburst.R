@@ -45,6 +45,7 @@
 #' @example inst/examples/example_ngram.R
 #' @example inst/examples/example_treemap.R
 #' @example inst/examples/example_calendar.R
+#' @example inst/examples/example_sort.R
 #'
 #' @import htmlwidgets
 #'
