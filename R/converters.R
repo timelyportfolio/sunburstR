@@ -2,7 +2,7 @@
 csv_to_hier <- function(csv) {
   df <- dplyr::bind_rows(
     lapply(
-      strsplit(csv[,1], "-"),
+      strsplit(as.character(csv[,1]), "-"),
       function(rw) data.frame(t(rw), stringsAsFactors = FALSE)
     )
   )
