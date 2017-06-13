@@ -1,8 +1,8 @@
 Package: sunburstR
 Type: Package
 Title: 'Htmlwidget' for 'Kerry Rodden' 'd3.js' Sequence Sunburst
-Version: 0.6.5
-Date: 2017-04-18
+Version: 1.0.0
+Date: 2017-06-13
 Authors@R: c(
       person(
         "Mike", "Bostock"
@@ -24,6 +24,11 @@ Authors@R: c(
         "Florian", "Breitwieser"
         , role = c("ctb")
         , comment = "R interface"
+      ),
+      person(
+        "CJ", "Yetman"
+        , role = c("ctb")
+        , comment = "R interface"
       )
     )
 Maintainer: Kent Russell <kent.russell@timelyportfolio.com>
@@ -35,6 +40,7 @@ License: MIT + file LICENSE
 LazyData: TRUE
 Imports:
     d3r,
+    dplyr,
     htmlwidgets,
     htmltools
 Suggests:
