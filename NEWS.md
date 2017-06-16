@@ -1,3 +1,7 @@
+# sunburst 1.0.1
+
+* improve internal `csv_to_hier()` with delimiter argument and smart convert for root level
+
 # sunburstR 1.0.0
 
 see [sunburstR v1 Github Project](https://github.com/timelyportfolio/sunburstR/projects/1)
