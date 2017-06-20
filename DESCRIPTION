@@ -29,6 +29,7 @@ Authors@R: c(
         "CJ", "Yetman"
         , role = c("ctb")
         , comment = "R interface"
+        , email = "cj@cjyetman.com"
       )
     )
 Maintainer: Kent Russell <kent.russell@timelyportfolio.com>
