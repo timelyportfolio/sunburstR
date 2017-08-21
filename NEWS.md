@@ -1,3 +1,7 @@
+# sunburst 1.0.2
+
+* changes required in downstream d3r to work with new tidyr (0.7.0), so now working and tested
+
 # sunburst 1.0.1
 
 * improve internal `csv_to_hier()` with delimiter argument and smart convert for root level
