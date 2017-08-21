@@ -49,7 +49,8 @@ Suggests:
     knitr,
     markdown,
     pipeR,
-    testthat
+    testthat,
+    tidyr (>= 0.7.0)
 Enhances:
     treemap
 RoxygenNote: 6.0.1
