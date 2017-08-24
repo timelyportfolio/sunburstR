@@ -2,7 +2,7 @@ Package: sunburstR
 Type: Package
 Title: 'Htmlwidget' for 'Kerry Rodden' 'd3.js' Sequence Sunburst
 Version: 1.0.2
-Date: 2017-08-22
+Date: 2017-08-23
 Authors@R: c(
       person(
         "Mike", "Bostock"
