@@ -16,6 +16,7 @@ import {
   nest
 } from 'd3-collection';
 import {transition} from 'd3-transition';
+import {colorContrast} from 'd3plus-color'
 
 
 export default function (el, instance, dispatch_) {
@@ -336,7 +337,10 @@ export default function (el, instance, dispatch_) {
           .attr("y", b.h / 2)
           .attr("dy", "0.35em")
           .attr("text-anchor", "left")
-          .text(function(d) { return d.data.name; });
+          .text(function(d) { return d.data.name; })
+          .style("fill", function(d) {
+            return colorContrast(colors.call(this, d.data.name));
+          });
 
       // Remove exiting nodes.
       g.exit().remove();
@@ -404,7 +408,10 @@ export default function (el, instance, dispatch_) {
           .attr("y", b.h / 2)
           .attr("dy", "0.35em")
           .attr("text-anchor", "middle")
-          .text(function(d) { return d.data.name; });
+          .text(function(d) { return d.data.name; })
+          .style("fill", function(d) {
+            return colorContrast(colors.call(this, d.data.name));
+          });
 
       // Set position for entering and updating nodes.
       entering.merge(g).attr("transform", function(d, i) {
@@ -493,7 +500,10 @@ export default function (el, instance, dispatch_) {
         .attr("y", li.h / 2)
         .attr("dy", "0.35em")
         .attr("text-anchor", "middle")
-        .text(function(d) { return d.data.name; });
+        .text(function(d) { return d.data.name; })
+        .style("fill", function(d) {
+          return colorContrast(colors.call(this, d.data.name));
+        });
   }
 
   function toggleLegend() {
