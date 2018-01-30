@@ -52,6 +52,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -81,7 +87,7 @@
     </div>
 
     
-    <p><a href = 'https://gist.github.com/kerryrodden/7090426'>Sequences sunburst</a> diagrams provide
+    <p><a href='https://gist.github.com/kerryrodden/7090426'>Sequences sunburst</a> diagrams provide
    an interactive method of exploring sequence data, such as website navigation paths.</p>
     
 
@@ -181,12 +187,10 @@ specified in any valid <code>CSS</code> size unit.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># devtools::install_github("timelyportfolio/sunburstR")</span>
-
-<span class='fu'>library</span>(<span class='no'>sunburstR</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>sunburstR</span>)
 
 <span class='co'># read in sample visit-sequences.csv data provided in source</span>
-<span class='co'># only use first 200 rows to speed package build and check</span>
+<span class='co'># only use first 100 rows to speed package build and check</span>
 <span class='co'>#   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv</span>
 <span class='no'>sequences</span> <span class='kw'>&lt;-</span> <span class='fu'>read.csv</span>(
   <span class='fu'>system.file</span>(<span class='st'>"examples/visit-sequences.csv"</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>)
@@ -194,145 +198,141 @@ specified in any valid <code>CSS</code> size unit.</p></td>
   ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )[<span class='fl'>1</span>:<span class='fl'>100</span>,]
 
-<span class='fu'>sunburst</span>(<span class='no'>sequences</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: file("") only supports open = "w+" and open = "w+b": using the former</span></div><div class='output co'>#&gt; <span class='error'>Error in dirname(to): a character vector argument expected</span></div><div class='input'>
-<span class='fu'>not_run</span>({
+<span class='fu'>sunburst</span>(<span class='no'>sequences</span>)</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='co'># explore some of the arguments</span>
+<span class='fu'>sunburst</span>(
+  <span class='no'>sequences</span>
+  ,<span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
 
-  <span class='co'># explore some of the arguments</span>
-  <span class='fu'>sunburst</span>(
-    <span class='no'>sequences</span>
-    ,<span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+<span class='fu'>sunburst</span>(
+  <span class='no'>sequences</span>
+  <span class='co'># apply sort order to the legends</span>
+  ,<span class='kw'>legendOrder</span> <span class='kw'>=</span> <span class='fu'>unique</span>(<span class='fu'>unlist</span>(<span class='fu'>strsplit</span>(<span class='no'>sequences</span>[,<span class='fl'>1</span>],<span class='st'>"-"</span>)))
+  <span class='co'># just provide the name in the explanation in the center</span>
+  ,<span class='kw'>explanation</span> <span class='kw'>=</span> <span class='st'>"function(d){return d.data.name}"</span>
+)
+
+
+<span class='co'># try with json data</span>
+<span class='no'>sequence_json</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>jsonlite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>fromJSON</a></span>(
+  <span class='fu'>system.file</span>(<span class='st'>"examples/visit-sequences.json"</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>),
+  <span class='kw'>simplifyDataFrame</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+<span class='fu'>sunburst</span>(<span class='no'>sequence_json</span>)
+
+
+
+<span class='co'># try with csv data from this fork</span>
+<span class='co'>#  https://gist.github.com/mkajava/7515402</span>
+<span class='co'># great use for new breadbrumb wrapping</span>
+<span class='fu'>sunburst</span>(
+  <span class='kw'>csvdata</span> <span class='kw'>=</span> <span class='fu'>read.csv</span>(
+    <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(
+      <span class='st'>"https://gist.githubusercontent.com/mkajava/"</span>,
+      <span class='st'>"7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/"</span>,
+      <span class='st'>"comment-sequences.csv"</span>
+    )
+    ,<span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+    ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
   )
+)
 
-  <span class='fu'>sunburst</span>(
-    <span class='no'>sequences</span>
-    <span class='co'># apply sort order to the legends</span>
-    ,<span class='kw'>legendOrder</span> <span class='kw'>=</span> <span class='fu'>unique</span>(<span class='fu'>unlist</span>(<span class='fu'>strsplit</span>(<span class='no'>sequences</span>[,<span class='fl'>1</span>],<span class='st'>"-"</span>)))
-    <span class='co'># just provide the name in the explanation in the center</span>
-    ,<span class='kw'>explanation</span> <span class='kw'>=</span> <span class='st'>"function(d){return d.data.name}"</span>
+
+<span class='co'># try with csv data from this fork</span>
+<span class='co'>#  https://gist.github.com/rileycrane/92a2c36eb932b4f99e51/</span>
+<span class='fu'>sunburst</span>( <span class='kw'>csvdata</span> <span class='kw'>=</span> <span class='fu'>read.csv</span>(
+  <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(
+    <span class='st'>"https://gist.githubusercontent.com/rileycrane/"</span>,
+    <span class='st'>"92a2c36eb932b4f99e51/raw/"</span>,
+    <span class='st'>"a0212b4ca8043af47ec82369aa5f023530279aa3/visit-sequences.csv"</span>
   )
+  ,<span class='kw'>header</span><span class='kw'>=</span><span class='fl'>FALSE</span>
+  ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+))
+<span class='co'># }</span><span class='co'># NOT RUN {</span>
+<span class='co'>#  use sunburst to analyze ngram data from Peter Norvig</span>
+<span class='co'>#    http://norvig.com/mayzner.html</span>
 
+<span class='fu'>library</span>(<span class='no'>sunburstR</span>)
+<span class='fu'>library</span>(<span class='no'>pipeR</span>)
 
-  <span class='co'># try with json data</span>
-  <span class='no'>sequence_json</span> <span class='kw'>&lt;-</span> <span class='kw'>jsonlite</span><span class='kw'>::</span><span class='fu'>fromJSON</span>(
-    <span class='fu'>system.file</span>(<span class='st'>"examples/visit-sequences.json"</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>),
-    <span class='kw'>simplifyDataFrame</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+<span class='co'>#  read the csv data downloaded from the Google Fusion Table linked in the article</span>
+<span class='no'>ngrams2</span> <span class='kw'>&lt;-</span> <span class='fu'>read.csv</span>(
+  <span class='fu'>system.file</span>(
+    <span class='st'>"examples/ngrams2.csv"</span>
+    ,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>
   )
-  <span class='fu'>sunburst</span>(<span class='no'>sequence_json</span>)
+  , <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 
-
-
-  <span class='co'># try with csv data from this fork</span>
-  <span class='co'>#  https://gist.github.com/mkajava/7515402</span>
-  <span class='co'># great use for new breadbrumb wrapping</span>
-  <span class='fu'>sunburst</span>(
-    <span class='kw'>csvdata</span> <span class='kw'>=</span> <span class='fu'>read.csv</span>(
-      <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(
-        <span class='st'>"https://gist.githubusercontent.com/mkajava/"</span>,
-        <span class='st'>"7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/"</span>,
-        <span class='st'>"comment-sequences.csv"</span>
-      )
-      ,<span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+<span class='no'>ngrams2</span> <span class='kw'>%&gt;&gt;%</span>
+  <span class='co'>#  let's look at ngrams at the start of a word, so columns 1 and 3</span>
+  (<span class='no'>.</span>[,<span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>3</span>)]) <span class='kw'>%&gt;&gt;%</span>
+  <span class='co'>#  split the ngrams into a sequence by splitting each letter and adding -</span>
+  (
+    <span class='fu'>data.frame</span>(
+      <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='fu'>strsplit</span>(<span class='no'>.</span>[,<span class='fl'>1</span>],<span class='st'>""</span>) <span class='kw'>%&gt;&gt;%</span>
+        <span class='fu'>lapply</span>( <span class='kw'>function</span>(<span class='no'>ng</span>){ <span class='fu'>paste0</span>(<span class='no'>ng</span>,<span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"-"</span>) } ) <span class='kw'>%&gt;&gt;%</span>
+        <span class='no'>unlist</span>
+      ,<span class='kw'>freq</span> <span class='kw'>=</span> <span class='no'>.</span>[,<span class='fl'>2</span>]
       ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
     )
-  )
+  ) <span class='kw'>%&gt;&gt;%</span>
+  <span class='no'>sunburst</span>
 
 
-  <span class='co'># try with csv data from this fork</span>
-  <span class='co'>#  https://gist.github.com/rileycrane/92a2c36eb932b4f99e51/</span>
-  <span class='fu'>sunburst</span>( <span class='kw'>csvdata</span> <span class='kw'>=</span> <span class='fu'>read.csv</span>(
-    <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(
-      <span class='st'>"https://gist.githubusercontent.com/rileycrane/"</span>,
-      <span class='st'>"92a2c36eb932b4f99e51/raw/"</span>,
-      <span class='st'>"a0212b4ca8043af47ec82369aa5f023530279aa3/visit-sequences.csv"</span>
+<span class='fu'>library</span>(<span class='no'>htmltools</span>)
+
+<span class='no'>ngrams2</span> <span class='kw'>%&gt;&gt;%</span>
+  (
+    <span class='fu'>lapply</span>(
+      <span class='fu'>seq.int</span>(<span class='fl'>3</span>,<span class='fu'>ncol</span>(<span class='no'>.</span>))
+      ,<span class='kw'>function</span>(<span class='no'>letpos</span>){
+        (<span class='no'>.</span>[,<span class='fu'>c</span>(<span class='fl'>1</span>,<span class='no'>letpos</span>)]) <span class='kw'>%&gt;&gt;%</span>
+          <span class='co'>#  split the ngrams into a sequence by splitting each letter and adding -</span>
+          (
+            <span class='fu'>data.frame</span>(
+              <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='fu'>strsplit</span>(<span class='no'>.</span>[,<span class='fl'>1</span>],<span class='st'>""</span>) <span class='kw'>%&gt;&gt;%</span>
+                <span class='fu'>lapply</span>( <span class='kw'>function</span>(<span class='no'>ng</span>){ <span class='fu'>paste0</span>(<span class='no'>ng</span>,<span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"-"</span>) } ) <span class='kw'>%&gt;&gt;%</span>
+                <span class='no'>unlist</span>
+              ,<span class='kw'>freq</span> <span class='kw'>=</span> <span class='no'>.</span>[,<span class='fl'>2</span>]
+              ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+            )
+          ) <span class='kw'>%&gt;&gt;%</span>
+          ( <span class='no'>tags</span>$<span class='fu'><a href='http://www.rdocumentation.org/packages/htmltools/topics/builder'>div</a></span>(<span class='kw'>style</span><span class='kw'>=</span><span class='st'>"float:left;"</span>,<span class='fu'>sunburst</span>( <span class='no'>.</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>300</span> )) )
+      }
     )
-    ,<span class='kw'>header</span><span class='kw'>=</span><span class='fl'>FALSE</span>
-    ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-  ))
-})
-<span class='fu'>not_run</span>({
-  <span class='co'>#  use sunburst to analyze ngram data from Peter Norvig</span>
-  <span class='co'>#    http://norvig.com/mayzner.html</span>
-
+  ) <span class='kw'>%&gt;&gt;%</span>
+  <span class='no'>tagList</span> <span class='kw'>%&gt;&gt;%</span>
+  <span class='no'>browsable</span>
+<span class='co'># }</span><span class='co'># NOT RUN {</span>
+  <span class='fu'>library</span>(<span class='no'>treemap</span>)
   <span class='fu'>library</span>(<span class='no'>sunburstR</span>)
-  <span class='fu'>library</span>(<span class='no'>pipeR</span>)
+  <span class='fu'>library</span>(<span class='no'>d3r</span>)
 
-  <span class='co'>#  read the csv data downloaded from the Google Fusion Table linked in the article</span>
-  <span class='no'>ngrams2</span> <span class='kw'>&lt;-</span> <span class='fu'>read.csv</span>(
-    <span class='fu'>system.file</span>(
-      <span class='st'>"examples/ngrams2.csv"</span>
-      ,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>
-    )
-    , <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='co'># use example from ?treemap::treemap</span>
+  <span class='fu'>data</span>(<span class='no'>GNI2014</span>)
+  <span class='no'>tm</span> <span class='kw'>&lt;-</span> <span class='fu'>treemap</span>(<span class='no'>GNI2014</span>,
+          <span class='kw'>index</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"continent"</span>, <span class='st'>"iso3"</span>),
+          <span class='kw'>vSize</span><span class='kw'>=</span><span class='st'>"population"</span>,
+          <span class='kw'>vColor</span><span class='kw'>=</span><span class='st'>"continent"</span>,
+          <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"index"</span>)
+
+  <span class='no'>tm_nest</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/d3r/topics/d3_nest'>d3_nest</a></span>(
+    <span class='no'>tm</span>$<span class='no'>tm</span>[,<span class='fu'>c</span>(<span class='st'>"continent"</span>, <span class='st'>"iso3"</span>, <span class='st'>"vSize"</span>, <span class='st'>"color"</span>)],
+    <span class='kw'>value_cols</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"vSize"</span>, <span class='st'>"color"</span>)
   )
 
-  <span class='no'>ngrams2</span> <span class='kw'>%&gt;&gt;%</span>
-    <span class='co'>#  let's look at ngrams at the start of a word, so columns 1 and 3</span>
-    (<span class='no'>.</span>[,<span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>3</span>)]) <span class='kw'>%&gt;&gt;%</span>
-    <span class='co'>#  split the ngrams into a sequence by splitting each letter and adding -</span>
-    (
-      <span class='fu'>data.frame</span>(
-        <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='fu'>strsplit</span>(<span class='no'>.</span>[,<span class='fl'>1</span>],<span class='st'>""</span>) <span class='kw'>%&gt;&gt;%</span>
-          <span class='fu'>lapply</span>( <span class='kw'>function</span>(<span class='no'>ng</span>){ <span class='fu'>paste0</span>(<span class='no'>ng</span>,<span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"-"</span>) } ) <span class='kw'>%&gt;&gt;%</span>
-          <span class='no'>unlist</span>
-        ,<span class='kw'>freq</span> <span class='kw'>=</span> <span class='no'>.</span>[,<span class='fl'>2</span>]
-        ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-      )
-    ) <span class='kw'>%&gt;&gt;%</span>
-    <span class='no'>sunburst</span>
-
-
-  <span class='fu'>library</span>(<span class='no'>htmltools</span>)
-
-  <span class='no'>ngrams2</span> <span class='kw'>%&gt;&gt;%</span>
-    (
-      <span class='fu'>lapply</span>(
-        <span class='fu'>seq.int</span>(<span class='fl'>3</span>,<span class='fu'>ncol</span>(<span class='no'>.</span>))
-        ,<span class='kw'>function</span>(<span class='no'>letpos</span>){
-          (<span class='no'>.</span>[,<span class='fu'>c</span>(<span class='fl'>1</span>,<span class='no'>letpos</span>)]) <span class='kw'>%&gt;&gt;%</span>
-            <span class='co'>#  split the ngrams into a sequence by splitting each letter and adding -</span>
-            (
-              <span class='fu'>data.frame</span>(
-                <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='fu'>strsplit</span>(<span class='no'>.</span>[,<span class='fl'>1</span>],<span class='st'>""</span>) <span class='kw'>%&gt;&gt;%</span>
-                  <span class='fu'>lapply</span>( <span class='kw'>function</span>(<span class='no'>ng</span>){ <span class='fu'>paste0</span>(<span class='no'>ng</span>,<span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"-"</span>) } ) <span class='kw'>%&gt;&gt;%</span>
-                  <span class='no'>unlist</span>
-                ,<span class='kw'>freq</span> <span class='kw'>=</span> <span class='no'>.</span>[,<span class='fl'>2</span>]
-                ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-              )
-            ) <span class='kw'>%&gt;&gt;%</span>
-            ( <span class='no'>tags</span>$<span class='fu'>div</span>(<span class='kw'>style</span><span class='kw'>=</span><span class='st'>"float:left;"</span>,<span class='fu'>sunburst</span>( <span class='no'>.</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>300</span> )) )
-        }
-      )
-    ) <span class='kw'>%&gt;&gt;%</span>
-    <span class='no'>tagList</span> <span class='kw'>%&gt;&gt;%</span>
-    <span class='no'>browsable</span>
-})
-<span class='fu'>not_run</span>({
-    <span class='fu'>library</span>(<span class='no'>treemap</span>)
-    <span class='fu'>library</span>(<span class='no'>sunburstR</span>)
-    <span class='fu'>library</span>(<span class='no'>d3r</span>)
-
-    <span class='co'># use example from ?treemap::treemap</span>
-    <span class='fu'>data</span>(<span class='no'>GNI2014</span>)
-    <span class='no'>tm</span> <span class='kw'>&lt;-</span> <span class='fu'>treemap</span>(<span class='no'>GNI2014</span>,
-            <span class='kw'>index</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"continent"</span>, <span class='st'>"iso3"</span>),
-            <span class='kw'>vSize</span><span class='kw'>=</span><span class='st'>"population"</span>,
-            <span class='kw'>vColor</span><span class='kw'>=</span><span class='st'>"continent"</span>,
-            <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"index"</span>)
-
-    <span class='no'>tm_nest</span> <span class='kw'>&lt;-</span> <span class='fu'>d3_nest</span>(
-      <span class='no'>tm</span>$<span class='no'>tm</span>[,<span class='fu'>c</span>(<span class='st'>"continent"</span>, <span class='st'>"iso3"</span>, <span class='st'>"vSize"</span>, <span class='st'>"color"</span>)],
-      <span class='kw'>value_cols</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"vSize"</span>, <span class='st'>"color"</span>)
-    )
-
-    <span class='fu'>sunburst</span>(
-      <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>tm_nest</span>,
-      <span class='kw'>valueField</span> <span class='kw'>=</span> <span class='st'>"vSize"</span>,
-      <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-      <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw'>htmlwidgets</span><span class='kw'>::</span><span class='fu'>JS</span>(<span class='st'>"function(d){return d3.select(this).datum().data.color;}"</span>),
-      <span class='kw'>withD3</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-    )
-})
-<span class='co'># calendar sunburst example</span>
+  <span class='fu'>sunburst</span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>tm_nest</span>,
+    <span class='kw'>valueField</span> <span class='kw'>=</span> <span class='st'>"vSize"</span>,
+    <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"function(d){return d3.select(this).datum().data.color;}"</span>),
+    <span class='kw'>withD3</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  )
+<span class='co'># }</span><div class='input'><span class='co'># calendar sunburst example</span>
 
 <span class='fu'>library</span>(<span class='no'>sunburstR</span>)
 
@@ -355,7 +355,7 @@ specified in any valid <code>CSS</code> size unit.</p></td>
   <span class='fu'>data.frame</span>(<span class='fu'>xtabs</span>(<span class='no'>count</span>~<span class='no'>path</span>,<span class='no'>df</span>)),
   <span class='co'># added a degree of difficulty by providing</span>
   <span class='co'>#  not easily sortable names</span>
-  <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw'>htmlwidgets</span><span class='kw'>::</span><span class='fu'>JS</span>(
+  <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(
 <span class='st'>"
 function(a,b){
   abb = {
@@ -383,7 +383,22 @@ function(a,b){
 }
 "</span>
   )
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: file("") only supports open = "w+" and open = "w+b": using the former</span></div><div class='output co'>#&gt; <span class='error'>Error in dirname(to): a character vector argument expected</span></div></pre>
+)</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'><span class='co'># sorting example: place data in order of occurence</span>
+
+<span class='fu'>library</span>(<span class='no'>sunburstR</span>)
+
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+  <span class='kw'>group</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>"bar"</span>, <span class='st'>"xyz"</span>),
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>2</span>)
+)
+
+<span class='fu'>sunburst</span>(<span class='no'>df</span>,
+         <span class='co'># create a trivial sort function</span>
+         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
+<span class='no'>new_order</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>1</span>)
+<span class='fu'>sunburst</span>(<span class='no'>df</span>[<span class='no'>new_order</span>,],
+         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -402,7 +417,7 @@ function(a,b){
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
