@@ -69,12 +69,10 @@ specified in any valid \code{CSS} size unit.}
    an interactive method of exploring sequence data, such as website navigation paths.
 }
 \examples{
-# devtools::install_github("timelyportfolio/sunburstR")
-
 library(sunburstR)
 
 # read in sample visit-sequences.csv data provided in source
-# only use first 200 rows to speed package build and check
+# only use first 100 rows to speed package build and check
 #   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv
 sequences <- read.csv(
   system.file("examples/visit-sequences.csv",package="sunburstR")
