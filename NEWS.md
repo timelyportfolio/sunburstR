@@ -1,12 +1,12 @@
-# sunbust 1.0.3
+# sunburstR 1.0.3
 
 * change text color in legend and breadcrumb to white or black for legibility using d3plus
 
-# sunburst 1.0.2
+# sunburstR 1.0.2
 
 * changes required in downstream d3r to work with new tidyr (0.7.0), so now working and tested
 
-# sunburst 1.0.1
+# sunburstR 1.0.1
 
 * improve internal `csv_to_hier()` with delimiter argument and smart convert for root level
 
