@@ -1,3 +1,7 @@
+# sunburstR 1.1.0
+
+* fix to correctly handle pre-summed trees, like `treemap::treemap` to not double count the aggregate (see (issue)[https://github.com/timelyportfolio/sunburstR/issues/60#issuecomment-365751989])
+
 # sunburstR 1.0.3
 
 * change text color in legend and breadcrumb to white or black for legibility using d3plus

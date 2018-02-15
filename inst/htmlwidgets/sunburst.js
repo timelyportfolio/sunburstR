@@ -150,7 +150,10 @@ function draw (el, instance, dispatch_) {
 
     // Turn the data into a d3 hierarchy and calculate the sums.
     var root = d3Hierarchy.hierarchy(json)
-        .sum(function(d) { return d[x.options.valueField || "size"]; });
+        .sum(function(d) {
+          // only sum if no children (or is leaf) 
+          if(!(d.children && d.children.length > 0)) return d[x.options.valueField || "size"];
+        });
 
     // check for sort function
     if(x.options.sortFunction){
