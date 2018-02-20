@@ -1,6 +1,8 @@
-# sunburstR 1.1.0
+# sunburstR 2.0.0
 
 * fix to correctly handle pre-summed trees, like `treemap::treemap` to not double count the aggregate (see (issue)[https://github.com/timelyportfolio/sunburstR/issues/60#issuecomment-365751989])
+
+* allow turning off the legend with argument `legend = FALSE` (see [issue](https://github.com/timelyportfolio/sunburstR/issues/61))
 
 # sunburstR 1.0.3
 

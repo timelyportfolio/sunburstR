@@ -148,7 +148,7 @@ export default function (el, instance, dispatch_) {
     // Turn the data into a d3 hierarchy and calculate the sums.
     var root = hierarchy(json)
         .sum(function(d) {
-          // only sum if no children (or is leaf) 
+          // only sum if no children (or is leaf)
           if(!(d.children && d.children.length > 0)) return d[x.options.valueField || "size"];
         });
 
@@ -180,8 +180,12 @@ export default function (el, instance, dispatch_) {
     // Get total size of the tree = value of root node from partition.
     totalSize = path.datum().value;
 
-    drawLegend(nodes);
-    select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
+    if(x.options.legend !== false) {
+      drawLegend(nodes);
+      select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
+    } else {
+      removeLegend();
+    }
 
    }
 
@@ -507,6 +511,10 @@ export default function (el, instance, dispatch_) {
         .style("fill", function(d) {
           return colorContrast(colors.call(this, d.data.name));
         });
+  }
+
+  function removeLegend() {
+    select(el).select(".sunburst-sidebar").remove()
   }
 
   function toggleLegend() {

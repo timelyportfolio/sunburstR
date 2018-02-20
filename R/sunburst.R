@@ -23,11 +23,15 @@
 #' @param count \code{logical} to include count and total in the explanation.
 #' @param explanation JavaScript function to define a custom explanation for the center
 #'          of the sunburst.  Note, this will override \code{percent} and \code{count}.
-#' @param breadcrumb,legend \code{list} to customize the breadcrumb trail or legend.  This argument
+#' @param breadcrumb \code{list} to customize the breadcrumb trail.  This argument
 #'          should be in the form \code{list(w =, h =, s =, t = )} where
 #'          \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
 #'          and \code{t} is the tail all in \code{px}. \code{w} is \code{0} by default for
 #'          breadcrumbs widths based on text length.
+#' @param legend \code{list} to customize the legend or \code{logical} to disable the legend.  The \code{list} argument
+#'          should be in the form \code{list(w =, h =, r =, s = )} where
+#'          \code{w} is the width, \code{h} is the height, \code{s} is the spacing,
+#'          and \code{r} is the radius all in \code{px}.
 #' @param sortFunction \code{\link[htmlwidgets]{JS}} function to sort the slices.
 #'          The default sort is by size.
 #' @param withD3 \code{logical} to include d3 dependency from \code{d3r}.  As of
