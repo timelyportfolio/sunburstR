@@ -2,13 +2,13 @@
 % Please edit documentation in R/d2b.R
 \name{d2b-shiny}
 \alias{d2b-shiny}
-\alias{d2bsunOutput}
-\alias{renderD2bsun}
+\alias{sund2bOutput}
+\alias{renderSund2b}
 \title{Shiny bindings for d2b}
 \usage{
-d2bsunOutput(outputId, width = "100\%", height = "400px")
+sund2bOutput(outputId, width = "100\%", height = "400px")
 
-renderD2bsun(expr, env = parent.frame(), quoted = FALSE)
+renderSund2b(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}
