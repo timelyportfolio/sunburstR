@@ -85,14 +85,14 @@ sund2b <- function(
 #'
 #' @export
 sund2bOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'd2b', width, height, package = 'sunburstR')
+  htmlwidgets::shinyWidgetOutput(outputId, 'sund2b', width, height, package = 'sunburstR')
 }
 
 #' @rdname d2b-shiny
 #' @export
 renderSund2b <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, d2bOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, sund2bOutput, env, quoted = TRUE)
 }
 
 #' @keywords internal
