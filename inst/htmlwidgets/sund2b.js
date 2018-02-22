@@ -29,7 +29,8 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        // TODO: code to re-render the widget with a new size
+        sunburst.chartFrame().size({height: height});
+        d3.select(el).call(sunburst);
 
       }
 
