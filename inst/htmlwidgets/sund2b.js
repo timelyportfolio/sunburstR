@@ -61,7 +61,7 @@ HTMLWidgets.widget({
           return d.name;
         });
         sunburst.color(function(d) {
-          return colors.call(this, d.name);
+          return colors.call(this, d.name, d);
         });
         sunburst.sunburst().size(function(d) {
           // only sum if no children (or is leaf)
