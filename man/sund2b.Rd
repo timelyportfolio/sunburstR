@@ -4,8 +4,8 @@
 \alias{sund2b}
 \title{Sunburst Using 'd2b'}
 \usage{
-sund2b(data = NULL, valueField = "size", width = NULL, height = NULL,
-  elementId = NULL)
+sund2b(data = NULL, colors = NULL, valueField = "size", width = NULL,
+  height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{data in csv source,target form or in
@@ -13,7 +13,45 @@ nested d3 JSON hierarchy with `{name:...,  children:[];}`.  \code{list}, \code{c
 or \code{connection} data will be assumed to be \code{JSON}.
 \code{data.frame} data will be assumed to be \code{csvdata} and converted
 to \code{JSON} by \code{sunburstR:::csv_to_hier()}.}
+
+\item{colors}{\code{vector} of strings representing colors as hexadecimal for
+manual colors.  If you want precise control of colors, supply a \code{list}
+with \code{range} and/or \code{domain}. For advanced customization, supply
+a JavaScript \code{function}.}
+
+\item{valueField}{\code{character} for the field to use to calculate size.  The default
+value is \code{"size"}.}
 }
 \description{
 Create interactive sunburst chart with the 'd2b' charting library.
+}
+\examples{
+\dontrun{
+
+# The sund2b() API mirrors sunburst() with fewer arguments.
+
+library(sunburstR)
+
+# use a sample of the sequences csv data
+sequences <- read.csv(
+  system.file("examples/visit-sequences.csv",package="sunburstR")
+  ,header = FALSE
+  ,stringsAsFactors = FALSE
+)[1:200,]
+
+# create a d2b sunburst
+sund2b(sequences)
+
+
+# use sund2b in Shiny
+library(shiny)
+ui <- sund2bOutput("sun")
+server <- function(input, output, session) {
+  output$sun <- renderSund2b({
+    sund2b(sequences)
+  })
+}
+shinyApp(ui, server)
+
+}
 }

@@ -7,12 +7,21 @@
 #'          or \code{connection} data will be assumed to be \code{JSON}.
 #'          \code{data.frame} data will be assumed to be \code{csvdata} and converted
 #'          to \code{JSON} by \code{sunburstR:::csv_to_hier()}.
+#' @param colors \code{vector} of strings representing colors as hexadecimal for
+#'          manual colors.  If you want precise control of colors, supply a \code{list}
+#'          with \code{range} and/or \code{domain}. For advanced customization, supply
+#'          a JavaScript \code{function}.
+#' @param valueField \code{character} for the field to use to calculate size.  The default
+#'          value is \code{"size"}.
+#'
+#' @example inst/examples/example_sund2b.R
 #'
 #' @import htmlwidgets
 #'
 #' @export
 sund2b <- function(
   data = NULL,
+  colors = NULL,
   valueField = "size",
   width = NULL, height = NULL, elementId = NULL
 ) {
@@ -48,6 +57,7 @@ sund2b <- function(
   x = list(
     data = data,
     options = list(
+      colors = colors,
       valueField = valueField
     )
   )
