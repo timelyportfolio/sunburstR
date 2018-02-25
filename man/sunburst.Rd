@@ -224,6 +224,9 @@ ngrams2 \%>>\%
     data = tm_nest,
     valueField = "vSize",
     count = TRUE,
+    # to avoid double counting with pre-summed trees
+    # use sumNodes = FALSE
+    sumNodes = FALSE,
     colors = htmlwidgets::JS("function(d){return d3.select(this).datum().data.color;}"),
     withD3 = TRUE
   )
