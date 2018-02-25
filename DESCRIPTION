@@ -2,7 +2,7 @@ Package: sunburstR
 Type: Package
 Title: 'Htmlwidget' for 'Kerry Rodden' 'd3.js' Sequence Sunburst
 Version: 2.0.0
-Date: 2018-02-19
+Date: 2018-02-25
 Authors@R: c(
       person(
         "Mike", "Bostock"
@@ -13,6 +13,11 @@ Authors@R: c(
         "Kerry", "Rodden"
         , role = c("aut", "cph")
         , comment = "sequences library in htmlwidgets/lib, https://gist.github.com/kerryrodden/7090426"
+      ),
+      person(
+        "Kevin", "Warne"
+        , role = c("aut", "cph")
+        , comment = "d2b sunburst library in htmlwidgets/lib, https://github.com/d2bjs/d2b"
       ),
       person(
         "Kent", "Russell"

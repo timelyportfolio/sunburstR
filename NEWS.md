@@ -1,6 +1,8 @@
 # sunburstR 2.0.0
 
-* fix to correctly handle pre-summed trees, like `treemap::treemap` to not double count the aggregate (see (issue)[https://github.com/timelyportfolio/sunburstR/issues/60#issuecomment-365751989])
+* add `sumNodes` argument to correctly handle pre-summed trees, like `treemap::treemap` to not double count the aggregate (see (issue)[https://github.com/timelyportfolio/sunburstR/issues/62])
+
+* add `sund2b()` htmlwidget for a [d2b](http://www.d2bjs.org/) sunburst chart
 
 * allow turning off the legend with argument `legend = FALSE` (see [issue](https://github.com/timelyportfolio/sunburstR/issues/61))
 
