@@ -162,9 +162,12 @@ export default function (el, instance, dispatch_) {
       });
 
       // Then we need to calculate root sum
-      root.value = root.children.reduce(function(left, right) {
-        return left.value + right.value
-      })
+      root.value = root.children.reduce(
+        function(left, right) {
+          return left + right.value
+        },
+        0
+      )
     }
 
     // check for sort function
