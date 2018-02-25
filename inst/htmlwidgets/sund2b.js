@@ -64,8 +64,7 @@ HTMLWidgets.widget({
           return colors.call(this, d.name, d);
         });
         sunburst.sunburst().size(function(d) {
-          // only sum if no children (or is leaf)
-            if(!(d.children && d.children.length > 0)) return d[x.options.valueField || "size"];
+          return d[x.options.valueField || "size"];
         });
 
         d3.select(el).datum(x.data)
