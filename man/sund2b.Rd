@@ -21,6 +21,11 @@ a JavaScript \code{function}.}
 
 \item{valueField}{\code{character} for the field to use to calculate size.  The default
 value is \code{"size"}.}
+
+\item{height, width}{height and width of sunburst htmlwidget containing div
+specified in any valid \code{CSS} size unit.}
+
+\item{elementId}{string id as a valid \code{CSS} element id.}
 }
 \description{
 Create interactive sunburst chart with the 'd2b' charting library.

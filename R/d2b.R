@@ -13,6 +13,9 @@
 #'          a JavaScript \code{function}.
 #' @param valueField \code{character} for the field to use to calculate size.  The default
 #'          value is \code{"size"}.
+#' @param height,width  height and width of sunburst htmlwidget containing div
+#'          specified in any valid \code{CSS} size unit.
+#' @param elementId string id as a valid \code{CSS} element id.
 #'
 #' @example inst/examples/example_sund2b.R
 #'
