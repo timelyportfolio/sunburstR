@@ -7,8 +7,8 @@
 sunburst(data = NULL, legendOrder = NULL, colors = NULL,
   valueField = "size", percent = TRUE, count = FALSE,
   explanation = NULL, breadcrumb = list(), legend = list(),
-  sortFunction = NULL, withD3 = FALSE, width = NULL, height = NULL,
-  elementId = NULL, sizingPolicy = NULL, csvdata = NULL,
+  sortFunction = NULL, sumNodes = TRUE, withD3 = FALSE, width = NULL,
+  height = NULL, elementId = NULL, sizingPolicy = NULL, csvdata = NULL,
   jsondata = NULL)
 }
 \arguments{
@@ -52,6 +52,10 @@ and \code{r} is the radius all in \code{px}.}
 
 \item{sortFunction}{\code{\link[htmlwidgets]{JS}} function to sort the slices.
 The default sort is by size.}
+
+\item{sumNodes}{\code{logical} to sum non-leaf nodes.  The default
+\code{sumNodes = TRUE} assumes that the user has not already
+calculated a sum.}
 
 \item{withD3}{\code{logical} to include d3 dependency from \code{d3r}.  As of
 version 1.0, sunburst uses a standalone JavaScript build and will

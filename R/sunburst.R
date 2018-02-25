@@ -34,6 +34,9 @@
 #'          and \code{r} is the radius all in \code{px}.
 #' @param sortFunction \code{\link[htmlwidgets]{JS}} function to sort the slices.
 #'          The default sort is by size.
+#' @param sumNodes \code{logical} to sum non-leaf nodes.  The default
+#'          \code{sumNodes = TRUE} assumes that the user has not already
+#'          calculated a sum.
 #' @param withD3 \code{logical} to include d3 dependency from \code{d3r}.  As of
 #'          version 1.0, sunburst uses a standalone JavaScript build and will
 #'          not include the entire d3 in the global/window namespace.  To include
@@ -65,6 +68,7 @@ sunburst <- function(
   , breadcrumb = list()
   , legend = list()
   , sortFunction = NULL
+  , sumNodes = TRUE
   , withD3 = FALSE
   , width = NULL
   , height = NULL
@@ -122,6 +126,7 @@ sunburst <- function(
       ,breadcrumb = breadcrumb
       ,legend = legend
       ,sortFunction = sortFunction
+      ,sumNodes = sumNodes
     )
   )
 

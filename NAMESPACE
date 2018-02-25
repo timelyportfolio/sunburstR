@@ -2,7 +2,10 @@
 
 export(add_shiny)
 export(renderSunburst)
+export(renderSund2b)
 export(sunburst)
 export(sunburstOutput)
+export(sund2b)
+export(sund2bOutput)
 import(htmltools)
 import(htmlwidgets)

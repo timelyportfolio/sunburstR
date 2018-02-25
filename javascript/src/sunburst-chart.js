@@ -145,12 +145,30 @@ export default function (el, instance, dispatch_) {
         .attr("r", radius)
         .style("opacity", 0);
 
-    // Turn the data into a d3 hierarchy and calculate the sums.
+    // Turn the data into a d3 hierarchy
     var root = hierarchy(json)
+    
+    if(x.options.sumNodes === true) {
+      // Calculate sums unless x.options.sumNodes is false
+      root
         .sum(function(d) {
           // only sum if no children (or is leaf)
-          if(!(d.children && d.children.length > 0)) return d[x.options.valueField || "size"];
+          return d[x.options.valueField || "size"];
         });
+    } else {
+      // Move valueField or "size" to node.value
+      root.each(function(d) {
+        d.value = d.data[x.options.valueField || "size"]
+      });
+
+      // Then we need to calculate root sum
+      root.value = root.children.reduce(
+        function(left, right) {
+          return left + right.value
+        },
+        0
+      )
+    }
 
     // check for sort function
     if(x.options.sortFunction){
