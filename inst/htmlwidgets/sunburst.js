@@ -203,7 +203,9 @@ function draw (el, instance, dispatch_) {
 
     if(x.options.legend !== false) {
       drawLegend(nodes);
-      d3Selection.select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
+      d3Selection.select(el).select(".sunburst-togglelegend")
+        .style("visibility", "")
+        .on("click", toggleLegend);
     } else {
       removeLegend();
     }

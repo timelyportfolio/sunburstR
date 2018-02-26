@@ -200,7 +200,9 @@ export default function (el, instance, dispatch_) {
 
     if(x.options.legend !== false) {
       drawLegend(nodes);
-      select(el).select(".sunburst-togglelegend").on("click", toggleLegend);
+      select(el).select(".sunburst-togglelegend")
+        .style("visibility", "")
+        .on("click", toggleLegend);
     } else {
       removeLegend();
     }
