@@ -307,12 +307,19 @@ function draw (el, instance, dispatch_) {
 
   function initializeBreadcrumbTrail() {
     // Add the svg area.
-    var trail = d3Selection.select(el).select(".sunburst-sequence").append("svg")
-        .attr("width", width)
-        //.attr("height", 50)
+    var trail = d3Selection.select(el).select(".sunburst-sequence").select("svg");
+    if(trail.nodes().length === 0) {
+      trail = d3Selection.select(el).select(".sunburst-sequence").append("svg")
         .attr("id", el.id + "-trail");
+      trail.append("text");
+    }
+
+    trail
+      .attr("width", width);
+      //.attr("height", 50)
+
     // Add the label at the end, for the percentage.
-    trail.append("text")
+    trail.select("text")
       .attr("id", el.id + "-endlabel")
       .style("fill", "#000");
   }
