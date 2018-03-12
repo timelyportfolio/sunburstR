@@ -4,7 +4,9 @@
 
 * add `sund2b()` htmlwidget for a [d2b](http://www.d2bjs.org/) sunburst chart
 
-* allow turning off the legend with argument `legend = FALSE` (see [issue](https://github.com/timelyportfolio/sunburstR/issues/61))
+* allow turning off the legend with argument `legend = FALSE` (see (issue)[https://github.com/timelyportfolio/sunburstR/issues/61])
+
+* fix bug to not duplicate svg for breadcrumbs on resize or re-render
 
 # sunburstR 1.0.3
 
