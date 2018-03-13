@@ -49,13 +49,15 @@ Imports:
     dplyr,
     htmlwidgets,
     htmltools
-Suggests:
+Suggests: 
     jsonlite,
     knitr,
     markdown,
     pipeR,
     testthat,
-    tidyr (>= 0.7.0)
+    tidyr (>= 0.7.0),
+    rmarkdown
 Enhances:
     treemap
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr

@@ -60,6 +60,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/sunburst-2-0-0.html">Sunburst 2.0.0</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">News</a>
 </li>
@@ -88,23 +100,33 @@
     </div>
 
     <div class="contents">
-    <div id="sunbust-1-0-3" class="section level1">
+    <div id="sunburstr-2-0-0" class="section level1">
 <h1 class="hasAnchor">
-<a href="#sunbust-1-0-3" class="anchor"></a>sunbust 1.0.3</h1>
+<a href="#sunburstr-2-0-0" class="anchor"></a>sunburstR 2.0.0</h1>
+<ul>
+<li><p>add <code>sumNodes</code> argument to correctly handle pre-summed trees, like <code><a href="http://www.rdocumentation.org/packages/treemap/topics/treemap">treemap::treemap</a></code> to not double count the aggregate (see (issue)[<a href="https://github.com/timelyportfolio/sunburstR/issues/62" class="uri">https://github.com/timelyportfolio/sunburstR/issues/62</a>])</p></li>
+<li><p>add <code><a href="../reference/sund2b.html">sund2b()</a></code> htmlwidget for a <a href="http://www.d2bjs.org/">d2b</a> sunburst chart</p></li>
+<li><p>allow turning off the legend with argument <code>legend = FALSE</code> (see (issue)[<a href="https://github.com/timelyportfolio/sunburstR/issues/61" class="uri">https://github.com/timelyportfolio/sunburstR/issues/61</a>])</p></li>
+<li><p>fix bug to not duplicate svg for breadcrumbs on resize or re-render</p></li>
+</ul>
+</div>
+    <div id="sunburstr-1-0-3" class="section level1">
+<h1 class="hasAnchor">
+<a href="#sunburstr-1-0-3" class="anchor"></a>sunburstR 1.0.3</h1>
 <ul>
 <li>change text color in legend and breadcrumb to white or black for legibility using d3plus</li>
 </ul>
 </div>
-    <div id="sunburst-1-0-2" class="section level1">
+    <div id="sunburstr-1-0-2" class="section level1">
 <h1 class="hasAnchor">
-<a href="#sunburst-1-0-2" class="anchor"></a>sunburst 1.0.2</h1>
+<a href="#sunburstr-1-0-2" class="anchor"></a>sunburstR 1.0.2</h1>
 <ul>
 <li>changes required in downstream d3r to work with new tidyr (0.7.0), so now working and tested</li>
 </ul>
 </div>
-    <div id="sunburst-1-0-1" class="section level1">
+    <div id="sunburstr-1-0-1" class="section level1">
 <h1 class="hasAnchor">
-<a href="#sunburst-1-0-1" class="anchor"></a>sunburst 1.0.1</h1>
+<a href="#sunburstr-1-0-1" class="anchor"></a>sunburstR 1.0.1</h1>
 <ul>
 <li>improve internal <code>csv_to_hier()</code> with delimiter argument and smart convert for root level</li>
 </ul>
@@ -215,9 +237,10 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#sunbust-1-0-3">1.0.3</a></li>
-        <li><a href="#sunburst-1-0-2">1.0.2</a></li>
-        <li><a href="#sunburst-1-0-1">1.0.1</a></li>
+        <li><a href="#sunburstr-2-0-0">2.0.0</a></li>
+        <li><a href="#sunburstr-1-0-3">1.0.3</a></li>
+        <li><a href="#sunburstr-1-0-2">1.0.2</a></li>
+        <li><a href="#sunburstr-1-0-1">1.0.1</a></li>
         <li><a href="#sunburstr-1-0-0">1.0.0</a></li>
         <li><a href="#sunburstr-0-6-5">0.6.5</a></li>
         <li><a href="#sunburstr-0-6-4">0.6.4</a></li>
@@ -233,7 +256,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Mike Bostock, Kerry Rodden, Kent Russell.</p>
+  <p>Developed by Mike Bostock, Kerry Rodden, Kevin Warne, Kent Russell.</p>
 </div>
 
 <div class="pkgdown">
