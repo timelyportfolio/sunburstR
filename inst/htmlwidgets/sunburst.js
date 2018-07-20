@@ -173,6 +173,8 @@ function draw (el, instance, dispatch_) {
       );
     }
 
+    // if displaying values relative to parents then add percentage of parent
+    // and parent size properties into each node
     if (x.options.percentMode === "parent") {
       totalSize = root.value;
       root.percent = 100;
@@ -233,12 +235,15 @@ function draw (el, instance, dispatch_) {
   // Fade all but the current sequence, and show it in the breadcrumb trail.
   function mouseover(d) {
 
+    // calculate percentage in terms of total
+    // it should always make sense to show this percentage in the breadcrumb
     var percentageTotal = (100 * d.value / totalSize).toPrecision(3);
     var percentageTotalString = percentageTotal + "%";
     if (percentageTotal < 0.1) {
       percentageTotalString = "< 0.1%";
     }
 
+    // calculate percentage depending on mode, could be of total or of parent element
     var percentMode = x.options.percentMode;
     var percentage = (percentMode === "parent") ? d.percent : percentageTotal;
     var percentageString = percentage + "%";
@@ -246,6 +251,7 @@ function draw (el, instance, dispatch_) {
       percentageString = "< 0.1%";
     }
 
+    // if percent is of parent then the count will also be of parent
     var outerSize = (percentMode === "parent") ? d.parentSize : totalSize;
     var countString = [
         '<span style = "font-size:.7em">',
@@ -666,8 +672,6 @@ HTMLWidgets.widget({
           json = x.data;
         }
         instance.json = json;
-
-        console.log(json);
 
         draw(el, instance, dispatch_);
 
