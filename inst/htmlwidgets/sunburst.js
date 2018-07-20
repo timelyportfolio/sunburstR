@@ -173,6 +173,24 @@ function draw (el, instance, dispatch_) {
       );
     }
 
+    if (x.options.percentMode === "parent") {
+      totalSize = root.value;
+      root.percent = 100;
+      function assignChildrenPercent(node) {
+          if (!node.children) {
+              return;
+          }
+  
+          for (let i = 0; i < node.children.length; i++) {
+              node.children[i].percent = 100 * node.children[i].value / node.value;
+              node.children[i].percent = node.children[i].percent.toPrecision(3);
+              node.children[i].parentSize = node.value;
+              assignChildrenPercent(node.children[i]);
+          }
+      }
+      assignChildrenPercent(root);
+    }
+
     // check for sort function
     if(x.options.sortFunction){
       root.sort(x.options.sortFunction);
@@ -215,15 +233,23 @@ function draw (el, instance, dispatch_) {
   // Fade all but the current sequence, and show it in the breadcrumb trail.
   function mouseover(d) {
 
-    var percentage = (100 * d.value / totalSize).toPrecision(3);
+    var percentageTotal = (100 * d.value / totalSize).toPrecision(3);
+    var percentageTotalString = percentageTotal + "%";
+    if (percentageTotal < 0.1) {
+      percentageTotalString = "< 0.1%";
+    }
+
+    var percentMode = x.options.percentMode;
+    var percentage = (percentMode === "parent") ? d.percent : percentageTotal;
     var percentageString = percentage + "%";
     if (percentage < 0.1) {
       percentageString = "< 0.1%";
     }
 
+    var outerSize = (percentMode === "parent") ? d.parentSize : totalSize;
     var countString = [
         '<span style = "font-size:.7em">',
-        d3Format.format("1.2s")(d.value) + ' of ' + d3Format.format("1.2s")(totalSize),
+        d3Format.format("1.2s")(d.value) + ' of ' + d3Format.format("1.2s")(outerSize),
         '</span>'
       ].join('');
 
@@ -256,7 +282,7 @@ function draw (el, instance, dispatch_) {
     );
     dispatch_.call("mouseover", chart._selection);
 
-    updateBreadcrumbs(sequenceArray, percentageString);
+    updateBreadcrumbs(sequenceArray, percentageTotalString);
 
     // Fade all the segments.
     d3Selection.select(el).selectAll("path")
@@ -640,6 +666,8 @@ HTMLWidgets.widget({
           json = x.data;
         }
         instance.json = json;
+
+        console.log(json);
 
         draw(el, instance, dispatch_);
 
