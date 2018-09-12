@@ -1,10 +1,14 @@
+# sunburstR 2.1.0
+
+* update d2b so that pre-summed trees correctly handled; (see [issue 78](https://github.com/timelyportfolio/sunburstR/issues/78) and [issue 62](https://github.com/timelyportfolio/sunburstR/issues/62))
+
 # sunburstR 2.0.0
 
-* add `sumNodes` argument to correctly handle pre-summed trees, like `treemap::treemap` to not double count the aggregate (see (issue)[https://github.com/timelyportfolio/sunburstR/issues/62])
+* add `sumNodes` argument to correctly handle pre-summed trees, like `treemap::treemap` to not double count the aggregate (see [issue](https://github.com/timelyportfolio/sunburstR/issues/62))
 
 * add `sund2b()` htmlwidget for a [d2b](http://www.d2bjs.org/) sunburst chart
 
-* allow turning off the legend with argument `legend = FALSE` (see (issue)[https://github.com/timelyportfolio/sunburstR/issues/61])
+* allow turning off the legend with argument `legend = FALSE` (see [issue](https://github.com/timelyportfolio/sunburstR/issues/61))
 
 * fix bug to not duplicate svg for breadcrumbs on resize or re-render
 
