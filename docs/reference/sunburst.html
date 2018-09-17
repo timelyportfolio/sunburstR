@@ -223,8 +223,7 @@ specified in any valid <code>CSS</code> size unit.</p></td>
   ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )[<span class='fl'>1</span>:<span class='fl'>100</span>,]
 
-<span class='fu'>sunburst</span>(<span class='no'>sequences</span>)</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
+<span class='fu'>sunburst</span>(<span class='no'>sequences</span>)</div><span class='co'># NOT RUN {</span>
 <span class='co'># explore some of the arguments</span>
 <span class='fu'>sunburst</span>(
   <span class='no'>sequences</span>
@@ -411,7 +410,8 @@ function(a,b){
 }
 "</span>
   )
-)</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'><span class='co'># sorting example: place data in order of occurence</span>
+)
+<span class='co'># sorting example: place data in order of occurence</span>
 
 <span class='fu'>library</span>(<span class='no'>sunburstR</span>)
 
@@ -422,11 +422,11 @@ function(a,b){
 
 <span class='fu'>sunburst</span>(<span class='no'>df</span>,
          <span class='co'># create a trivial sort function</span>
-         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
+         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))
+
 <span class='no'>new_order</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>1</span>)
 <span class='fu'>sunburst</span>(<span class='no'>df</span>[<span class='no'>new_order</span>,],
-         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

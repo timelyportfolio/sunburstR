@@ -69,15 +69,15 @@
 <!--/.navbar -->
 
       
-      </header><script src="sunburst-2-0-0_files/htmlwidgets-1.0/htmlwidgets.js"></script><link href="sunburst-2-0-0_files/sequences-0.1/sequences.css" rel="stylesheet">
-<script src="sunburst-2-0-0_files/sunburst-binding-2.0.0/sunburst.js"></script><script src="sunburst-2-0-0_files/sund2b-binding-2.0.0/sund2b.js"></script><script src="sunburst-2-0-0_files/d3-4.12.0/d3.min.js"></script><link href="sunburst-2-0-0_files/d2b-0.5.1/d2b_custom.css" rel="stylesheet">
+      </header><script src="sunburst-2-0-0_files/htmlwidgets-1.2/htmlwidgets.js"></script><link href="sunburst-2-0-0_files/sequences-0.1/sequences.css" rel="stylesheet">
+<script src="sunburst-2-0-0_files/sunburst-binding-2.1.0/sunburst.js"></script><script src="sunburst-2-0-0_files/sund2b-binding-2.1.0/sund2b.js"></script><script src="sunburst-2-0-0_files/d3-4.13.0/d3.min.js"></script><link href="sunburst-2-0-0_files/d2b-0.5.1/d2b_custom.css" rel="stylesheet">
 <script src="sunburst-2-0-0_files/d2b-0.5.1/d2b.js"></script><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Sunburst 2.0.0</h1>
                         <h4 class="author">Kent Russell</h4>
             
-            <h4 class="date">2018-03-12</h4>
+            <h4 class="date">2018-09-17</h4>
           </div>
 
     
@@ -90,7 +90,7 @@
 <p>Let’s get started by loading some packages and making some simple data to use throughout the post.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sunburstR)
 <span class="kw">packageVersion</span>(<span class="st">"sunburstR"</span>)
-<span class="co">#&gt; [1] '2.0.0'</span></code></pre></div>
+<span class="co">#&gt; [1] '2.1.0'</span></code></pre></div>
 <p>Simple data should suffice for these examples.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(htmltools)
 <span class="kw">library</span>(d3r)
@@ -145,6 +145,7 @@ knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <p><a href="https://github.com/timelyportfolio/d3r"><code>d3r</code></a> will help us build our hierarchy.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(d3r)
 tree &lt;-<span class="st"> </span><span class="kw">d3_nest</span>(dat, <span class="dt">value_cols =</span> <span class="st">"size"</span>)
+<span class="co">#&gt; Warning: package 'bindrcpp' was built under R version 3.4.4</span>
 tree
 <span class="co">#&gt; {"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"}</span></code></pre></div>
 </div>
@@ -169,7 +170,7 @@ sb2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sunburs
 )</code></pre></div>
 <div style="display: flex; align-items:center;">
 <div style="width:50%; border:1px solid #ccc;">
-<div class="sunburst html-widget" id="htmlwidget-607d057ab895da1a687d" style="width:100%;height:400px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-daca7f622630556e7f54" style="width:100%;height:400px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -183,10 +184,10 @@ sb2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sunburs
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-607d057ab895da1a687d">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-daca7f622630556e7f54">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="width:50%; border:1px solid #ccc;">
-<div class="sunburst html-widget" id="htmlwidget-ee16ed950ad46ca59cd7" style="width:100%;height:400px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-d733d044d0dcef97755a" style="width:100%;height:400px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -200,7 +201,7 @@ sb2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sunburs
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-ee16ed950ad46ca59cd7">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-d733d044d0dcef97755a">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -215,8 +216,8 @@ sb2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sunburs
   sb3
 )</code></pre></div>
 <div style="display: flex; align-items:center;">
-<div id="htmlwidget-6beb8c81dee3a4ec4c5f" style="width:100%;height:500px;" class="sund2b html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6beb8c81dee3a4ec4c5f">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"colors":null,"valueField":"size"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b99986f9bdb2c4e21c70" style="width:100%;height:500px;" class="sund2b html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b99986f9bdb2c4e21c70">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"colors":null,"valueField":"size"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="sum-nodes" class="section level2">

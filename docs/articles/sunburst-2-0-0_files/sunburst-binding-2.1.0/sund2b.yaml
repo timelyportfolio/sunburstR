@@ -1,0 +1,6 @@
+#dependencies:
+#  - name: d2b
+#    version: 0.5.1
+#    src: htmlwidgets/lib/d2b
+#    script: d2b.min.js
+#    stylesheet:

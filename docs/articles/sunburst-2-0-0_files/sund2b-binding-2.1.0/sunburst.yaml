@@ -1,0 +1,6 @@
+dependencies:
+  - name: sequences
+    version: 0.1
+    src: htmlwidgets/lib/sequences
+#    script: sequences.js
+    stylesheet: sequences.css
