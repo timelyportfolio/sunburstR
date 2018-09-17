@@ -29,8 +29,6 @@ sequences_json <- jsonlite::fromJSON(
 )
 
 test_that("sunburstR works with both csv and json data", {
-  expect_silent(sunburst(sequences_csv))
-  expect_silent(sunburst(sequences_json))
   # csvdata and jsondata deprecated so expect warning
   expect_warning(sunburst(csvdata=sequences_csv))
   expect_warning(sunburst(jsondata=sequences_json))
