@@ -1,5 +1,5 @@
 ## Notes
-resubmitted with corrected link
+removed occasionally bad link
 
    Found the following (possibly) invalid URLs:
      URL: https://d2bjs.com

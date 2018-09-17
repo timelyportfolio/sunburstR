@@ -76,7 +76,7 @@ div(
 
 ## `d2b` Sunburst
 
-Kevin Warne has built an incredible sunburst in [`d2b`](https://www.d2bjs.com), so I just had to add it to `sunburstR`.  I think Kevin's work definitely deserves a star on [Github](https://github.com/d2bjs), and with only 32, I encourage a quick detour to share the love.
+Kevin Warne has built an incredible sunburst in `d2b`, so I just had to add it to `sunburstR`.  I think Kevin's work definitely deserves a star on [Github](https://github.com/d2bjs), and with only 32, I encourage a quick detour to share the love.
 
 ```{r}
 sb3 <- sund2b(tree, width="100%")
