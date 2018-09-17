@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows 10 install, R 3.4.3
-* ubuntu 12.04 (on travis-ci), R 3.4.2
+* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.0
 * rhub check_for_cran
 
 ## R CMD check results
