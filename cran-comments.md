@@ -1,3 +1,14 @@
+## Notes
+resubmitted with corrected link
+
+   Found the following (possibly) invalid URLs:
+     URL: https://d2bjs.com
+       From: inst/doc/sunburst-2-0-0.html
+       Status: Error
+       Message: libcurl error code 6:
+                Could not resolve host: d2bjs.com
+
+
 ## Test environments
 * local Windows 10 install, R 3.4.3
 * ubuntu 14.04.5 LTS (on travis-ci), R 3.5.0
