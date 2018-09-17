@@ -33,7 +33,7 @@ Authors@R: c(
       person(
         "CJ", "Yetman"
         , role = c("ctb")
-        , comment = "R interface"
+        , comment = c("R interface", ORCID = "0000-0001-5099-9500")
         , email = "cj@cjyetman.com"
       )
     )
