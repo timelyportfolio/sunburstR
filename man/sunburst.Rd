@@ -5,11 +5,11 @@
 \title{`d3.js` Sequence Sunburst Diagrams}
 \usage{
 sunburst(data = NULL, legendOrder = NULL, colors = NULL,
-  valueField = "size", percent = TRUE, count = FALSE,
-  explanation = NULL, breadcrumb = list(), legend = list(),
-  sortFunction = NULL, sumNodes = TRUE, withD3 = FALSE, width = NULL,
-  height = NULL, elementId = NULL, sizingPolicy = NULL, csvdata = NULL,
-  jsondata = NULL)
+  valueField = "size", percent = TRUE, percentMode = c("total", "parent"),
+  count = FALSE, explanation = NULL, breadcrumb = list(),
+  legend = list(), sortFunction = NULL, sumNodes = TRUE, withD3 = FALSE,
+  width = NULL, height = NULL, elementId = NULL, sizingPolicy = NULL,
+  csvdata = NULL, jsondata = NULL)
 }
 \arguments{
 \item{data}{data in csv source,target form or in
@@ -33,6 +33,9 @@ a JavaScript \code{function}.}
 value is \code{"size"}.}
 
 \item{percent}{\code{logical} to include percentage of total in the explanation.}
+
+\item{percentMode}{\code{character} to determine if included percentage and count is of
+the total or the parent element.}
 
 \item{count}{\code{logical} to include count and total in the explanation.}
 

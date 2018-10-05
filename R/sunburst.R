@@ -20,6 +20,8 @@
 #' @param valueField \code{character} for the field to use to calculate size.  The default
 #'          value is \code{"size"}.
 #' @param percent \code{logical} to include percentage of total in the explanation.
+#' @param percentMode \code{character} to determine if included percentage and count is of
+#'        the total or the parent element.
 #' @param count \code{logical} to include count and total in the explanation.
 #' @param explanation JavaScript function to define a custom explanation for the center
 #'          of the sunburst.  Note, this will override \code{percent} and \code{count}.
@@ -63,6 +65,7 @@ sunburst <- function(
   , colors = NULL
   , valueField = "size"
   , percent = TRUE
+  , percentMode = c("total", "parent")
   , count =  FALSE
   , explanation = NULL
   , breadcrumb = list()
@@ -84,6 +87,7 @@ sunburst <- function(
   }
   if(is.null(data) && !is.null(csvdata)) data <- csvdata
   if(is.null(data) && !is.null(jsondata)) data <- jsondata
+  percentMode <- match.arg(percentMode);
 
   # accept JSON string as data
   if( inherits(data,c("character","connection")) ){
@@ -121,6 +125,7 @@ sunburst <- function(
       ,colors = colors
       ,valueField = valueField
       ,percent = percent
+      ,percentMode = percentMode
       ,count = count
       ,explanation = explanation
       ,breadcrumb = breadcrumb
