@@ -65,6 +65,9 @@ function(){
       if(d3.select(d3.event.target).classed("d2b-sunburst-arc")) {
         Shiny.onInputChange(el.attr("id") + "_click", getPath(d3.select(d3.event.target)))
       }
+      if(d3.select(d3.event.target).classed("d2b-sunburst-center")) {
+        Shiny.onInputChange(el.attr("id") + "_click_center", getPath(d3.select(d3.event.target)))
+      }
     });
   }
 }
