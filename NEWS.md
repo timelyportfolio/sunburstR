@@ -1,3 +1,7 @@
+# sunburstR 2.1.1
+
+* add Shiny to d2b; (see [issue 64](https://github.com/timelyportfolio/sunburstR/issues/64))
+
 # sunburstR 2.1.0
 
 * update d2b so that pre-summed trees correctly handled; (see [issue 78](https://github.com/timelyportfolio/sunburstR/issues/78) and [issue 62](https://github.com/timelyportfolio/sunburstR/issues/62))

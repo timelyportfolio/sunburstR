@@ -4,8 +4,8 @@
 \alias{sund2b}
 \title{Sunburst Using 'd2b'}
 \usage{
-sund2b(data = NULL, colors = NULL, valueField = "size", width = NULL,
-  height = NULL, elementId = NULL)
+sund2b(data = NULL, colors = NULL, valueField = "size",
+  width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{data in csv source,target form or in
