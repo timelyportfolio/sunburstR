@@ -19,4 +19,4 @@ These are still far from feature-complete.  I would love your input, feedback, a
 
 ### Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/timelyportfolio/sunburstR/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
