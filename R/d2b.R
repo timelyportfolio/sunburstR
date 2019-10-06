@@ -13,6 +13,8 @@
 #'          a JavaScript \code{function}.
 #' @param valueField \code{character} for the field to use to calculate size.  The default
 #'          value is \code{"size"}.
+#' @param tooltip \code{list} of options for customizing the tooltip. See the helper
+#'          function \code{\link{sund2bTooltip}} for more information.
 #' @param height,width  height and width of sunburst htmlwidget containing div
 #'          specified in any valid \code{CSS} size unit.
 #' @param elementId string id as a valid \code{CSS} element id.
@@ -26,6 +28,7 @@ sund2b <- function(
   data = NULL,
   colors = NULL,
   valueField = "size",
+  tooltip = NULL,
   width = NULL, height = NULL, elementId = NULL
 ) {
 
@@ -58,7 +61,10 @@ sund2b <- function(
 
   # forward options using x
   x = list(
-    data = data,
+    data = list(
+      root = data,
+      tooltip = Filter(Negate(is.null), tooltip)
+    ),
     options = list(
       colors = colors,
       valueField = valueField
@@ -77,6 +83,40 @@ sund2b <- function(
       d3r::d3_dep_v4(),
       d2b_dep()
     )
+  )
+}
+
+#' Advanced Customization of 'd2b' Tooltip
+#'
+#' @param at \code{character} which should be one of
+#'          "top left", "top center", "top right", "center left", "center center",
+#'          "center right", "bottom center", "bottom right" to specify
+#'          where the tooltip will be positioned relative to the hovered item.
+#' @param followMouse \code{logical} controlling whether the tooltip
+#'          will follow the mouse instead of being placed in a static
+#'          position relative to the hovered element
+#' @param html \code{character} or \code{htmlwidgets::JS} to customize the content
+#'          of the tooltip.  To provide a function, the arguments for the 'JavaScript'
+#'          function will be 'function(nodedata, size, percent)' and the function
+#'          should return a string.
+#' @param my \code{character} which should be one of "top", "left", "right", "bottom"
+#'          to control the orientation of the tooltip.
+#'
+#' @return \code{list}
+#' @export
+#'
+#' @example inst/examples/example_sund2bTooltip.R
+sund2bTooltip <- function(
+  at = NULL,
+  followMouse = NULL,
+  html = NULL,
+  my = NULL
+) {
+  list(
+    at = at,
+    followMouse = followMouse,
+    html = html,
+    my = my
   )
 }
 
@@ -112,11 +152,11 @@ renderSund2b <- function(expr, env = parent.frame(), quoted = FALSE) {
 d2b_dep <- function() {
   htmltools::htmlDependency(
     name = "d2b",
-    version = "0.5.1",
+    version = "1.0.9",
     src = c(
       file = system.file("htmlwidgets/lib/d2b", package="sunburstR")
     ),
-    script = "d2b.js",
+    script = "d2b.min.js",
     stylesheet = "d2b_custom.css"
   )
 }

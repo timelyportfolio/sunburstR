@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sunburstR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.2</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>sund2b</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>valueField</span> <span class='kw'>=</span> <span class='st'>"size"</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +150,11 @@ a JavaScript <code>function</code>.</p></td>
       <th>valueField</th>
       <td><p><code>character</code> for the field to use to calculate size.  The default
 value is <code>"size"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>tooltip</th>
+      <td><p><code>list</code> of options for customizing the tooltip. See the helper
+function <code><a href='sund2bTooltip.html'>sund2bTooltip</a></code> for more information.</p></td>
     </tr>
     <tr>
       <th>height, width</th>

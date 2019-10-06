@@ -5,7 +5,7 @@
 \title{Sunburst Using 'd2b'}
 \usage{
 sund2b(data = NULL, colors = NULL, valueField = "size",
-  width = NULL, height = NULL, elementId = NULL)
+  tooltip = NULL, width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{data in csv source,target form or in
@@ -21,6 +21,9 @@ a JavaScript \code{function}.}
 
 \item{valueField}{\code{character} for the field to use to calculate size.  The default
 value is \code{"size"}.}
+
+\item{tooltip}{\code{list} of options for customizing the tooltip. See the helper
+function \code{\link{sund2bTooltip}} for more information.}
 
 \item{height, width}{height and width of sunburst htmlwidget containing div
 specified in any valid \code{CSS} size unit.}

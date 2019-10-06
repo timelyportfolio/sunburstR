@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sunburstR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.2</span>
       </span>
     </div>
 
@@ -78,14 +78,14 @@
 
       
       </header><script src="sunburst-2-0-0_files/htmlwidgets-1.3/htmlwidgets.js"></script><link href="sunburst-2-0-0_files/sequences-0.1/sequences.css" rel="stylesheet">
-<script src="sunburst-2-0-0_files/sunburst-binding-2.1.1/sunburst.js"></script><script src="sunburst-2-0-0_files/sund2b-binding-2.1.1/sund2b.js"></script><script src="sunburst-2-0-0_files/d3-4.13.0/d3.min.js"></script><link href="sunburst-2-0-0_files/d2b-0.5.1/d2b_custom.css" rel="stylesheet">
-<script src="sunburst-2-0-0_files/d2b-0.5.1/d2b.js"></script><div class="row">
+<script src="sunburst-2-0-0_files/sunburst-binding-2.1.2/sunburst.js"></script><script src="sunburst-2-0-0_files/sund2b-binding-2.1.2/sund2b.js"></script><script src="sunburst-2-0-0_files/d3-4.13.0/d3.min.js"></script><link href="sunburst-2-0-0_files/d2b-1.0.9/d2b_custom.css" rel="stylesheet">
+<script src="sunburst-2-0-0_files/d2b-1.0.9/d2b.min.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Sunburst 2.0.0</h1>
                         <h4 class="author">Kent Russell</h4>
             
-            <h4 class="date">2019-03-03</h4>
+            <h4 class="date">2019-10-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/timelyportfolio/sunburstR/blob/master/vignettes/sunburst-2-0-0.Rmd"><code>vignettes/sunburst-2-0-0.Rmd</code></a></small>
       <div class="hidden name"><code>sunburst-2-0-0.Rmd</code></div>
@@ -101,7 +101,7 @@
 <p>Let’s get started by loading some packages and making some simple data to use throughout the post.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sunburstR)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/packageDescription">packageVersion</a></span>(<span class="st">"sunburstR"</span>)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; [1] '2.1.1'</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; [1] '2.1.2'</span></a></code></pre></div>
 <p>Simple data should suffice for these examples.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(htmltools)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; Warning: package 'htmltools' was built under R version 3.4.4</span></a>
@@ -157,9 +157,8 @@
 <p><a href="https://github.com/timelyportfolio/d3r"><code>d3r</code></a> will help us build our hierarchy.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(d3r)</a>
 <a class="sourceLine" id="cb3-2" title="2">tree &lt;-<span class="st"> </span><span class="kw">d3_nest</span>(dat, <span class="dt">value_cols =</span> <span class="st">"size"</span>)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; Warning: package 'bindrcpp' was built under R version 3.4.4</span></a>
-<a class="sourceLine" id="cb3-4" title="4">tree</a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; {"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"}</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-3" title="3">tree</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; {"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"}</span></a></code></pre></div>
 </div>
 <div id="legend-false" class="section level2">
 <h2 class="hasAnchor">
@@ -182,7 +181,7 @@
 <a class="sourceLine" id="cb4-14" title="14">)</a></code></pre></div>
 <div style="display: flex; align-items:center;">
 <div style="width:50%; border:1px solid #ccc;">
-<div class="sunburst html-widget" id="htmlwidget-e9e8bb2c3e8fb3d1e447" style="width:100%;height:400px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-35505a44a604a8d6c8ba" style="width:100%;height:400px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -196,10 +195,10 @@
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-e9e8bb2c3e8fb3d1e447">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-35505a44a604a8d6c8ba">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="width:50%; border:1px solid #ccc;">
-<div class="sunburst html-widget" id="htmlwidget-52af66211f8f6b045964" style="width:100%;height:400px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-2cb3f6774557936cae9d" style="width:100%;height:400px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -213,7 +212,7 @@
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-52af66211f8f6b045964">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-2cb3f6774557936cae9d">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -228,8 +227,8 @@
 <a class="sourceLine" id="cb5-5" title="5">  sb3</a>
 <a class="sourceLine" id="cb5-6" title="6">)</a></code></pre></div>
 <div style="display: flex; align-items:center;">
-<div id="htmlwidget-6a30a985efa0c160af70" style="width:100%;height:500px;" class="sund2b html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a30a985efa0c160af70">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"colors":null,"valueField":"size"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d33cda944d234df67a7a" style="width:100%;height:500px;" class="sund2b html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d33cda944d234df67a7a">{"x":{"data":{"root":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"tooltip":null},"options":{"colors":null,"valueField":"size"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="sum-nodes" class="section level2">
