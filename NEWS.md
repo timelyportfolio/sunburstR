@@ -1,5 +1,9 @@
 # sunburstR 2.1.1
 
+* add tooltip customization to d2b; (see [issue 92](https://github.com/timelyportfolio/sunburstR/issues/92))
+
+# sunburstR 2.1.1
+
 * add Shiny to d2b; (see [issue 64](https://github.com/timelyportfolio/sunburstR/issues/64))
 
 # sunburstR 2.1.0
