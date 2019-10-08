@@ -9,10 +9,18 @@ sequences <- read.csv(
   ,stringsAsFactors = FALSE
 )[1:200,]
 
-# change the tooltip
+# disable the breadcrumb
 sund2b(
   sequences,
-  tooltip = sund2bTooltip(
+  breadcrumbs = sund2bBreadcrumb(
+    enabled = FALSE
+  )
+)
+
+# change the breadcrumb content
+sund2b(
+  sequences,
+  breadcrumbs = sund2bBreadcrumb(
     html = htmlwidgets::JS("
 function(nodedata, size, percent) {
   return '<span style=\"font-weight: bold;\">' + nodedata.name + '</span>' + ' ' + size

@@ -15,6 +15,8 @@
 #'          value is \code{"size"}.
 #' @param tooltip \code{list} of options for customizing the tooltip. See the helper
 #'          function \code{\link{sund2bTooltip}} for more information.
+#' @param breadcrumbs \code{list} of options for customizing the breadcrumb. See the helper
+#'          function \code{\link{sund2bBreadcrumb}} for more information.
 #' @param height,width  height and width of sunburst htmlwidget containing div
 #'          specified in any valid \code{CSS} size unit.
 #' @param elementId string id as a valid \code{CSS} element id.
@@ -29,6 +31,7 @@ sund2b <- function(
   colors = NULL,
   valueField = "size",
   tooltip = NULL,
+  breadcrumbs = NULL,
   width = NULL, height = NULL, elementId = NULL
 ) {
 
@@ -63,7 +66,8 @@ sund2b <- function(
   x = list(
     data = list(
       root = data,
-      tooltip = Filter(Negate(is.null), tooltip)
+      tooltip = Filter(Negate(is.null), tooltip),
+      breadcrumbs = Filter(Negate(is.null), breadcrumbs)
     ),
     options = list(
       colors = colors,
@@ -117,6 +121,32 @@ sund2bTooltip <- function(
     followMouse = followMouse,
     html = html,
     my = my
+  )
+}
+
+#' Advanced Customization of 'd2b' Breadcrumb
+#'
+#' @param enabled \code{boolean} to enable or disable the breadcrumbs.
+#' @param html \code{character} or \code{htmlwidgets::JS} to customize the content
+#'          of the breadcrumb.  To provide a function, the arguments for the 'JavaScript'
+#'          function will be 'function(nodedata, size, percent)' and the function
+#'          should return a string.
+#' @param orient \code{character} which should be one of "top", "left", "right", "bottom"
+#'          to control the orientation of the breadcrumb relative to the chart.
+#'
+#' @return \code{list}
+#' @export
+#'
+#' @example inst/examples/example_sund2bBreadcrumb.R
+sund2bBreadcrumb <- function(
+  enabled = NULL,
+  html = NULL,
+  orient = NULL
+) {
+  list(
+    enabled = enabled,
+    html = html,
+    orient = orient
   )
 }
 

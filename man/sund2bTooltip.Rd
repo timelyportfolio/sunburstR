@@ -43,11 +43,7 @@ sequences <- read.csv(
   ,stringsAsFactors = FALSE
 )[1:200,]
 
-# create a d2b sunburst
-sund2b(sequences)
-
-# change the colors
-#   using d3.js categorical color scheme
+# change the tooltip
 sund2b(
   sequences,
   tooltip = sund2bTooltip(

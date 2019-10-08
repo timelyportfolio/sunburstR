@@ -1,4 +1,8 @@
-# sunburstR 2.1.1
+# sunburstR 2.1.3
+
+* add breadcrumb customization to d2b; (see [issue 92](https://github.com/timelyportfolio/sunburstR/issues/92))
+
+# sunburstR 2.1.2
 
 * add tooltip customization to d2b; (see [issue 92](https://github.com/timelyportfolio/sunburstR/issues/92))
 
