@@ -35,6 +35,14 @@ sequences <- read.csv(
   ,stringsAsFactors = FALSE
 )[1:200,]
 
+# disable the breadcrumb
+sund2b(
+  sequences,
+  breadcrumbs = sund2bBreadcrumb(
+    enabled = FALSE
+  )
+)
+
 # change the breadcrumb content
 sund2b(
   sequences,

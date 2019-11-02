@@ -5,8 +5,8 @@
 \title{Sunburst Using 'd2b'}
 \usage{
 sund2b(data = NULL, colors = NULL, valueField = "size",
-  tooltip = NULL, breadcrumbs = NULL, width = NULL, height = NULL,
-  elementId = NULL)
+  tooltip = NULL, breadcrumbs = NULL, rootLabel = NULL,
+  width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{data in csv source,target form or in
@@ -28,6 +28,8 @@ function \code{\link{sund2bTooltip}} for more information.}
 
 \item{breadcrumbs}{\code{list} of options for customizing the breadcrumb. See the helper
 function \code{\link{sund2bBreadcrumb}} for more information.}
+
+\item{rootLabel}{\code{character} to label root node something other than 'root'.}
 
 \item{height, width}{height and width of sunburst htmlwidget containing div
 specified in any valid \code{CSS} size unit.}
