@@ -18,6 +18,7 @@
 #' @param breadcrumbs \code{list} of options for customizing the breadcrumb. See the helper
 #'          function \code{\link{sund2bBreadcrumb}} for more information.
 #' @param rootLabel \code{character} to label root node something other than 'root'.
+#' @param showLabels \code{logical} to show labels on the slices.  The default is \code{FALSE}.
 #' @param height,width  height and width of sunburst htmlwidget containing div
 #'          specified in any valid \code{CSS} size unit.
 #' @param elementId string id as a valid \code{CSS} element id.
@@ -34,6 +35,7 @@ sund2b <- function(
   tooltip = NULL,
   breadcrumbs = NULL,
   rootLabel = NULL,
+  showLabels = FALSE,
   width = NULL, height = NULL, elementId = NULL
 ) {
 
@@ -74,7 +76,8 @@ sund2b <- function(
     options = list(
       colors = colors,
       valueField = valueField,
-      rootLabel = rootLabel
+      rootLabel = rootLabel,
+      showLabels = showLabels
     )
   )
 

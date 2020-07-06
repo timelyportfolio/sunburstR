@@ -66,6 +66,12 @@ HTMLWidgets.widget({
         sunburst.sunburst().size(function(d) {
           return d[x.options.valueField || "size"];
         });
+        if(
+          x.options.hasOwnProperty("showLabels") &&
+          (x.options.showLabels===true || x.options.showLabels===false )
+        ) {
+          sunburst.sunburst().showLabels(x.options.showLabels);
+        }
 
         if(x.options.hasOwnProperty("rootLabel") && x.options.rootLabel !== null) {
           x.data.root.label = x.options.rootLabel;

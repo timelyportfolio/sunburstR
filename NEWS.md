@@ -1,3 +1,7 @@
+# sunburstR 2.1.4
+
+* add showLabels argument to d2b; (see [issue 71](https://github.com/timelyportfolio/sunburstR/issues/71))
+
 # sunburstR 2.1.3
 
 * add breadcrumb customization to d2b; (see [issue 92](https://github.com/timelyportfolio/sunburstR/issues/92))
