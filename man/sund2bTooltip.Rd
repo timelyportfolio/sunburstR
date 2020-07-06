@@ -4,8 +4,7 @@
 \alias{sund2bTooltip}
 \title{Advanced Customization of 'd2b' Tooltip}
 \usage{
-sund2bTooltip(at = NULL, followMouse = NULL, html = NULL,
-  my = NULL)
+sund2bTooltip(at = NULL, followMouse = NULL, html = NULL, my = NULL)
 }
 \arguments{
 \item{at}{\code{character} which should be one of
@@ -49,7 +48,7 @@ sund2b(
   tooltip = sund2bTooltip(
     html = htmlwidgets::JS("
 function(nodedata, size, percent) {
-  return '<span style=\\"font-weight: bold;\\">' + nodedata.name + '</span>' + ' ' + size
+  return '<span style=\"font-weight: bold;\">' + nodedata.name + '</span>' + ' ' + size
 }
     ")
   )

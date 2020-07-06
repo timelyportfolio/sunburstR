@@ -9,20 +9,26 @@
 <title>Changelog • sunburstR</title>
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,9 +50,10 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -60,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sunburstR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.4</span>
       </span>
     </div>
 
@@ -68,7 +75,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -94,8 +101,8 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/timelyportfolio/sunburstR">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/timelyportfolio/sunburstR/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -106,18 +113,27 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/timelyportfolio/sunburstR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="sunburstr-214" class="section level1">
+<h1 class="page-header" data-toc-text="2.1.4">
+<a href="#sunburstr-214" class="anchor"></a>sunburstR 2.1.4<small> Unreleased </small>
+</h1>
+<ul>
+<li>add showLabels argument to d2b; (see <a href="https://github.com/timelyportfolio/sunburstR/issues/71">issue 71</a>)</li>
+</ul>
+</div>
     <div id="sunburstr-213" class="section level1">
-<h1 class="page-header">
-<a href="#sunburstr-213" class="anchor"></a>sunburstR 2.1.3<small> Unreleased </small>
+<h1 class="page-header" data-toc-text="2.1.3">
+<a href="#sunburstr-213" class="anchor"></a>sunburstR 2.1.3<small> 2019-11-05 </small>
 </h1>
 <ul>
 <li>add breadcrumb customization to d2b; (see <a href="https://github.com/timelyportfolio/sunburstR/issues/92">issue 92</a>)</li>
@@ -125,7 +141,7 @@
 </ul>
 </div>
     <div id="sunburstr-212" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="2.1.2">
 <a href="#sunburstr-212" class="anchor"></a>sunburstR 2.1.2<small> 2019-10-06 </small>
 </h1>
 <ul>
@@ -133,7 +149,7 @@
 </ul>
 </div>
     <div id="sunburstr-211" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="2.1.1">
 <a href="#sunburstr-211" class="anchor"></a>sunburstR 2.1.1<small> 2019-03-04 </small>
 </h1>
 <ul>
@@ -141,7 +157,7 @@
 </ul>
 </div>
     <div id="sunburstr-210" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="2.1.0">
 <a href="#sunburstr-210" class="anchor"></a>sunburstR 2.1.0<small> 2018-09-18 </small>
 </h1>
 <ul>
@@ -149,18 +165,18 @@
 </ul>
 </div>
     <div id="sunburstr-200" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="2.0.0">
 <a href="#sunburstr-200" class="anchor"></a>sunburstR 2.0.0<small> 2018-03-12 </small>
 </h1>
 <ul>
-<li><p>add <code>sumNodes</code> argument to correctly handle pre-summed trees, like <code><a href="https://www.rdocumentation.org/packages/treemap/topics/treemap">treemap::treemap</a></code> to not double count the aggregate (see <a href="https://github.com/timelyportfolio/sunburstR/issues/62">issue</a>)</p></li>
+<li><p>add <code>sumNodes</code> argument to correctly handle pre-summed trees, like <code><a href="https://rdrr.io/pkg/treemap/man/treemap.html">treemap::treemap</a></code> to not double count the aggregate (see <a href="https://github.com/timelyportfolio/sunburstR/issues/62">issue</a>)</p></li>
 <li><p>add <code><a href="../reference/sund2b.html">sund2b()</a></code> htmlwidget for a <a href="http://www.d2bjs.org/">d2b</a> sunburst chart</p></li>
 <li><p>allow turning off the legend with argument <code>legend = FALSE</code> (see <a href="https://github.com/timelyportfolio/sunburstR/issues/61">issue</a>)</p></li>
 <li><p>fix bug to not duplicate svg for breadcrumbs on resize or re-render</p></li>
 </ul>
 </div>
     <div id="sunburstr-103" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.3">
 <a href="#sunburstr-103" class="anchor"></a>sunburstR 1.0.3<small> 2018-01-30 </small>
 </h1>
 <ul>
@@ -168,7 +184,7 @@
 </ul>
 </div>
     <div id="sunburstr-102" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.2">
 <a href="#sunburstr-102" class="anchor"></a>sunburstR 1.0.2<small> 2017-08-24 </small>
 </h1>
 <ul>
@@ -176,7 +192,7 @@
 </ul>
 </div>
     <div id="sunburstr-101" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.1">
 <a href="#sunburstr-101" class="anchor"></a>sunburstR 1.0.1<small> Unreleased </small>
 </h1>
 <ul>
@@ -184,7 +200,7 @@
 </ul>
 </div>
     <div id="sunburstr-100" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.0">
 <a href="#sunburstr-100" class="anchor"></a>sunburstR 1.0.0<small> 2017-06-13 </small>
 </h1>
 <p>see <a href="https://github.com/timelyportfolio/sunburstR/projects/1">sunburstR v1 Github Project</a></p>
@@ -209,7 +225,7 @@
 </div>
 </div>
     <div id="sunburstr-065" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.6.5">
 <a href="#sunburstr-065" class="anchor"></a>sunburstR 0.6.5<small> 2017-04-18 </small>
 </h1>
 <div id="bug-fix" class="section level3">
@@ -222,7 +238,7 @@
 </div>
 </div>
     <div id="sunburstr-064" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.6.4">
 <a href="#sunburstr-064" class="anchor"></a>sunburstR 0.6.4<small> 2017-04-07 </small>
 </h1>
 <p>see <a href="https://github.com/timelyportfolio/sunburstR/blob/master/inst/examples/example_treemap.R">treemap example</a></p>
@@ -234,7 +250,7 @@
 </ul>
 </div>
     <div id="sunburstr-063" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.6.3">
 <a href="#sunburstr-063" class="anchor"></a>sunburstR 0.6.3<small> 2016-10-15 </small>
 </h1>
 <div id="updates-1" class="section level3">
@@ -246,7 +262,7 @@
 </div>
 </div>
     <div id="sunburstr-062" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.6.2">
 <a href="#sunburstr-062" class="anchor"></a>sunburstR 0.6.2<small> 2016-09-20 </small>
 </h1>
 <div id="updates-2" class="section level3">
@@ -259,7 +275,7 @@
 </div>
 </div>
     <div id="sunburstr-061" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.6.1">
 <a href="#sunburstr-061" class="anchor"></a>sunburstR 0.6.1<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level3">
@@ -282,7 +298,7 @@
 </div>
 </div>
     <div id="sunburstr-06" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.6">
 <a href="#sunburstr-06" class="anchor"></a>sunburstR 0.6<small> Unreleased </small>
 </h1>
 <ul>
@@ -291,30 +307,14 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#sunburstr-213">2.1.3</a></li>
-        <li><a href="#sunburstr-212">2.1.2</a></li>
-        <li><a href="#sunburstr-211">2.1.1</a></li>
-        <li><a href="#sunburstr-210">2.1.0</a></li>
-        <li><a href="#sunburstr-200">2.0.0</a></li>
-        <li><a href="#sunburstr-103">1.0.3</a></li>
-        <li><a href="#sunburstr-102">1.0.2</a></li>
-        <li><a href="#sunburstr-101">1.0.1</a></li>
-        <li><a href="#sunburstr-100">1.0.0</a></li>
-        <li><a href="#sunburstr-065">0.6.5</a></li>
-        <li><a href="#sunburstr-064">0.6.4</a></li>
-        <li><a href="#sunburstr-063">0.6.3</a></li>
-        <li><a href="#sunburstr-062">0.6.2</a></li>
-        <li><a href="#sunburstr-061">0.6.1</a></li>
-        <li><a href="#sunburstr-06">0.6</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -322,13 +322,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

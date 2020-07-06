@@ -4,9 +4,18 @@
 \alias{sund2b}
 \title{Sunburst Using 'd2b'}
 \usage{
-sund2b(data = NULL, colors = NULL, valueField = "size",
-  tooltip = NULL, breadcrumbs = NULL, rootLabel = NULL,
-  width = NULL, height = NULL, elementId = NULL)
+sund2b(
+  data = NULL,
+  colors = NULL,
+  valueField = "size",
+  tooltip = NULL,
+  breadcrumbs = NULL,
+  rootLabel = NULL,
+  showLabels = FALSE,
+  width = NULL,
+  height = NULL,
+  elementId = NULL
+)
 }
 \arguments{
 \item{data}{data in csv source,target form or in
@@ -31,6 +40,8 @@ function \code{\link{sund2bBreadcrumb}} for more information.}
 
 \item{rootLabel}{\code{character} to label root node something other than 'root'.}
 
+\item{showLabels}{\code{logical} to show labels on the slices.  The default is \code{FALSE}.}
+
 \item{height, width}{height and width of sunburst htmlwidget containing div
 specified in any valid \code{CSS} size unit.}
 
@@ -40,28 +51,34 @@ specified in any valid \code{CSS} size unit.}
 Create interactive sunburst chart with the 'd2b' charting library.
 }
 \examples{
+if(interactive()){
+
+  # The sund2b() API mirrors sunburst() with fewer arguments.
+
+  library(sunburstR)
+
+  # use a sample of the sequences csv data
+  sequences <- read.csv(
+    system.file("examples/visit-sequences.csv",package="sunburstR")
+    ,header = FALSE
+    ,stringsAsFactors = FALSE
+  )[1:200,]
+
+  # create a d2b sunburst
+  sund2b(sequences)
+
+  # show labels
+  sund2b(sequences, showLabels = TRUE)
+
+  # change the colors
+  #   using d3.js categorical color scheme
+  sund2b(
+    sequences,
+    colors = htmlwidgets::JS("d3.scaleOrdinal(d3.schemeCategory20b)")
+  )
+}
+
 \dontrun{
-
-# The sund2b() API mirrors sunburst() with fewer arguments.
-
-library(sunburstR)
-
-# use a sample of the sequences csv data
-sequences <- read.csv(
-  system.file("examples/visit-sequences.csv",package="sunburstR")
-  ,header = FALSE
-  ,stringsAsFactors = FALSE
-)[1:200,]
-
-# create a d2b sunburst
-sund2b(sequences)
-
-# change the colors
-#   using d3.js categorical color scheme
-sund2b(
-  sequences,
-  colors = htmlwidgets::JS("d3.scaleOrdinal(d3.schemeCategory20b)")
-)
 #  using RColorBrewer palette
 sund2b(
   sequences,

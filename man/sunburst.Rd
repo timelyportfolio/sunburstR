@@ -4,12 +4,26 @@
 \alias{sunburst}
 \title{`d3.js` Sequence Sunburst Diagrams}
 \usage{
-sunburst(data = NULL, legendOrder = NULL, colors = NULL,
-  valueField = "size", percent = TRUE, count = FALSE,
-  explanation = NULL, breadcrumb = list(), legend = list(),
-  sortFunction = NULL, sumNodes = TRUE, withD3 = FALSE,
-  width = NULL, height = NULL, elementId = NULL,
-  sizingPolicy = NULL, csvdata = NULL, jsondata = NULL)
+sunburst(
+  data = NULL,
+  legendOrder = NULL,
+  colors = NULL,
+  valueField = "size",
+  percent = TRUE,
+  count = FALSE,
+  explanation = NULL,
+  breadcrumb = list(),
+  legend = list(),
+  sortFunction = NULL,
+  sumNodes = TRUE,
+  withD3 = FALSE,
+  width = NULL,
+  height = NULL,
+  elementId = NULL,
+  sizingPolicy = NULL,
+  csvdata = NULL,
+  jsondata = NULL
+)
 }
 \arguments{
 \item{data}{data in csv source,target form or in

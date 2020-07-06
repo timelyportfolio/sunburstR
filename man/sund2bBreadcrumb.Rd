@@ -49,7 +49,7 @@ sund2b(
   breadcrumbs = sund2bBreadcrumb(
     html = htmlwidgets::JS("
 function(nodedata, size, percent) {
-  return '<span style=\\"font-weight: bold;\\">' + nodedata.name + '</span>' + ' ' + size
+  return '<span style=\"font-weight: bold;\">' + nodedata.name + '</span>' + ' ' + size
 }
     ")
   )
