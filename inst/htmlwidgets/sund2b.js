@@ -98,10 +98,14 @@ HTMLWidgets.widget({
           });
         }
 
+        // add x to instance for future reference
+        instance.x = x;
+
       },
 
       resize: function(width, height) {
 
+        var x = instance.x;
         sunburst.chartFrame().size({height: height});
         d3.select(el).call(sunburst);
 
