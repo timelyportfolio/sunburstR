@@ -8,7 +8,7 @@ csv_to_hier <- function(csv, delim = "-") {
   path_col_names <- paste0("X",seq_len(max_path_length))
   df <- dplyr::bind_rows(
     lapply(
-      step1,
+      hier_col,
       function(rw) {
         structure(rw, names = path_col_names[1:(length(rw))])
       }
