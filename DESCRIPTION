@@ -1,8 +1,8 @@
 Package: sunburstR
 Type: Package
 Title: Sunburst 'Htmlwidget'
-Version: 2.1.4
-Date: 2020-07-06
+Version: 2.1.5
+Date: 2020-10-04
 Authors@R: c(
       person(
         "Mike", "Bostock"

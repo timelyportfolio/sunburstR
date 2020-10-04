@@ -1,9 +1,17 @@
 #' @keywords internal
 csv_to_hier <- function(csv, delim = "-") {
+  hier_col <- strsplit(as.character(csv[[1]]), delim)
+  # determine max length of all the paths to build column names
+  #   issue 107
+  max_path_length <- max(unlist(lapply(hier_col, length)))
+  # build column names for path
+  path_col_names <- paste0("X",seq_len(max_path_length))
   df <- dplyr::bind_rows(
     lapply(
-      strsplit(as.character(csv[[1]]), delim),
-      function(rw) data.frame(t(rw), stringsAsFactors = FALSE)
+      step1,
+      function(rw) {
+        structure(rw, names = path_col_names[1:(length(rw))])
+      }
     )
   )
   # handle case where no delimiter in root
