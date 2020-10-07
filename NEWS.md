@@ -1,3 +1,7 @@
+# sunburstR 2.1.5
+
+* fix bug in internal `csv_to_hier` converter; (see [issue 107](https://github.com/timelyportfolio/sunburstR/issues/107))
+
 # sunburstR 2.1.4
 
 * add showLabels argument to d2b; (see [issue 71](https://github.com/timelyportfolio/sunburstR/issues/71))
