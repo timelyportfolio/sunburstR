@@ -1,10 +1,7 @@
 ## Notes
 
-Second submission with what I hope is the correct direct url for buildingwidgets.org.
-
 ## Test environments
-* local Windows 10 install, R 3.6.2
-* Ubuntu 16.04.6 LTS (on travis-ci), R 4.0.0
+* local Windows 10 install, R 4.1.1
 * rhub check_for_cran
 * winbuilder devel and release
 
