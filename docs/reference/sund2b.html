@@ -8,11 +8,13 @@
 
 <title>Sunburst Using 'd2b' — sund2b • sunburstR</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -36,10 +38,9 @@
 
 
 
+
 <meta property="og:title" content="Sunburst Using 'd2b' — sund2b" />
-
 <meta property="og:description" content="Create interactive sunburst chart with the 'd2b' charting library." />
-
 
 
 
@@ -71,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sunburstR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.6</span>
       </span>
     </div>
 
@@ -79,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -102,11 +103,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/timelyportfolio/sunburstR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -129,24 +129,22 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Create interactive sunburst chart with the 'd2b' charting library.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>sund2b</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>valueField</span> <span class='kw'>=</span> <span class='st'>"size"</span>,
-  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>breadcrumbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rootLabel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>showLabels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
-    
+    <pre class="usage"><span class='fu'>sund2b</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  colors <span class='op'>=</span> <span class='cn'>NULL</span>,
+  valueField <span class='op'>=</span> <span class='st'>"size"</span>,
+  tooltip <span class='op'>=</span> <span class='cn'>NULL</span>,
+  breadcrumbs <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rootLabel <span class='op'>=</span> <span class='cn'>NULL</span>,
+  showLabels <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  height <span class='op'>=</span> <span class='cn'>NULL</span>,
+  elementId <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -198,75 +196,76 @@ specified in any valid <code>CSS</code> size unit.</p></td>
       <td><p>string id as a valid <code>CSS</code> element id.</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+    <pre class="examples"><div class='input'><span class='kw'>if</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
 
   <span class='co'># The sund2b() API mirrors sunburst() with fewer arguments.</span>
 
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sunburstR</span>)
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/sunburstR'>sunburstR</a></span><span class='op'>)</span>
 
   <span class='co'># use a sample of the sequences csv data</span>
-  <span class='no'>sequences</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"examples/visit-sequences.csv"</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>)
-    ,<span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-    ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-  )[<span class='fl'>1</span>:<span class='fl'>200</span>,]
+  <span class='va'>sequences</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"examples/visit-sequences.csv"</span>,package<span class='op'>=</span><span class='st'>"sunburstR"</span><span class='op'>)</span>
+    ,header <span class='op'>=</span> <span class='cn'>FALSE</span>
+    ,stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+  <span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>200</span>,<span class='op'>]</span>
 
   <span class='co'># create a d2b sunburst</span>
-  <span class='fu'>sund2b</span>(<span class='no'>sequences</span>)
+  <span class='fu'>sund2b</span><span class='op'>(</span><span class='va'>sequences</span><span class='op'>)</span>
 
   <span class='co'># show labels</span>
-  <span class='fu'>sund2b</span>(<span class='no'>sequences</span>, <span class='kw'>showLabels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='fu'>sund2b</span><span class='op'>(</span><span class='va'>sequences</span>, showLabels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
   <span class='co'># change the colors</span>
   <span class='co'>#   using d3.js categorical color scheme</span>
-  <span class='fu'>sund2b</span>(
-    <span class='no'>sequences</span>,
-    <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(<span class='st'>"d3.scaleOrdinal(d3.schemeCategory20b)"</span>)
-  )
-}
+  <span class='fu'>sund2b</span><span class='op'>(</span>
+    <span class='va'>sequences</span>,
+    colors <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span><span class='st'>"d3.scaleOrdinal(d3.schemeCategory20b)"</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'>#  using RColorBrewer palette</span>
-<span class='fu'>sund2b</span>(
-  <span class='no'>sequences</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>range</span> <span class='kw'>=</span> <span class='kw pkg'>RColorBrewer</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span>(<span class='fl'>9</span>, <span class='st'>"Set3"</span>))
-)
+<span class='fu'>sund2b</span><span class='op'>(</span>
+  <span class='va'>sequences</span>,
+  colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>range <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>9</span>, <span class='st'>"Set3"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
 <span class='co'>#  using a color column from the R dataset</span>
 <span class='co'>#  treemap has an amazing treecolors ability</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>treemap</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>d3r</span>)
-<span class='no'>rhd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/treemap/man/random.hierarchical.data.html'>random.hierarchical.data</a></span>()
-<span class='no'>tm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/treemap/man/treemap.html'>treemap</a></span>(
-  <span class='no'>rhd</span>,
-  <span class='kw'>index</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"index"</span>, <span class='fl'>1</span>:<span class='fl'>3</span>),
-  <span class='kw'>vSize</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
-  <span class='kw'>draw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)$<span class='no'>tm</span>
-<span class='fu'>sund2b</span>(
-  <span class='fu'><a href='https://rdrr.io/pkg/d3r/man/d3_nest.html'>d3_nest</a></span>(<span class='no'>tm</span>, <span class='kw'>value_cols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>tm</span>)[-(<span class='fl'>1</span>:<span class='fl'>3</span>)]),
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>treemap</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/d3r'>d3r</a></span><span class='op'>)</span>
+<span class='va'>rhd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/treemap/man/random.hierarchical.data.html'>random.hierarchical.data</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>tm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/treemap/man/treemap.html'>treemap</a></span><span class='op'>(</span>
+  <span class='va'>rhd</span>,
+  index <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"index"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,
+  vSize <span class='op'>=</span> <span class='st'>"x"</span>,
+  draw <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span><span class='op'>$</span><span class='va'>tm</span>
+<span class='fu'>sund2b</span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/d3r/man/d3_nest.html'>d3_nest</a></span><span class='op'>(</span><span class='va'>tm</span>, value_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>tm</span><span class='op'>)</span><span class='op'>[</span><span class='op'>-</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>,
+  colors <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span>
     <span class='co'># yes this is a little different, so please pay attention</span>
     <span class='co'>#  "function(d) {return d.color}" will not work</span>
     <span class='st'>"function(name, d){return d.color || '#ccc';}"</span>
-  ),
-  <span class='kw'>valueField</span> <span class='kw'>=</span> <span class='st'>"vSize"</span>
-)
+  <span class='op'>)</span>,
+  valueField <span class='op'>=</span> <span class='st'>"vSize"</span>
+<span class='op'>)</span>
 
 
 <span class='co'># use sund2b in Shiny</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='d2b-shiny.html'>sund2bOutput</a></span>(<span class='st'>"sun"</span>)
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-  <span class='no'>output</span>$<span class='no'>sun</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='d2b-shiny.html'>renderSund2b</a></span>({
-    <span class='fu'>sund2b</span>(<span class='no'>sequences</span>)
-  })
-}
-<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://shiny.rstudio.com/'>shiny</a></span><span class='op'>)</span>
+<span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='d2b-shiny.html'>sund2bOutput</a></span><span class='op'>(</span><span class='st'>"sun"</span><span class='op'>)</span>
+<span class='va'>server</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>output</span><span class='op'>$</span><span class='va'>sun</span> <span class='op'>&lt;-</span> <span class='fu'><a href='d2b-shiny.html'>renderSund2b</a></span><span class='op'>(</span><span class='op'>{</span>
+    <span class='fu'>sund2b</span><span class='op'>(</span><span class='va'>sequences</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
+<span class='op'>}</span>
+<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span><span class='op'>(</span><span class='va'>ui</span>, <span class='va'>server</span><span class='op'>)</span>
 
-}</div></pre>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -282,7 +281,7 @@ specified in any valid <code>CSS</code> size unit.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

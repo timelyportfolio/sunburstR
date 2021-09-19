@@ -8,11 +8,13 @@
 
 <title>`d3.js` Sequence Sunburst Diagrams — sunburst • sunburstR</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -36,11 +38,10 @@
 
 
 
-<meta property="og:title" content="`d3.js` Sequence Sunburst Diagrams — sunburst" />
 
+<meta property="og:title" content="`d3.js` Sequence Sunburst Diagrams — sunburst" />
 <meta property="og:description" content="Sequences sunburst diagrams provide
    an interactive method of exploring sequence data, such as website navigation paths." />
-
 
 
 
@@ -72,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sunburstR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.6</span>
       </span>
     </div>
 
@@ -80,7 +81,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,11 +104,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/timelyportfolio/sunburstR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -130,33 +130,31 @@
     </div>
 
     <div class="ref-description">
-    
     <p><a href='https://gist.github.com/kerryrodden/7090426'>Sequences sunburst</a> diagrams provide
    an interactive method of exploring sequence data, such as website navigation paths.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>sunburst</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>legendOrder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>valueField</span> <span class='kw'>=</span> <span class='st'>"size"</span>,
-  <span class='kw'>percent</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>explanation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>breadcrumb</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sumNodes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>withD3</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sizingPolicy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>csvdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>jsondata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
-    
+    <pre class="usage"><span class='fu'>sunburst</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  legendOrder <span class='op'>=</span> <span class='cn'>NULL</span>,
+  colors <span class='op'>=</span> <span class='cn'>NULL</span>,
+  valueField <span class='op'>=</span> <span class='st'>"size"</span>,
+  percent <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  count <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  explanation <span class='op'>=</span> <span class='cn'>NULL</span>,
+  breadcrumb <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  legend <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  sortFunction <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sumNodes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  withD3 <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  height <span class='op'>=</span> <span class='cn'>NULL</span>,
+  elementId <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sizingPolicy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  csvdata <span class='op'>=</span> <span class='cn'>NULL</span>,
+  jsondata <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -256,186 +254,186 @@ specified in any valid <code>CSS</code> size unit.</p></td>
       <td><p><code>deprecated</code> use data argument instead; data in nested d3 JSON hierarchy with `name:...,  children:[];`</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sunburstR</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/sunburstR'>sunburstR</a></span><span class='op'>)</span>
 
 <span class='co'># read in sample visit-sequences.csv data provided in source</span>
 <span class='co'># only use first 100 rows to speed package build and check</span>
 <span class='co'>#   https://gist.github.com/kerryrodden/7090426#file-visit-sequences-csv</span>
-<span class='no'>sequences</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"examples/visit-sequences.csv"</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>)
-  ,<span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-  ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)[<span class='fl'>1</span>:<span class='fl'>100</span>,]
+<span class='va'>sequences</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"examples/visit-sequences.csv"</span>,package<span class='op'>=</span><span class='st'>"sunburstR"</span><span class='op'>)</span>
+  ,header <span class='op'>=</span> <span class='cn'>FALSE</span>
+  ,stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>,<span class='op'>]</span>
 
-<span class='fu'>sunburst</span>(<span class='no'>sequences</span>)
+<span class='fu'>sunburst</span><span class='op'>(</span><span class='va'>sequences</span><span class='op'>)</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
 <span class='co'># explore some of the arguments</span>
-<span class='fu'>sunburst</span>(
-  <span class='no'>sequences</span>
-  ,<span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)
+<span class='fu'>sunburst</span><span class='op'>(</span>
+  <span class='va'>sequences</span>
+  ,count <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
-<span class='fu'>sunburst</span>(
-  <span class='no'>sequences</span>
+<span class='fu'>sunburst</span><span class='op'>(</span>
+  <span class='va'>sequences</span>
   <span class='co'># apply sort order to the legends</span>
-  ,<span class='kw'>legendOrder</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span>(<span class='no'>sequences</span>[,<span class='fl'>1</span>],<span class='st'>"-"</span>)))
+  ,legendOrder <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='va'>sequences</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span>,<span class='st'>"-"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
   <span class='co'># just provide the name in the explanation in the center</span>
-  ,<span class='kw'>explanation</span> <span class='kw'>=</span> <span class='st'>"function(d){return d.data.name}"</span>
-)
+  ,explanation <span class='op'>=</span> <span class='st'>"function(d){return d.data.name}"</span>
+<span class='op'>)</span>
 
 
 <span class='co'># try with json data</span>
-<span class='no'>sequence_json</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>jsonlite</span><span class='kw ns'>::</span><span class='fu'><a href='https://jeroen.cran.dev/jsonlite/reference/fromJSON.html'>fromJSON</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"examples/visit-sequences.json"</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>),
-  <span class='kw'>simplifyDataFrame</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)
-<span class='fu'>sunburst</span>(<span class='no'>sequence_json</span>)
+<span class='va'>sequence_json</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"examples/visit-sequences.json"</span>,package<span class='op'>=</span><span class='st'>"sunburstR"</span><span class='op'>)</span>,
+  simplifyDataFrame <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+<span class='fu'>sunburst</span><span class='op'>(</span><span class='va'>sequence_json</span><span class='op'>)</span>
 
 
 
 <span class='co'># try with csv data from this fork</span>
 <span class='co'>#  https://gist.github.com/mkajava/7515402</span>
 <span class='co'># great use for new breadbrumb wrapping</span>
-<span class='fu'>sunburst</span>(
-  <span class='kw'>csvdata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(
-    <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+<span class='fu'>sunburst</span><span class='op'>(</span>
+  csvdata <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+    file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span>
       <span class='st'>"https://gist.githubusercontent.com/mkajava/"</span>,
       <span class='st'>"7515402/raw/9f80d28094dc9dfed7090f8fb3376ef1539f4fd2/"</span>,
       <span class='st'>"comment-sequences.csv"</span>
-    )
-    ,<span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-    ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-  )
-)
+    <span class='op'>)</span>
+    ,header <span class='op'>=</span> <span class='cn'>TRUE</span>
+    ,stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
 
 
 <span class='co'># try with csv data from this fork</span>
 <span class='co'>#  https://gist.github.com/rileycrane/92a2c36eb932b4f99e51/</span>
-<span class='fu'>sunburst</span>( <span class='kw'>csvdata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(
-  <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+<span class='fu'>sunburst</span><span class='op'>(</span> csvdata <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+  file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span>
     <span class='st'>"https://gist.githubusercontent.com/rileycrane/"</span>,
     <span class='st'>"92a2c36eb932b4f99e51/raw/"</span>,
     <span class='st'>"a0212b4ca8043af47ec82369aa5f023530279aa3/visit-sequences.csv"</span>
-  )
-  ,<span class='kw'>header</span><span class='kw'>=</span><span class='fl'>FALSE</span>
-  ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-))
-}
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+  <span class='op'>)</span>
+  ,header<span class='op'>=</span><span class='cn'>FALSE</span>
+  ,stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'>#  use sunburst to analyze ngram data from Peter Norvig</span>
 <span class='co'>#    http://norvig.com/mayzner.html</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sunburstR</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>pipeR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/sunburstR'>sunburstR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://renkun.me/pipeR'>pipeR</a></span><span class='op'>)</span>
 
 <span class='co'>#  read the csv data downloaded from the Google Fusion Table linked in the article</span>
-<span class='no'>ngrams2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(
+<span class='va'>ngrams2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span>
     <span class='st'>"examples/ngrams2.csv"</span>
-    ,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sunburstR"</span>
-  )
-  , <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)
+    ,package<span class='op'>=</span><span class='st'>"sunburstR"</span>
+  <span class='op'>)</span>
+  , stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='no'>ngrams2</span> <span class='kw'>%&gt;&gt;%</span>
+<span class='va'>ngrams2</span> <span class='op'>%&gt;&gt;%</span>
   <span class='co'>#  let's look at ngrams at the start of a word, so columns 1 and 3</span>
-  (<span class='no'>.</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>)]) <span class='kw'>%&gt;&gt;%</span>
+  <span class='op'>(</span><span class='va'>.</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
   <span class='co'>#  split the ngrams into a sequence by splitting each letter and adding -</span>
-  (
-    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-      <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span>(<span class='no'>.</span>[,<span class='fl'>1</span>],<span class='st'>""</span>) <span class='kw'>%&gt;&gt;%</span>
-        <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='kw'>function</span>(<span class='no'>ng</span>){ <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>ng</span>,<span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"-"</span>) } ) <span class='kw'>%&gt;&gt;%</span>
-        <span class='no'>unlist</span>
-      ,<span class='kw'>freq</span> <span class='kw'>=</span> <span class='no'>.</span>[,<span class='fl'>2</span>]
-      ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-    )
-  ) <span class='kw'>%&gt;&gt;%</span>
-  <span class='no'>sunburst</span>
+  <span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+      sequence <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span>,<span class='st'>""</span><span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
+        <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>ng</span><span class='op'>)</span><span class='op'>{</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>ng</span>,collapse <span class='op'>=</span> <span class='st'>"-"</span><span class='op'>)</span> <span class='op'>}</span> <span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
+        <span class='va'>unlist</span>
+      ,freq <span class='op'>=</span> <span class='va'>.</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>]</span>
+      ,stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
+  <span class='va'>sunburst</span>
 
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>htmltools</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/htmltools'>htmltools</a></span><span class='op'>)</span>
 
-<span class='no'>ngrams2</span> <span class='kw'>%&gt;&gt;%</span>
-  (
-    <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(
-      <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq.int</a></span>(<span class='fl'>3</span>,<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>.</span>))
-      ,<span class='kw'>function</span>(<span class='no'>letpos</span>){
-        (<span class='no'>.</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='no'>letpos</span>)]) <span class='kw'>%&gt;&gt;%</span>
+<span class='va'>ngrams2</span> <span class='op'>%&gt;&gt;%</span>
+  <span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq.int</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span>
+      ,<span class='kw'>function</span><span class='op'>(</span><span class='va'>letpos</span><span class='op'>)</span><span class='op'>{</span>
+        <span class='op'>(</span><span class='va'>.</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='va'>letpos</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
           <span class='co'>#  split the ngrams into a sequence by splitting each letter and adding -</span>
-          (
-            <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-              <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span>(<span class='no'>.</span>[,<span class='fl'>1</span>],<span class='st'>""</span>) <span class='kw'>%&gt;&gt;%</span>
-                <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='kw'>function</span>(<span class='no'>ng</span>){ <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>ng</span>,<span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"-"</span>) } ) <span class='kw'>%&gt;&gt;%</span>
-                <span class='no'>unlist</span>
-              ,<span class='kw'>freq</span> <span class='kw'>=</span> <span class='no'>.</span>[,<span class='fl'>2</span>]
-              ,<span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-            )
-          ) <span class='kw'>%&gt;&gt;%</span>
-          ( <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>div</a></span>(<span class='kw'>style</span><span class='kw'>=</span><span class='st'>"float:left;"</span>,<span class='fu'>sunburst</span>( <span class='no'>.</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>300</span> )) )
-      }
-    )
-  ) <span class='kw'>%&gt;&gt;%</span>
-  <span class='no'>tagList</span> <span class='kw'>%&gt;&gt;%</span>
-  <span class='no'>browsable</span>
-}
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>treemap</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sunburstR</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>d3r</span>)
+          <span class='op'>(</span>
+            <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+              sequence <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span>,<span class='st'>""</span><span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
+                <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>ng</span><span class='op'>)</span><span class='op'>{</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>ng</span>,collapse <span class='op'>=</span> <span class='st'>"-"</span><span class='op'>)</span> <span class='op'>}</span> <span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
+                <span class='va'>unlist</span>
+              ,freq <span class='op'>=</span> <span class='va'>.</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>]</span>
+              ,stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+            <span class='op'>)</span>
+          <span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
+          <span class='op'>(</span> <span class='va'>tags</span><span class='op'>$</span><span class='fu'>div</span><span class='op'>(</span>style<span class='op'>=</span><span class='st'>"float:left;"</span>,<span class='fu'>sunburst</span><span class='op'>(</span> <span class='va'>.</span>, height <span class='op'>=</span> <span class='fl'>300</span>, width <span class='op'>=</span> <span class='fl'>300</span> <span class='op'>)</span><span class='op'>)</span> <span class='op'>)</span>
+      <span class='op'>}</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;&gt;%</span>
+  <span class='va'>tagList</span> <span class='op'>%&gt;&gt;%</span>
+  <span class='va'>browsable</span>
+<span class='op'>}</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>treemap</span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/sunburstR'>sunburstR</a></span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/d3r'>d3r</a></span><span class='op'>)</span>
 
   <span class='co'># use example from ?treemap::treemap</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>GNI2014</span>)
-  <span class='no'>tm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/treemap/man/treemap.html'>treemap</a></span>(<span class='no'>GNI2014</span>,
-          <span class='kw'>index</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"continent"</span>, <span class='st'>"iso3"</span>),
-          <span class='kw'>vSize</span><span class='kw'>=</span><span class='st'>"population"</span>,
-          <span class='kw'>vColor</span><span class='kw'>=</span><span class='st'>"continent"</span>,
-          <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"index"</span>)
+  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>GNI2014</span><span class='op'>)</span>
+  <span class='va'>tm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/treemap/man/treemap.html'>treemap</a></span><span class='op'>(</span><span class='va'>GNI2014</span>,
+          index<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"continent"</span>, <span class='st'>"iso3"</span><span class='op'>)</span>,
+          vSize<span class='op'>=</span><span class='st'>"population"</span>,
+          vColor<span class='op'>=</span><span class='st'>"continent"</span>,
+          type<span class='op'>=</span><span class='st'>"index"</span><span class='op'>)</span>
 
-  <span class='no'>tm_nest</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/d3r/man/d3_nest.html'>d3_nest</a></span>(
-    <span class='no'>tm</span>$<span class='no'>tm</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"continent"</span>, <span class='st'>"iso3"</span>, <span class='st'>"vSize"</span>, <span class='st'>"color"</span>)],
-    <span class='kw'>value_cols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"vSize"</span>, <span class='st'>"color"</span>)
-  )
+  <span class='va'>tm_nest</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/d3r/man/d3_nest.html'>d3_nest</a></span><span class='op'>(</span>
+    <span class='va'>tm</span><span class='op'>$</span><span class='va'>tm</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"continent"</span>, <span class='st'>"iso3"</span>, <span class='st'>"vSize"</span>, <span class='st'>"color"</span><span class='op'>)</span><span class='op'>]</span>,
+    value_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"vSize"</span>, <span class='st'>"color"</span><span class='op'>)</span>
+  <span class='op'>)</span>
 
-  <span class='fu'>sunburst</span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>tm_nest</span>,
-    <span class='kw'>valueField</span> <span class='kw'>=</span> <span class='st'>"vSize"</span>,
-    <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='fu'>sunburst</span><span class='op'>(</span>
+    data <span class='op'>=</span> <span class='va'>tm_nest</span>,
+    valueField <span class='op'>=</span> <span class='st'>"vSize"</span>,
+    count <span class='op'>=</span> <span class='cn'>TRUE</span>,
     <span class='co'># to avoid double counting with pre-summed trees</span>
     <span class='co'># use sumNodes = FALSE</span>
-    <span class='kw'>sumNodes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-    <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(<span class='st'>"function(d){return d3.select(this).datum().data.color;}"</span>),
-    <span class='kw'>withD3</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-  )
-}
+    sumNodes <span class='op'>=</span> <span class='cn'>FALSE</span>,
+    colors <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span><span class='st'>"function(d){return d3.select(this).datum().data.color;}"</span><span class='op'>)</span>,
+    withD3 <span class='op'>=</span> <span class='cn'>TRUE</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
 <span class='co'># calendar sunburst example</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sunburstR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/sunburstR'>sunburstR</a></span><span class='op'>)</span>
 
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.Date.html'>seq.Date</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>'2014-01-01'</span>),
-    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>'2016-12-31'</span>),
-    <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"days"</span>
-  ),
-  <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.Date.html'>seq.Date</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>'2014-01-01'</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>'2016-12-31'</span><span class='op'>)</span>,
+    by <span class='op'>=</span> <span class='st'>"days"</span>
+  <span class='op'>)</span>,
+  stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='no'>df</span>$<span class='no'>year</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>(<span class='no'>df</span>$<span class='no'>date</span>, <span class='st'>"%Y"</span>)
-<span class='no'>df</span>$<span class='no'>quarter</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Q"</span>, <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>ceiling</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>(<span class='no'>df</span>$<span class='no'>date</span>,<span class='st'>"%m"</span>))/<span class='fl'>3</span>))
-<span class='no'>df</span>$<span class='no'>month</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>(<span class='no'>df</span>$<span class='no'>date</span>, <span class='st'>"%b"</span>)
-<span class='no'>df</span>$<span class='no'>path</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>df</span>$<span class='no'>year</span>, <span class='no'>df</span>$<span class='no'>quarter</span>, <span class='no'>df</span>$<span class='no'>month</span>, <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"-"</span>)
-<span class='no'>df</span>$<span class='no'>count</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>df</span>))
+<span class='va'>df</span><span class='op'>$</span><span class='va'>year</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>date</span>, <span class='st'>"%Y"</span><span class='op'>)</span>
+<span class='va'>df</span><span class='op'>$</span><span class='va'>quarter</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"Q"</span>, <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>ceiling</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>date</span>,<span class='st'>"%m"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>df</span><span class='op'>$</span><span class='va'>month</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>date</span>, <span class='st'>"%b"</span><span class='op'>)</span>
+<span class='va'>df</span><span class='op'>$</span><span class='va'>path</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>year</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>quarter</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>month</span>, sep<span class='op'>=</span><span class='st'>"-"</span><span class='op'>)</span>
+<span class='va'>df</span><span class='op'>$</span><span class='va'>count</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>sunburst</span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/xtabs.html'>xtabs</a></span>(<span class='no'>count</span>~<span class='no'>path</span>,<span class='no'>df</span>)),
+<span class='fu'>sunburst</span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/xtabs.html'>xtabs</a></span><span class='op'>(</span><span class='va'>count</span><span class='op'>~</span><span class='va'>path</span>,<span class='va'>df</span><span class='op'>)</span><span class='op'>)</span>,
   <span class='co'># added a degree of difficulty by providing</span>
   <span class='co'>#  not easily sortable names</span>
-  <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(
+  sortFunction <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span>
 <span class='st'>"
 function(a,b){
   abb = {
@@ -462,24 +460,26 @@ function(a,b){
   return abb[a.data.name] - abb[b.data.name];
 }
 "</span>
-  )
-)
+  <span class='op'>)</span>
+<span class='op'>)</span>
 <span class='co'># sorting example: place data in order of occurence</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sunburstR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/timelyportfolio/sunburstR'>sunburstR</a></span><span class='op'>)</span>
 
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>group</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"foo"</span>, <span class='st'>"bar"</span>, <span class='st'>"xyz"</span>),
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>2</span>)
-)
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"foo"</span>, <span class='st'>"bar"</span>, <span class='st'>"xyz"</span><span class='op'>)</span>,
+  value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>2</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='fu'>sunburst</span>(<span class='no'>df</span>,
+<span class='fu'>sunburst</span><span class='op'>(</span><span class='va'>df</span>,
          <span class='co'># create a trivial sort function</span>
-         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))
+         sortFunction <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span><span class='st'>'function(x) {return x;}'</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='no'>new_order</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>1</span>)
-<span class='fu'>sunburst</span>(<span class='no'>df</span>[<span class='no'>new_order</span>,],
-         <span class='kw'>sortFunction</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(<span class='st'>'function(x) {return x;}'</span>))</div></pre>
+<span class='va'>new_order</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'>sunburst</span><span class='op'>(</span><span class='va'>df</span><span class='op'>[</span><span class='va'>new_order</span>,<span class='op'>]</span>,
+         sortFunction <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span><span class='st'>'function(x) {return x;}'</span><span class='op'>)</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -495,7 +495,7 @@ function(a,b){
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

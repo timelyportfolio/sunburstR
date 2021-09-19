@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sunburstR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.6</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -65,7 +65,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/timelyportfolio/sunburstR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -79,15 +79,15 @@
 
       
 
-      </header><script src="sunburst-2-0-0_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="sunburst-2-0-0_files/htmlwidgets-1.5.1.9000/htmlwidgets.js"></script><link href="sunburst-2-0-0_files/sequences-0.1/sequences.css" rel="stylesheet">
-<script src="sunburst-2-0-0_files/sunburst-binding-2.1.4/sunburst.js"></script><script src="sunburst-2-0-0_files/sund2b-binding-2.1.4/sund2b.js"></script><script src="sunburst-2-0-0_files/d3-4.13.0/d3.min.js"></script><link href="sunburst-2-0-0_files/d2b-1.0.9/d2b_custom.css" rel="stylesheet">
+      </header><script src="sunburst-2-0-0_files/header-attrs-2.10/header-attrs.js"></script><script src="sunburst-2-0-0_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="sunburst-2-0-0_files/sequences-0.1/sequences.css" rel="stylesheet">
+<script src="sunburst-2-0-0_files/sunburst-binding-2.1.6/sunburst.js"></script><script src="sunburst-2-0-0_files/sund2b-binding-2.1.6/sund2b.js"></script><script src="sunburst-2-0-0_files/d3-4.13.0/d3.min.js"></script><link href="sunburst-2-0-0_files/d2b-1.0.9/d2b_custom.css" rel="stylesheet">
 <script src="sunburst-2-0-0_files/d2b-1.0.9/d2b.min.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Sunburst 2.0.0</h1>
                         <h4 class="author">Kent Russell</h4>
             
-            <h4 class="date">2020-07-06</h4>
+            <h4 class="date">2021-09-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/timelyportfolio/sunburstR/blob/master/vignettes/sunburst-2-0-0.Rmd"><code>vignettes/sunburst-2-0-0.Rmd</code></a></small>
       <div class="hidden name"><code>sunburst-2-0-0.Rmd</code></div>
@@ -101,21 +101,23 @@
 <h2 class="hasAnchor">
 <a href="#setup-and-data" class="anchor"></a>Setup and Data</h2>
 <p>Let’s get started by loading some packages and making some simple data to use throughout the post.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">sunburstR</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span>(<span class="st">"sunburstR"</span>)
-<span class="co">#&gt; [1] '2.1.4'</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/timelyportfolio/sunburstR">sunburstR</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"sunburstR"</span><span class="op">)</span>
+<span class="co">#&gt; [1] '2.1.6'</span></code></pre></div>
 <p>Simple data should suffice for these examples.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">htmltools</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">d3r</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/htmltools">htmltools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/timelyportfolio/d3r">d3r</a></span><span class="op">)</span>
 
-<span class="no">dat</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-  <span class="kw">level1</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>), <span class="kw">each</span><span class="kw">=</span><span class="fl">3</span>),
-  <span class="kw">level2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>), <span class="kw">each</span><span class="kw">=</span><span class="fl">3</span>), <span class="fl">1</span>:<span class="fl">3</span>),
-  <span class="kw">size</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">8</span>,<span class="fl">6</span>),
-  <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)
+<span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  level1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, each<span class="op">=</span><span class="fl">3</span><span class="op">)</span>,
+  level2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, each<span class="op">=</span><span class="fl">3</span><span class="op">)</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,
+  size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">8</span>,<span class="fl">6</span><span class="op">)</span>,
+  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
 
-<span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">dat</span>)</pre></body></html></div>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">level1</th>
@@ -156,33 +158,35 @@
 </tbody>
 </table>
 <p><a href="https://github.com/timelyportfolio/d3r"><code>d3r</code></a> will help us build our hierarchy.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">d3r</span>)
-<span class="no">tree</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/d3r/man/d3_nest.html">d3_nest</a></span>(<span class="no">dat</span>, <span class="kw">value_cols</span> <span class="kw">=</span> <span class="st">"size"</span>)
-<span class="no">tree</span>
-<span class="co">#&gt; {"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"}</span></pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/timelyportfolio/d3r">d3r</a></span><span class="op">)</span>
+<span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/d3r/man/d3_nest.html">d3_nest</a></span><span class="op">(</span><span class="va">dat</span>, value_cols <span class="op">=</span> <span class="st">"size"</span><span class="op">)</span>
+<span class="va">tree</span>
+<span class="co">#&gt; {"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"}</span></code></pre></div>
 </div>
 <div id="legend-false" class="section level2">
 <h2 class="hasAnchor">
 <a href="#legend-false" class="anchor"></a><code>legend = FALSE</code>
 </h2>
 <p>Often the legend in the sunburst becomes useless with lots of nodes and multiple levels. While a hack could turn it off, I don’t like having to ask users to resort to hacks, so now the argument <code>legend = FALSE</code> will turn it off.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">sb1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/sunburst.html">sunburst</a></span>(<span class="no">tree</span>, <span class="kw">width</span><span class="kw">=</span><span class="st">"100%"</span>, <span class="kw">height</span><span class="kw">=</span><span class="fl">400</span>)
-<span class="no">sb2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/sunburst.html">sunburst</a></span>(
-  <span class="no">tree</span>,
-  <span class="kw">legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">width</span> <span class="kw">=</span> <span class="st">"100%"</span>,
-  <span class="kw">height</span> <span class="kw">=</span> <span class="fl">400</span>
-)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sb1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sunburst.html">sunburst</a></span><span class="op">(</span><span class="va">tree</span>, width<span class="op">=</span><span class="st">"100%"</span>, height<span class="op">=</span><span class="fl">400</span><span class="op">)</span>
+<span class="va">sb2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sunburst.html">sunburst</a></span><span class="op">(</span>
+  <span class="va">tree</span>,
+  legend <span class="op">=</span> <span class="cn">FALSE</span>,
+  width <span class="op">=</span> <span class="st">"100%"</span>,
+  height <span class="op">=</span> <span class="fl">400</span>
+<span class="op">)</span>
 
 <span class="co"># do side-by-side for comparison</span>
-<span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span>(
-  <span class="kw">style</span><span class="kw">=</span><span class="st">"display: flex; align-items:center;"</span>,
-  <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span>(<span class="kw">style</span><span class="kw">=</span><span class="st">"width:50%; border:1px solid #ccc;"</span>, <span class="no">sb1</span>),
-  <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span>(<span class="kw">style</span><span class="kw">=</span><span class="st">"width:50%; border:1px solid #ccc;"</span>, <span class="no">sb2</span>)
-)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span><span class="op">(</span>
+  style<span class="op">=</span><span class="st">"display: flex; align-items:center;"</span>,
+  <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span><span class="op">(</span>style<span class="op">=</span><span class="st">"width:50%; border:1px solid #ccc;"</span>, <span class="va">sb1</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span><span class="op">(</span>style<span class="op">=</span><span class="st">"width:50%; border:1px solid #ccc;"</span>, <span class="va">sb2</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <div style="display: flex; align-items:center;">
 <div style="width:50%; border:1px solid #ccc;">
-<div class="sunburst html-widget" id="htmlwidget-c380085cfa0fd4710203" style="width:100%;height:400px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-63f866d7dbabe576236f" style="width:100%;height:400px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -196,10 +200,10 @@
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-c380085cfa0fd4710203">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-63f866d7dbabe576236f">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="width:50%; border:1px solid #ccc;">
-<div class="sunburst html-widget" id="htmlwidget-36ff3d9b69b5d13590d0" style="width:100%;height:400px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-ba172955fe4aecf0f383" style="width:100%;height:400px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -213,7 +217,7 @@
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-36ff3d9b69b5d13590d0">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-ba172955fe4aecf0f383">{"x":{"data":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -221,15 +225,16 @@
 <h2 class="hasAnchor">
 <a href="#d2b-sunburst" class="anchor"></a><code>d2b</code> Sunburst</h2>
 <p>Kevin Warne has built an incredible sunburst in <code>d2b</code>, so I just had to add it to <code>sunburstR</code>. I think Kevin’s work definitely deserves a star on <a href="https://github.com/d2bjs">Github</a>, and with only 32, I encourage a quick detour to share the love.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">sb3</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/sund2b.html">sund2b</a></span>(<span class="no">tree</span>, <span class="kw">width</span><span class="kw">=</span><span class="st">"100%"</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sb3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sund2b.html">sund2b</a></span><span class="op">(</span><span class="va">tree</span>, width<span class="op">=</span><span class="st">"100%"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span>(
-  <span class="kw">style</span><span class="kw">=</span><span class="st">"display: flex; align-items:center;"</span>,
-  <span class="no">sb3</span>
-)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span><span class="op">(</span>
+  style<span class="op">=</span><span class="st">"display: flex; align-items:center;"</span>,
+  <span class="va">sb3</span>
+<span class="op">)</span></code></pre></div>
 <div style="display: flex; align-items:center;">
-<div id="htmlwidget-1f1d445c98abb8306464" style="width:100%;height:500px;" class="sund2b html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1f1d445c98abb8306464">{"x":{"data":{"root":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"tooltip":null,"breadcrumbs":null},"options":{"colors":null,"valueField":"size","rootLabel":null,"showLabels":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-08b46ff31a5fd9bfd702" style="width:100%;height:500px;" class="sund2b html-widget"></div>
+<script type="application/json" data-for="htmlwidget-08b46ff31a5fd9bfd702">{"x":{"data":{"root":{"children":[{"name":"a","children":[{"name":"a1","size":10,"colname":"level2"},{"name":"a2","size":5,"colname":"level2"},{"name":"a3","size":2,"colname":"level2"}],"colname":"level1"},{"name":"b","children":[{"name":"b1","size":3,"colname":"level2"},{"name":"b2","size":8,"colname":"level2"},{"name":"b3","size":6,"colname":"level2"}],"colname":"level1"}],"name":"root"},"tooltip":null,"breadcrumbs":null},"options":{"colors":null,"valueField":"size","rootLabel":null,"showLabels":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="sum-nodes" class="section level2">
@@ -250,6 +255,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+
         <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
     </nav>
 </div>
@@ -263,7 +269,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

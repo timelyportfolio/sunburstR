@@ -1,3 +1,7 @@
+# sunburstR 2.1.6
+
+* add labels for slices based on https://bl.ocks.org/vasturiano/12da9071095fbd4df434e60d52d2d58d
+
 # sunburstR 2.1.5
 
 * fix bug in internal `csv_to_hier` converter; (see [issue 107](https://github.com/timelyportfolio/sunburstR/issues/107))
