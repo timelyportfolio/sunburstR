@@ -1,5 +1,5 @@
 #' @keywords internal
-csv_to_hier <- function(csv, delim = "-") {
+csv_to_hier <- function(csv, delim = "-", rootLabel = "root") {
   hier_col <- strsplit(as.character(csv[[1]]), delim)
   # determine max length of all the paths to build column names
   #   issue 107
@@ -21,5 +21,5 @@ csv_to_hier <- function(csv, delim = "-") {
     df <- df[,-1]
   }
   df$size = csv[[2]]
-  d3r::d3_nest(df, value_cols = "size")
+  d3r::d3_nest(df, value_cols = "size", root = rootLabel)
 }

@@ -1,3 +1,8 @@
+# sunburstR 2.1.7
+
+* allow specification of root label in internal `csv_to_hier` converter function
+* fix bug where `rootLabel` argument for `sund2b` was not working ; (see [issue 114](https://github.com/timelyportfolio/sunburstR/issues/114))
+
 # sunburstR 2.1.6
 
 * add labels for slices based on https://bl.ocks.org/vasturiano/12da9071095fbd4df434e60d52d2d58d
