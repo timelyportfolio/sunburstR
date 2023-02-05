@@ -1,6 +1,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/timelyportfolio/sunburstR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/timelyportfolio/sunburstR/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end --> [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sunburstR)](https://cran.r-project.org/package=sunburstR)
+[![CRAN status](https://www.r-pkg.org/badges/version/sunburstR)](https://CRAN.R-project.org/package=sunburstR)
+<!-- badges: end -->
 
 ### Help Me/Pay Me to Use, Improve, and Extend
 
