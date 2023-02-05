@@ -1,4 +1,6 @@
-[![R-CMD-check](https://github.com/timelyportfolio/sunburstR/workflows/R-CMD-check/badge.svg)](https://github.com/timelyportfolio/sunburstR/actions) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sunburstR)](https://cran.r-project.org/package=sunburstR)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/timelyportfolio/sunburstR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/timelyportfolio/sunburstR/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end --> [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sunburstR)](https://cran.r-project.org/package=sunburstR)
 
 ### Help Me/Pay Me to Use, Improve, and Extend
 
