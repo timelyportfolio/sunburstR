@@ -1,7 +1,7 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   sunburst-2-0-0: sunburst-2-0-0.html
-last_built: 2021-09-19T19:12Z
+last_built: 2023-02-05T18:01Z
 

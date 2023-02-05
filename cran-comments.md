@@ -3,6 +3,7 @@
 ## Test environments
 * local Windows 10 install, R 4.1.1
 * rhub check_for_cran
+* Github actions standard check
 * winbuilder devel and release
 
 ## R CMD check results
