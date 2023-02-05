@@ -31,11 +31,11 @@
     "d3-dispatch": "^1.0.3",
     "d3-format": "^1.2.0",
     "d3-hierarchy": "^1.1.5",
-    "d3-scale": "^1.0.6",
+    "d3-scale": "^4.0.2",
     "d3-selection": "^1.1.0",
     "d3-shape": "^1.2.0",
-    "d3-transition": "^1.1.0",
-    "d3plus-color": "^0.6.2"
+    "d3-transition": "^3.0.1",
+    "d3plus-color": "^1.1.2"
   },
   "devDependencies": {
     "browserify": "^14.3.0",
