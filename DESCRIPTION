@@ -38,7 +38,7 @@ Authors@R: c(
       )
     )
 Maintainer: Kent Russell <kent.russell@timelyportfolio.com>
-URL: https://github.com/timelyportfolio/sunburstR
+URL: https://timelyportfolio.github.io/sunburstR/, https://github.com/timelyportfolio/sunburstR
 BugReports: https://github.com/timelyportfolio/sunburstR/issues
 Description: Make interactive 'd3.js' sequence sunburst diagrams in R with the
     convenience and infrastructure of an 'htmlwidget'.
