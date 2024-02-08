@@ -5,7 +5,7 @@
 
 ### Help Me/Pay Me to Use, Improve, and Extend
 
-`sunburstR` has already seen extensive use in many projects across multiple domains.  If you have any interest in collaborating with me on this project or applying `sunburstR`, please let me know (see [Time Isn't Money](https://buildingwidgets.com/2016-12-09_post_break/)).
+`sunburstR` has already seen extensive use in many projects across multiple domains.  If you have any interest in collaborating with me on this project or applying `sunburstR`, please let me know (see [Time Isn't Money](https://buildingwidgets.com/2016/12/09/break-from-open-source/)).
 
 
 # sunburstR
