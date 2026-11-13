@@ -4,7 +4,7 @@
 #'    an interactive method of exploring sequence data, such as website navigation paths.
 #'
 #' @param data data in csv source,target form or in
-#'          nested d3 JSON hierarchy with `{name:...,  children:[];}`.  \code{csvdata}
+#'          nested d3 JSON hierarchy with `\{name:...,  children:[];\}`.  \code{csvdata}
 #'          and \code{jsondata} arguments are now deprecated in favor of this single
 #'          \code{data} argument.  \code{list}, \code{character},
 #'          or \code{connection} data will be assumed to be \code{JSON}.
@@ -46,7 +46,7 @@
 #' @param elementId string id as a valid \code{CSS} element id.
 #' @param sizingPolicy see \code{\link[htmlwidgets]{sizingPolicy}}.
 #' @param csvdata \code{deprecated} use data argument instead; data in csv source,target form
-#' @param jsondata \code{deprecated} use data argument instead; data in nested d3 JSON hierarchy with `{name:...,  children:[];}`
+#' @param jsondata \code{deprecated} use data argument instead; data in nested d3 JSON hierarchy with `\{name:...,  children:[];\}`
 #'
 #' @example inst/examples/example_replicate.R
 #' @example inst/examples/example_ngram.R

@@ -19,7 +19,7 @@ sund2b(
 }
 \arguments{
 \item{data}{data in csv source,target form or in
-nested d3 JSON hierarchy with `{name:...,  children:[];}`.  \code{list}, \code{character},
+nested d3 JSON hierarchy with `\{name:...,  children:[];\}`.  \code{list}, \code{character},
 or \code{connection} data will be assumed to be \code{JSON}.
 \code{data.frame} data will be assumed to be \code{csvdata} and converted
 to \code{JSON} by \code{sunburstR:::csv_to_hier()}.}
